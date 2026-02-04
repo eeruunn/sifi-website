@@ -1,7 +1,8 @@
 :root {
-  --primary: #0afff0; /* Neon Cyan */
+  --primary: #a15127; /* Neon Cyan */
   --bg: #050505;
   --text: #ffffff;
+  --heading_color_gradient: linear-gradient(to left, #5b1315, #f69840);
   --glass: rgba(255, 255, 255, 0.05);
 }
 
@@ -126,7 +127,12 @@ h1 {
 .subtitle {
   font-size: 1.5rem;
   letter-spacing: 5px;
-  color: var(--primary);
+  background-image: var(--heading_color_gradient);
+  font-weight: bold;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
   margin-top: 20px;
   text-transform: uppercase;
 }
@@ -209,11 +215,19 @@ footer {
 }
 
 .eyebrow {
-  color: var(--primary);
+  background-image: var(--heading_color_gradient);
+  font-weight: bold;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
   text-transform: uppercase;
   letter-spacing: 3px;
-  font-size: 0.9rem;
+  font-size: 1rem;
   display: block;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
   margin-bottom: 10px;
 }
 
@@ -344,7 +358,16 @@ h2 {
 }
 
 .nav-link:hover {
-  color: var(--primary);
+  background-image: var(--heading_color_gradient);
+  font-weight: bold;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  width: fit-content;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  -webkit-text-fill-color: transparent;
 }
 
 .hero-footer-text {
@@ -399,7 +422,12 @@ h2 {
 .inner-content h2 {
   font-size: 5rem;
   font-family: "Bebas Neue", sans-serif;
-  color: var(--primary);
+  background-image: var(--heading_color_gradient);
+  font-weight: bold;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
 }
 
 .inner-content p {
@@ -442,7 +470,12 @@ h2 {
 
 /* HELPERS */
 .eyebrow {
-  color: var(--primary);
+  background-image: var(--heading_color_gradient);
+  font-weight: bold;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
   text-transform: uppercase;
   letter-spacing: 4px;
   font-size: 0.8rem;
@@ -471,7 +504,12 @@ h2 {
 }
 
 .eyebrow {
-  color: var(--primary);
+  background-image: var(--heading_color_gradient);
+  font-weight: bold;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
   text-transform: uppercase;
   letter-spacing: 5px;
   font-size: 0.9rem;
@@ -1207,7 +1245,9 @@ h3 {
 }
 
 .submit-btn:hover {
-  background: #0afff0; /* Neon highlight on hover */
+  background-image: var(--heading_color_gradient);
+  color: white;
+  /* Neon highlight on hover */
 }
 
 /* Responsive: Stack vertically on small screens */
@@ -1440,7 +1480,7 @@ h3 {
 .drawer-link:active,
 .drawer-link:hover {
   background-color: rgba(255, 255, 255, 0.05); /* Very subtle highlight */
-  color: #0afff0;
+  color: var(--primary);
 }
 
 .drawerbtncon {
@@ -1747,4 +1787,49 @@ h3 {
 .slick-next {
   right: 10px !important; /* Default is -25px (off-screen) */
   z-index: 20;
+}
+
+/* --- FOOTER & CONTACT --- */
+.contact-section {
+  background: #0a0a0a;
+  padding-top: 100px;
+  border-top: 1px solid #111;
+}
+.contact-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 80px;
+}
+.contact-left h2 {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 4rem;
+  text-align: center;
+  letter-spacing: 3px;
+  margin-bottom: 30px;
+}
+.details {
+  text-align: center;
+}
+.details p {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.2rem;
+  color: #888;
+  margin: 5px 0;
+}
+.social-links {
+  display: flex;
+  gap: 30px;
+  margin-top: 40px;
+  justify-content: center;
+}
+.social-links img {
+  width: 30px;
+  opacity: 0.5;
+  transition: 0.3s;
+  filter: brightness(0) invert(1);
+}
+.social-links img:hover {
+  opacity: 1;
+  transform: scale(1.1);
 }
