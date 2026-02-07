@@ -43,7 +43,7 @@ body {
 /* PARALLAX GROUPS */
 header {
   position: relative;
-  height: 100vh;
+  height: 100dvh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -371,6 +371,7 @@ h2 {
 }
 
 .hero-footer-text {
+  overflow: hidden;
   position: absolute;
   bottom: 30px;
   left: 0;
@@ -382,6 +383,18 @@ h2 {
   font-size: 2rem;
   letter-spacing: 2px;
   pointer-events: none;
+}
+.hero-footer-text h3 {
+  opacity: 0;
+  animation-name: slideUp;
+  animation-duration: 2s;
+
+  /* Using a 'Power' ease for a high-end feel */
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* Other shorthand properties */
+  animation-delay: 1.5s;
+  animation-fill-mode: forwards;
 }
 /* FORCE FULL HEIGHT FOR ALL SECTIONS */
 .fullscreen-section {
