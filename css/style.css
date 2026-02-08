@@ -55,12 +55,17 @@ header {
 /* UPDATED BACKGROUND LAYER */
 .bg-layer {
   position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
+
+  /* 1. EXTEND THE EDGES vertically (The "Bleed") */
+  top: -15vh; /* Pull it up above the screen */
+  bottom: -15vh; /* Push it down below the screen */
   left: 0;
-  /* Keeps the parallax depth */
-  transform: translateZ(-10px) scale(2);
+  right: 0;
+
+  /* 2. INCREASE SCALE (Compensate for the extra height) */
+  /* Was scale(2) -> Change to scale(2.5) */
+  transform: translateZ(-10px) scale(2.5);
+
   z-index: -2;
   display: flex;
   align-items: center;
