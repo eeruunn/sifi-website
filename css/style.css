@@ -123,7 +123,7 @@ h1 {
 }
 
 h1 {
-  font-size: 5vw;
+  font-size: 8vw;
   text-transform: uppercase;
   letter-spacing: -5px;
   line-height: 0.9;
@@ -1169,14 +1169,92 @@ h3 {
   z-index: 0;
 }
 
+/* --- ADMISSIONS SECTION VISUAL REPLACEMENT --- */
+
+/* 1. Update the split container for centered alignment */
 .split-content-container {
-  position: relative;
-  z-index: 2;
   display: flex;
+  justify-content: space-between;
+  align-items: center; /* Vertically center both sides */
   width: 100%;
-  padding: 0 8vw; /* Horizontal margin from screen walls */
-  gap: 5vw;
-  align-items: center;
+  padding: 0 8vw; /* Retain horizontal margin */
+  gap: 8vw;
+}
+
+/* 2. New wrapper for visual elements on the right */
+.visual-cta-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Changed from flex-end so they perfectly stack */
+  gap: 40px; /* A bit more breathing room between them */
+  width: 100%;
+}
+
+/* 3. Make the Clapper much bigger and add a cinematic shadow */
+.clapper-img {
+  width: 100%;
+  max-width: 800px; /* Bumped up from 650px */
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 30px 50px rgba(0, 0, 0, 0.8));
+
+  /* Optional: If it still feels small because of the screen split, 
+     this forces it to grow 10% larger than its container */
+  transform: scale(1.1); /* Deep shadow to separate it from background */
+}
+
+/* 4. Interactive ticket button/link styling */
+.ticket-img {
+  width: 100%;
+  max-width: 500px; /* Keep your preferred size */
+  height: auto;
+  display: block;
+  transition: all 0.3s ease;
+
+  /* Fixes the dullness: Bumps up baseline brightness and contrast */
+  filter: brightness(1.08) contrast(1.05);
+  border-radius: 4px; /* Optional: smooths the hard corners slightly */
+}
+
+/* 5. Hover Effect (The "Invite") */
+.ticket-btn:hover {
+  /* Lifts up and grows slightly towards the user */
+  transform: translateY(-8px) scale(1.03);
+}
+
+.ticket-btn:hover .ticket-img {
+  /* Lights up the ticket like a lightbox */
+  filter: brightness(1.2) contrast(1.1);
+  /* A wide, cinematic golden glow */
+  box-shadow: 0 0 40px 10px rgba(212, 175, 55, 0.4);
+}
+
+/* 6. Active Effect (The "Physical Click") */
+.ticket-btn:active {
+  /* Pushes down physically into the page */
+  transform: translateY(4px) scale(0.98);
+  transition: all 0.1s ease; /* Instant snap on click */
+}
+
+.ticket-btn:active .ticket-img {
+  /* Tightens the glow to mimic pushing it against the wall */
+  box-shadow: 0 0 15px 5px rgba(212, 175, 55, 0.6);
+  filter: brightness(1.25);
+}
+
+/* --- Ensure Text in .content-left has updated styles --- */
+.white-text {
+  /* Using standard bold font */
+  font-family: inherit;
+  font-weight: bold;
+}
+
+.admission-text {
+  /* Normal weight text */
+  font-family: inherit;
+  font-weight: normal;
+  line-height: 1.6;
+  max-width: 500px; /* Create multi-line text flow */
 }
 
 /* Left Side Styling */
@@ -1195,7 +1273,9 @@ h3 {
 .content-right {
   flex: 1;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center; /* Centers the images horizontally in the right half */
+  align-items: center; /* Centers them vertically */
+  width: 100%;
 }
 
 .admission-form {
@@ -1701,11 +1781,11 @@ h3 {
   }
 
   /* Ensure the main Heading is also centered */
-  h2.white-text {
+  /* .white-text-mentors {
     text-align: center;
     width: 100%;
     font-size: 3rem !important;
-  }
+  } */
   .slider .slick-list {
     padding-top: 40px !important;
     padding-bottom: 40px !important;
@@ -2168,6 +2248,56 @@ h3 {
   .see-more-btn:hover {
     opacity: 1;
   }
+  /* 4. Interactive ticket button/link styling */
+  .ticket-btn {
+    display: block;
+    width: fit-content;
+    text-decoration: none;
+    cursor: pointer;
+    /* Adds a bouncy, premium feel to the hover movement */
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+    /* Gives it a deep baseline shadow so it pops off the background */
+    filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.8));
+  }
+
+  .ticket-img {
+    width: 100%;
+    max-width: 500px; /* Keep your preferred size */
+    height: auto;
+    display: block;
+    transition: all 0.3s ease;
+
+    /* Fixes the dullness: Bumps up baseline brightness and contrast */
+    filter: brightness(1.08) contrast(1.05);
+    border-radius: 4px; /* Optional: smooths the hard corners slightly */
+  }
+
+  /* 5. Hover Effect (The "Invite") */
+  .ticket-btn:hover {
+    /* Lifts up and grows slightly towards the user */
+    transform: translateY(-8px) scale(1.03);
+  }
+
+  .ticket-btn:hover .ticket-img {
+    /* Lights up the ticket like a lightbox */
+    filter: brightness(1.2) contrast(1.1);
+    /* A wide, cinematic golden glow */
+    box-shadow: 0 0 40px 10px rgba(212, 175, 55, 0.4);
+  }
+
+  /* 6. Active Effect (The "Physical Click") */
+  .ticket-btn:active {
+    /* Pushes down physically into the page */
+    transform: translateY(4px) scale(0.98);
+    transition: all 0.1s ease; /* Instant snap on click */
+  }
+
+  .ticket-btn:active .ticket-img {
+    /* Tightens the glow to mimic pushing it against the wall */
+    box-shadow: 0 0 15px 5px rgba(212, 175, 55, 0.6);
+    filter: brightness(1.25);
+  }
 }
 
 /* --- FOOLPROOF THUMBNAIL HIGHLIGHT FIX --- */
@@ -2197,4 +2327,445 @@ h3 {
 }
 .see-more-btn {
   display: none;
+}
+
+/* --- MINIMAL ADMISSIONS CTA --- */
+
+.minimal-cta-box {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 60px 50px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+}
+
+.nature-quote {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 3.5rem;
+  color: #fff;
+  letter-spacing: 3px;
+  margin-bottom: 20px;
+  line-height: 1.1;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+.nature-subtext {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 1.05rem;
+  color: #aaa;
+  line-height: 1.6;
+  margin-bottom: 40px;
+}
+
+/* Timeline Button Styling (In case you didn't copy it earlier) */
+.cinematic-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: white;
+  color: black;
+  text-decoration: none;
+  padding: 18px 30px;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 1.4rem;
+  letter-spacing: 2px;
+  width: 100%;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.cinematic-btn .arrow {
+  font-family: sans-serif;
+  transition: transform 0.3s ease;
+}
+
+.cinematic-btn:hover {
+  background-image: var(--heading_color_gradient);
+  color: white;
+  box-shadow: 0 0 20px rgba(161, 81, 39, 0.4);
+}
+
+.cinematic-btn:hover .arrow {
+  transform: translateX(10px);
+}
+
+/* Mobile Tweaks */
+@media (max-width: 992px) {
+  .minimal-cta-box {
+    padding: 40px 20px;
+  }
+  .nature-quote {
+    font-size: 2.8rem;
+  }
+}
+
+/* --- ADMISSIONS INNER PAGE STYLES --- */
+
+.procedure-section {
+  padding: 100px 8vw;
+  background-color: #050505;
+  min-height: 100vh;
+  position: relative;
+  z-index: 10;
+}
+
+.procedure-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.page-title {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 5rem;
+  color: #fff;
+  letter-spacing: 3px;
+  margin: 10px 0;
+  background: var(
+    --heading_color_gradient,
+    linear-gradient(to right, #fff, #a15127)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.procedure-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.procedure-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 40px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.procedure-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+  border-color: rgba(161, 81, 39, 0.3);
+}
+
+.card-number {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 4rem;
+  color: rgba(161, 81, 39, 0.2);
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  line-height: 1;
+}
+
+.card-title {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 2rem;
+  color: #fff;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 10px;
+  width: fit-content;
+}
+
+.card-text {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 1.05rem;
+  color: #bbb;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.card-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.card-list li {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 1.05rem;
+  color: #bbb;
+  line-height: 1.6;
+  margin-bottom: 10px;
+  padding-left: 20px;
+  position: relative;
+}
+
+.card-list li::before {
+  content: "▸";
+  color: #a15127;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.quote-container {
+  text-align: center;
+  max-width: 800px;
+  margin: 80px auto 0 auto;
+  padding: 40px;
+  background: radial-gradient(
+    circle,
+    rgba(161, 81, 39, 0.1) 0%,
+    rgba(5, 5, 5, 1) 70%
+  );
+}
+
+.nature-quote {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 3.5rem;
+  color: #fff;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+}
+
+.nature-subtext {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 1.1rem;
+  color: #aaa;
+  line-height: 1.6;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .procedure-grid {
+    grid-template-columns: 1fr;
+  }
+  .page-title {
+    font-size: 3.5rem;
+  }
+}
+
+/* --- ABOUT PAGE STYLES --- */
+
+.about-section {
+  padding: 80px 8vw 120px 8vw;
+  background-color: #050505;
+  min-height: 100vh;
+  position: relative;
+  z-index: 10;
+}
+
+.about-header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 80px auto;
+}
+
+.about-intro {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 1.2rem;
+  color: #bbb;
+  line-height: 1.7;
+  margin-top: 20px;
+}
+
+/* Satyajit Ray Tribute Layout */
+.ray-tribute-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  padding: 60px;
+  margin-bottom: 60px;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+  gap: 5vw;
+}
+
+.ray-content {
+  flex: 1;
+}
+
+.ray-title {
+  font-family: "Bebas Neue", sans-serif;
+  color: var(--primary, #a15127);
+  font-size: 1.5rem;
+  letter-spacing: 3px;
+  margin-bottom: 5px;
+}
+
+.ray-name {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 4.5rem;
+  color: #fff;
+  letter-spacing: 2px;
+  margin: 0 0 20px 0;
+  line-height: 1;
+}
+
+.ray-text {
+  font-family: "Georgia", serif;
+  font-style: italic;
+  font-size: 1.3rem;
+  color: #ddd;
+  line-height: 1.6;
+  margin-bottom: 25px;
+  border-left: 3px solid #a15127;
+  padding-left: 20px;
+}
+
+.ray-bio {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 1.05rem;
+  color: #aaa;
+  line-height: 1.7;
+}
+
+.ray-image-wrapper {
+  flex: 1;
+  max-width: 400px;
+}
+
+.ray-image {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  filter: grayscale(100%) contrast(1.1);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
+}
+
+/* Vision & Mission Split */
+.core-values-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  margin-bottom: 100px;
+}
+
+.value-card {
+  background: rgba(255, 255, 255, 0.03);
+  padding: 50px;
+  border-radius: 8px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  text-align: center;
+}
+
+.value-title {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 2.5rem;
+  color: #fff;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+}
+
+.value-text {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 1.1rem;
+  color: #bbb;
+  line-height: 1.6;
+}
+
+/* Leadership Grid */
+.leadership-section {
+  margin-top: 80px;
+}
+
+.leadership-heading {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 4rem;
+  color: #fff;
+  text-align: center;
+  letter-spacing: 2px;
+  margin-bottom: 60px;
+}
+
+.leadership-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.leader-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 40px 30px;
+  border-radius: 8px;
+  text-align: center;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.leader-card:hover {
+  transform: translateY(-10px);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.leader-image-box {
+  width: 150px;
+  height: 150px;
+  margin: 0 auto 25px auto;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid rgba(161, 81, 39, 0.5);
+}
+
+.leader-image-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(80%);
+  transition: filter 0.3s ease;
+}
+
+.leader-card:hover .leader-image-box img {
+  filter: grayscale(0%);
+}
+
+.leader-name {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 2.2rem;
+  color: #fff;
+  margin-bottom: 5px;
+  letter-spacing: 1px;
+}
+
+.leader-role {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 0.9rem;
+  color: #a15127;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+}
+
+.leader-bio {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 0.95rem;
+  color: #aaa;
+  line-height: 1.6;
+}
+
+/* Responsive Overrides */
+@media (max-width: 992px) {
+  .ray-tribute-container {
+    flex-direction: column;
+    padding: 40px 20px;
+  }
+  .core-values-grid {
+    grid-template-columns: 1fr;
+  }
+  .leadership-grid {
+    grid-template-columns: 1fr;
+    max-width: 500px;
+    margin: 0 auto;
+  }
 }

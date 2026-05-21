@@ -3,220 +3,51 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="css/style.css" rel="stylesheet" />
+    <link href="css/about.css" rel="stylesheet" />
     <link
-      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
       rel="stylesheet"
     />
-    <link href="css/style.css" rel="stylesheet" />
-    <link href="css/style_coursepages.css" rel="stylesheet" />
     <title>About Us | SIFI</title>
-    <style>
-      /* =========================================
-   ABOUT US PAGE SPECIFIC STYLES
-   ========================================= */
-
-      /* Legacy Section Text */
-      .legacy-text {
-        font-family: "Poppins", sans-serif;
-        font-size: 1.2rem;
-        line-height: 1.8;
-        color: #ccc;
-        max-width: 800px;
-        margin: 0 auto;
-        text-align: center;
-      }
-
-      /* Leadership Profiles Container */
-      .leadership-section {
-        display: flex;
-        flex-direction: column;
-        gap: 100px; /* Space between Chairman and Director */
-      }
-
-      /* Individual Leader Profile */
-      .leader-profile {
-        display: grid;
-        grid-template-columns: 1fr 1.5fr; /* Image takes less space than text on desktop */
-        gap: 50px;
-        align-items: center;
-        background: rgba(255, 255, 255, 0.02); /* Very subtle background */
-        border: 1px solid rgba(255, 255, 255, 0.05);
-        padding: 30px;
-        border-radius: 12px;
-        backdrop-filter: blur(5px);
-      }
-
-      /* Reversing the layout for the second profile for visual interest */
-      .leader-profile.reverse {
-        grid-template-columns: 1.5fr 1fr;
-      }
-      .leader-profile.reverse .leader-image-con {
-        order: 2; /* Moves image to the right */
-      }
-      .leader-profile.reverse .leader-bio {
-        order: 1; /* Moves text to the left */
-      }
-
-      /* Leader Image Styling */
-      .leader-image-con {
-        position: relative;
-        overflow: hidden;
-        border-radius: 8px;
-        aspect-ratio: 3/4; /* Portrait ratio */
-      }
-
-      .leader-img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        /* Cinematic look: Grayscale and high contrast by default */
-        filter: grayscale(100%) contrast(120%);
-        transition: all 0.5s ease;
-      }
-
-      /* Hover effect: Colorize image and add neon glow */
-      .leader-profile:hover .leader-img {
-        filter: grayscale(0%) contrast(100%);
-        transform: scale(1.05);
-      }
-
-      .leader-image-con::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        border: 1px solid rgba(10, 255, 240, 0.3); /* Subtle neon border */
-        pointer-events: none;
-        transition: 0.3s;
-      }
-      .leader-profile:hover .leader-image-con::after {
-        border-color: var(--primary); /* Bright neon on hover */
-        box-shadow: inset 0 0 20px rgba(10, 255, 240, 0.2);
-      }
-
-      /* Leader Text Styling */
-      .leader-bio h3 {
-        font-family: "Bebas Neue", sans-serif;
-        font-size: 3rem;
-        margin-bottom: 5px;
-        color: #fff;
-        letter-spacing: 2px;
-      }
-
-      .leader-title {
-        font-family: "Poppins", sans-serif;
-        color: var(--primary); /* Neon Cyan */
-        font-size: 1.1rem;
-        text-transform: uppercase;
-        letter-spacing: 3px;
-        margin-bottom: 25px;
-        display: block;
-        font-weight: 600;
-      }
-
-      .leader-quote {
-        font-family: "Poppins", sans-serif;
-        font-size: 1.3rem;
-        font-style: italic;
-        color: #fff;
-        line-height: 1.6;
-        margin-bottom: 25px;
-        border-left: 3px solid var(--primary);
-        padding-left: 20px;
-      }
-
-      .leader-bio p {
-        font-family: "Poppins", sans-serif;
-        font-size: 1.1rem;
-        line-height: 1.8;
-        color: #bbb;
-      }
-
-      /* Responsive adjustments for Leadership section */
-      @media (max-width: 900px) {
-        .leader-profile,
-        .leader-profile.reverse {
-          grid-template-columns: 1fr; /* Stack vertically on mobile */
-          gap: 30px;
-        }
-
-        .leader-profile.reverse .leader-image-con {
-          order: 1; /* Image back on top for mobile */
-        }
-        .leader-profile.reverse .leader-bio {
-          order: 2;
-        }
-
-        .leader-image-con {
-          aspect-ratio: 4/5; /* Slightly shorter portrait on mobile */
-          max-width: 400px;
-          margin: 0 auto; /* Center the image */
-        }
-
-        .leader-bio h3 {
-          font-size: 2.5rem;
-          text-align: center;
-        }
-        .leader-title {
-          text-align: center;
-        }
-      }
-    </style>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.css"
+    />
   </head>
-  <body>
-    <div class="grain"></div>
 
+  <body>
     <div class="drawer" id="drawer">
-      <div class="drawerbtncon">
-        <img src="media/close.png" id="drawerclose" onclick="closeDrawer()" />
-      </div>
       <div class="drawer-content">
-        <div class="drawerlink-container">
-          <a href="index.html" class="drawer-link" onclick="closeDrawer()"
-            >HOME</a
-          >
+        <div class="drawerbtncon">
+          <img src="media/close.png" id="drawerclose" onclick="closeDrawer()" />
         </div>
         <div class="drawerlink-container">
-          <a
-            href="index.html#programs-mobile"
-            class="drawer-link"
-            onclick="closeDrawer()"
-            >PROGRAMS</a
-          >
+          <a href="index.html#admissions" class="drawer-link">ADMISSIONS</a>
         </div>
         <div class="drawerlink-container">
-          <a href="#contact" class="drawer-link" onclick="closeDrawer()"
-            >CONTACT</a
-          >
+          <a href="index.html#programs-desktop" class="drawer-link">PROGRAMS</a>
+        </div>
+        <div class="drawerlink-container">
+          <a href="index.html#contact" class="drawer-link">CONTACT</a>
+        </div>
+        <div class="drawerlink-container">
+          <a href="about.html" class="drawer-link">ABOUT</a>
         </div>
       </div>
     </div>
+
+    <div class="grain"></div>
 
     <div class="parallax-wrapper">
       <header>
         <div class="nav-container">
           <div class="menu">
-            <img
-              src="media/menu.png"
-              id="menubtn"
-              onclick="openDrawer()"
-              style="width: 30px; cursor: pointer"
-            />
+            <img src="media/menu.png" id="menubtn" onclick="openDrawer()" />
           </div>
-          <a
-            href="index.html"
-            class="nav-link"
-            style="font-family: 'Bebas Neue'; letter-spacing: 2px"
-            >HOME</a
-          >
-          <a
-            href="index.html#programs-desktop"
-            class="nav-link"
-            style="font-family: 'Bebas Neue'; letter-spacing: 2px"
-            >PROGRAMS</a
-          >
-
+          <a href="index.html#admissions" class="nav-link">ADMISSIONS</a>
+          <a href="index.html#programs-desktop" class="nav-link">PROGRAMS</a>
           <div class="logo-wrap" style="z-index: 2000">
             <a href="index.html" style="text-decoration: none">
               <div
@@ -228,184 +59,208 @@
               </div>
             </a>
           </div>
-
-          <a
-            href="#contact"
-            class="nav-link"
-            style="font-family: 'Bebas Neue'; letter-spacing: 2px"
-            >CONTACT</a
-          >
-          <a
-            href="about.html"
-            class="nav-link active"
-            style="
-              font-family: 'Bebas Neue';
-              letter-spacing: 2px;
-              color: var(--primary);
-            "
-            >ABOUT</a
-          >
+          <a href="index.html#contact" class="nav-link">CONTACT</a>
+          <a href="about.html" class="nav-link">ABOUT</a>
           <div class="menu">
-            <a href="#contact"
-              ><img src="media/contact-us.png" style="width: 30px"
-            /></a>
+            <a href="index.html#contact"><img src="media/contact-us.png" /></a>
           </div>
-        </div>
-
-        <div class="bg-layer">
-          <video
-            class="bg-video"
-            autoplay
-            muted
-            loop
-            playsinline
-            preload="none"
-            poster="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?q=80&w=2070&auto=format&fit=crop"
-            style="
-              width: 100%;
-              height: 100%;
-              object-fit: cover;
-              opacity: 0.4;
-              filter: contrast(1.1) grayscale(50%);
-            "
-          >
-            <source
-              src="https://videos.pexels.com/video-files/4684360/4684360-hd_1920_1080_30fps.mp4"
-              type="video/mp4"
-            />
-          </video>
-        </div>
-
-        <div class="hero-content" style="justify-content: center">
-          <div class="institute-name" style="text-align: center">
-            <h1 style="margin-left: 0; font-size: 10vw">OUR STORY</h1>
-            <span class="eyebrow" style="font-size: 1.5rem; margin-top: 20px"
-              >The Legacy Continues</span
-            >
-          </div>
-        </div>
-
-        <div class="scroll-container">
-          <div class="mouse"><div class="wheel"></div></div>
-          <div class="scroll-text">SCROLL DOWN</div>
         </div>
       </header>
 
-      <main class="main-content">
-        <section class="section-container" style="padding-bottom: 50px">
-          <span class="eyebrow" style="text-align: center">Who We Are</span>
-          <h2 class="section-title">THE SIFI PHILOSOPHY</h2>
-          <div class="legacy-text">
-            <p>
-              The Satyajit Ray International Film Institute (SIFI) was founded
-              on a singular belief: that cinema is not merely entertainment, but
-              a profound reflection of humanity. Inspired by the master himself,
-              we blend the rigorous technical discipline of classical filmmaking
-              with the boundless possibilities of modern digital technology.
+      <section class="ray-hero-split">
+        <div class="ray-left-slideshow">
+          <div class="ray-slider">
+            <div class="ray-slide-item">
+              <img src="media/ray1.jpeg" alt="Satyajit Ray" />
+            </div>
+            <div class="ray-slide-item">
+              <img src="media/ray2.jpeg" alt="Satyajit Ray Behind Camera" />
+            </div>
+            <div class="ray-slide-item">
+              <img src="media/ray3.jpeg" alt="Satyajit Ray Directing" />
+            </div>
+          </div>
+          <div class="cinematic-overlay"></div>
+        </div>
+
+        <div class="ray-right-content">
+          <div class="ray-quote-box">
+            <span class="eyebrow" style="margin-left: 0">Our Inspiration</span>
+            <h1 class="ray-massive-quote">
+              "The only solutions that are ever worth anything are the solutions
+              that people find themselves."
+            </h1>
+
+            <div class="ray-bio-block">
+              <p class="ray-subtext">
+                Our institute is built upon the timeless legacy of Satyajit Ray,
+                one of the greatest auteurs in the history of world cinema. At
+                SIFI, we do not just teach the mechanics of filmmaking; we
+                strive to instil Ray’s philosophy—that true cinema is found in
+                the meticulous observation of life, human emotion, and the
+                profound truths hidden in everyday moments.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="about-secondary-section">
+        <div class="core-values-grid">
+          <div class="value-card">
+            <h3 class="value-title">OUR VISION</h3>
+            <p class="value-text">
+              To become a globally recognized center of excellence in film and
+              media education, fostering creativity, innovation, artistic
+              expression, and nurturing globally competent media professionals.
             </p>
-            <p>
-              We are not just a school; we are a crucible for artists who refuse
-              to compromise their vision. Located in the heart of Kerala, we
-              provide an immersive environment where students are challenged to
-              find their unique voice and tell stories that resonate globally.
+          </div>
+          <div class="value-card">
+            <h3 class="value-title">OUR MISSION</h3>
+            <p class="value-text">
+              To provide industry-integrated, world-class film education. We
+              foster socially responsible creative storytelling, advanced
+              technical excellence, and the development of professional, ethical
+              media practitioners.
             </p>
           </div>
-        </section>
+        </div>
 
-        <section class="section-container">
-          <span class="eyebrow" style="text-align: center">Leadership</span>
-          <h2 class="section-title">GUIDING VISION</h2>
-
-          <div class="leadership-section">
-            <div class="leader-profile">
-              <div class="leader-image-con">
-                <img src="media/img2.jpeg" alt="Chairman" class="leader-img" />
-              </div>
-              <div class="leader-bio">
-                <h3>BALACHANDRAN V.K</h3>
-                <span class="leader-title">Administrative Officer</span>
-                <p class="leader-quote">
-                  "We are building more than an institute; we are building a
-                  movement that aims to redefine Indian cinema on the world
-                  stage."
-                </p>
-                <p>
-                  An educationist and visionary, Mr. Balachandran firmly
-                  believes that infrastructure and faculty are the backbone of
-                  any world-class institution. His commitment to providing SIFI
-                  students with industry-standard equipment and global exposure
-                  forms the foundation of the institute's rapid rise to
-                  prominence.
-                </p>
-              </div>
+        <div class="leadership-section">
+          <span
+            class="eyebrow"
+            style="text-align: center; display: block; margin-bottom: 10px"
+            >The Visionaries</span
+          >
+          <h2 class="leadership-heading">OUR LEADERSHIP</h2>
+          <div class="leader-row">
+            <div class="leader-text">
+              <h3 class="leader-name">Kamal</h3>
+              <h4 class="leader-role">Master Mentor & Advisor</h4>
+              <p class="leader-bio">
+                A National Award-winning filmmaker whose legendary filmography
+                spans over 40 cultural milestones. As a true auteur and former
+                Chairman of the Kerala State Chalachitra Academy, Kamal offers
+                students rare, direct access to a living master of the craft.
+              </p>
             </div>
-
-            <div class="leader-profile reverse">
-              <div class="leader-image-con">
-                <img src="media/img1.jpeg" alt="Director" class="leader-img" />
-              </div>
-              <div class="leader-bio">
-                <h3>Dr. RAKESH KALIA</h3>
-                <span class="leader-title">Principal</span>
-                <p class="leader-quote">
-                  "Don't just show me what happened. Make me feel it. That is
-                  the only mandate we give our students here."
-                </p>
-                <p>
-                  An acclaimed filmmaker known for his narrative depth and
-                  visual style, Dr. Rakesh Kalia brings decades of industry
-                  experience directly into the classroom. His hands-on approach
-                  ensures that SIFI curriculum remains practical, relevant, and
-                  deeply rooted in the art of storytelling.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section class="contact-section" id="contact">
-          <div class="contact-layout">
-            <div class="contact-left">
-              <span class="eyebrow" style="margin-bottom: 20px"
-                >Get in Touch</span
-              >
-              <h2 style="font-family: 'Bebas Neue'; font-size: 3rem; margin: 0">
-                CONNECT
-              </h2>
-              <div class="details" style="margin-top: 30px">
-                <p>sifiwayanad@gmail.com</p>
-                <p>+91 7306108959</p>
-                <p>Thonichal</p>
-                <p>Mananthavady, Wayanad</p>
-                <p>Kerala, India</p>
-              </div>
-            </div>
-
-            <div class="social-links">
-              <a href="#"><img src="media/instagram.png" alt="IG" /></a>
-              <a href="#"><img src="media/linkedin.png" alt="LI" /></a>
-              <a href="#"><img src="media/youtube.png" alt="YT" /></a>
+            <div class="leader-image-wrapper">
+              <img src="mentors/m1.png" alt="Kamal" class="leader-image" />
+              <div class="leader-overlay-left"></div>
             </div>
           </div>
 
-          <footer class="footer-branding">
-            <div class="branding-container">
-              <img src="media/logo2.png" alt="Logo" class="footer-logo" />
-              <span class="footer-text">SIFI</span>
+          <div class="leader-row reverse">
+            <div class="leader-text">
+              <h3 class="leader-name">Dr. Ratheesh K</h3>
+              <h4 class="leader-role">Director</h4>
+              <p class="leader-bio">
+                An intellectual powerhouse spanning 30 years of elite
+                educational experience across Economics, Politics, Law, and
+                Business Management. Dr. Ratheesh guides the strategic and
+                academic vision of SIFI, shaping our storytellers into global
+                thinkers equipped to handle both the art and business of cinema.
+              </p>
             </div>
-            <p class="copyright-text">© 2026 SIFI. ALL RIGHTS RESERVED.</p>
-          </footer>
-        </section>
-      </main>
+            <div class="leader-image-wrapper">
+              <img
+                src="mentors/m4.jpeg"
+                alt="Dr. Ratheesh K"
+                class="leader-image"
+              />
+              <div class="leader-overlay-left"></div>
+            </div>
+          </div>
+
+          <div class="leader-row">
+            <div class="leader-text">
+              <h3 class="leader-name">Dr. Rajesh Kalia</h3>
+              <h4 class="leader-role">Principal</h4>
+              <p class="leader-bio">
+                With over a quarter-century of distinguished academic
+                leadership, Dr. Rajesh Kalia serves as the foundational anchor
+                of SIFI. Holding an MA and a PhD, he brings a profound
+                understanding of language, literature, and institutional
+                excellence to ensure a structured yet deeply creative
+                environment.
+              </p>
+            </div>
+            <div class="leader-image-wrapper">
+              <img
+                src="mentors/m2.jpeg"
+                alt="Dr. Rajesh Kalia"
+                class="leader-image"
+              />
+              <div class="leader-overlay-right"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="contact-section" id="contact">
+        <div class="contact-layout">
+          <div class="contact-left">
+            <span class="eyebrow" style="margin-bottom: 20px"
+              >Get in Touch</span
+            >
+            <h2 style="font-family: 'Bebas Neue'; font-size: 3rem; margin: 0">
+              CONNECT
+            </h2>
+            <div class="details" style="margin-top: 30px">
+              <p>sifiwayanad@gmail.com</p>
+              <p>+91 7306108959</p>
+              <p>Thonichal</p>
+              <p>Mananthavady, Wayanad</p>
+              <p>Kerala, India</p>
+            </div>
+          </div>
+
+          <div class="social-links">
+            <a href="#"><img src="media/instagram.png" alt="IG" /></a>
+            <a href="#"><img src="media/linkedin.png" alt="LI" /></a>
+            <a href="#"><img src="media/youtube.png" alt="YT" /></a>
+          </div>
+        </div>
+
+        <footer class="footer-branding">
+          <div class="branding-container">
+            <img src="media/logo2.png" alt="Logo" class="footer-logo" />
+            <span class="footer-text">SIFI</span>
+          </div>
+          <p class="copyright-text">© 2026 SIFI. ALL RIGHTS RESERVED.</p>
+        </footer>
+      </section>
     </div>
 
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.min.js"
+    ></script>
+
     <script>
+      // Drawer Functions
       function openDrawer() {
         document.getElementById("drawer").style.width = "75vw";
       }
       function closeDrawer() {
-        document.getElementById("drawer").style.width = "0";
+        document.getElementById("drawer").style.width = "0vw";
       }
+
+      // Initialize the Ray Slideshow
+      $(document).ready(function () {
+        $(".ray-slider").slick({
+          arrows: false,
+          dots: false,
+          infinite: true,
+          speed: 1500, // Smooth slow fade
+          fade: true, // Cinematic crossfade
+          cssEase: "linear",
+          autoplay: true,
+          autoplaySpeed: 3000, // Time between images
+          pauseOnHover: false,
+        });
+      });
     </script>
   </body>
 </html>
