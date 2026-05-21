@@ -119,11 +119,11 @@ header {
 /* ADJUST TEXT ALIGNMENT */
 h1 {
   text-align: left; /* Resets text alignment */
-  margin-left: 5vw; /* Adds some padding from the center line */
+  margin-left: 2.5vw; /* Adds some padding from the center line */
 }
 
 h1 {
-  font-size: 8vw;
+  font-size: 5vw;
   text-transform: uppercase;
   letter-spacing: -5px;
   line-height: 0.9;
@@ -1850,4 +1850,351 @@ h3 {
 .social-links img:hover {
   opacity: 1;
   transform: scale(1.1);
+}
+
+/* --- Mentor Section Styles (Split-Screen Portrait) --- */
+.mentors-section {
+  background-color: #050505;
+  color: #fff;
+  height: 100vh;
+  width: 100vw;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* Main Slider Container */
+.mentor-main-slider {
+  height: 100vh;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.mentor-main-slider .slick-list,
+.mentor-main-slider .slick-track,
+.mentor-slide {
+  height: 100% !important;
+}
+
+.mentor-content {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+/* Left Side - Text Area */
+.mentor-text {
+  width: 50%; /* Takes the left half of the screen */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 5%;
+  z-index: 5;
+  /* Add padding to the bottom so text doesn't hide behind the frosted slider */
+  padding-bottom: 20vh;
+}
+
+.mentor-name {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 6rem;
+  margin: 0 0 5px 0;
+  line-height: 1;
+  letter-spacing: 3px;
+}
+
+.mentor-title {
+  font-size: 1.5rem;
+  color: var(--primary, #a15127);
+  font-weight: bold;
+  margin-bottom: 20px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.mentor-bio {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #ddd;
+  max-width: 90%;
+}
+
+/* Right Side - Portrait Image */
+.mentor-image {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 50%; /* Takes the right half of the screen */
+  height: 100vh;
+  z-index: 1;
+}
+
+.mentor-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Perfect for portrait images */
+  object-position: center top;
+  filter: grayscale(20%) brightness(0.9);
+}
+
+/* Seamless Blend: Fades the left edge of the image into the black background */
+.mentor-image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: 
+    /* Left-to-right fade */ linear-gradient(
+      to right,
+      #050505 0%,
+      transparent 40%
+    ),
+    /* Bottom-to-top fade (hides the hard edge behind the slider) */
+      linear-gradient(to top, #050505 0%, transparent 20%);
+  pointer-events: none;
+}
+
+/* Main Slider Arrows */
+.mentor-main-slider .slick-prev,
+.mentor-main-slider .slick-next {
+  width: 50px;
+  height: 50px;
+  z-index: 20;
+}
+.mentor-main-slider .slick-prev {
+  left: 2%;
+}
+.mentor-main-slider .slick-next {
+  right: 2%;
+}
+
+/* Thumbnail Navigation Slider (Frosted Glass Bottom Bar) */
+/* 1. Frosted Glass Bottom Bar (Forced to front) */
+.mentor-nav-slider {
+  position: absolute !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 20vh !important;
+  z-index: 9999 !important; /* Guarantee it floats above main images */
+  margin: 0;
+  padding: 0;
+  background: rgba(5, 5, 5, 0.001);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  display: block !important;
+}
+
+/* 2. CRITICAL FIX: Restore Slick's default block layout so it can calculate width */
+.mentor-nav-slider .slick-list,
+.mentor-nav-slider .slick-track {
+  display: block !important;
+  height: 20vh !important;
+}
+
+/* 3. Center the items vertically using padding instead of flexbox */
+.mentor-nav-slider .nav-item {
+  display: block !important;
+  height: 20vh !important;
+  padding-top: 3vh !important; /* Pushes the thumbnail down to the center */
+  box-sizing: border-box;
+  text-align: center;
+  cursor: pointer;
+  opacity: 0.3;
+  transition: all 0.4s ease;
+  outline: none;
+  transform: scale(0.9);
+}
+
+/* Highlight the active/centered item */
+.mentor-nav-slider .slick-current .nav-item,
+.mentor-nav-slider .slick-center .nav-item {
+  opacity: 1 !important;
+  transform: scale(1.1) !important;
+}
+
+/* Add the white ring to the active image */
+.mentor-nav-slider .slick-current .nav-thumb img,
+.mentor-nav-slider .slick-center .nav-thumb img {
+  border: 2px solid #ffffff !important;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.4) !important; /* Optional cinematic glow */
+}
+
+.nav-thumb img {
+  width: 8vh;
+  height: 8vh;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto 10px;
+  border: 2px solid transparent;
+  transition: border 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  display: block; /* Ensure image doesn't collapse */
+}
+
+/* .mentor-nav-slider .slick-current .nav-thumb img {
+  border: 2px solid #fff;
+} */
+
+.nav-item h4 {
+  margin: 0;
+  font-size: 1rem;
+  color: #fff;
+  font-family: "Bebas Neue", sans-serif;
+  letter-spacing: 1px;
+}
+
+.nav-item p {
+  margin: 2px 0 0;
+  font-size: 0.7rem;
+  color: #aaa;
+  text-transform: uppercase;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  /* On mobile, we stack it: Image acts as background, text sits on top */
+  .mentor-image {
+    width: 100%;
+  }
+
+  .mentor-text {
+    width: 100%;
+    padding: 0 5%;
+    /* Push text to the bottom, right above the slider */
+    justify-content: flex-end;
+    padding-bottom: 25vh;
+    text-align: left;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.9);
+  }
+
+  .mentor-name {
+    font-size: 4rem;
+  }
+
+  .mentor-image::after {
+    background: linear-gradient(
+      to top,
+      rgba(5, 5, 5, 1) 0%,
+      rgba(5, 5, 5, 0.6) 40%,
+      transparent 100%
+    );
+  }
+
+  .mentor-nav-slider {
+    height: 18vh;
+  }
+
+  .nav-thumb img {
+    width: 60px;
+    height: 60px;
+  }
+  /* --- Add this inside your @media (max-width: 768px) { ... } --- */
+
+  /* 1. HIDE the bottom thumbnail slider */
+  .mentor-nav-slider {
+    display: none !important;
+  }
+
+  /* 2. Style the text container at the bottom with a frosted glass effect */
+  .mentor-text {
+    position: absolute !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: auto !important; /* Let content determine height */
+    /* Re-use and adjust the frosted glass from the bottom bar */
+    background: rgba(5, 5, 5, 0.75) !important;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 30px 5% 50px 5% !important; /* Bottom padding gives space for the see-more btn */
+    text-align: left !important;
+    text-shadow: none !important;
+    z-index: 10 !important;
+    justify-content: flex-start !important; /* Resets flex from existing mobile rule */
+  }
+
+  /* 3. Scale down Name and Title font sizes */
+  .mentor-name {
+    font-size: 3rem !important; /* Was 4rem */
+    margin-bottom: 5px !important;
+  }
+
+  .mentor-title {
+    font-size: 1rem !important; /* Was 1.5rem */
+    margin-bottom: 10px !important;
+  }
+
+  .mentor-bio {
+    font-size: 0.95rem !important; /* Slightly smaller bio font */
+    color: #ccc;
+    margin-bottom: 0px !important;
+    display: block; /* Ensures p tag behaves for JS function */
+  }
+
+  /* 4. "SEE MORE" TRUNCATION CSS */
+  .limit-bio {
+    max-height: 4.5em; /* Limit initially to 3 lines of text */
+    overflow: hidden;
+    transition: max-height 0.3s ease; /* Adds a nice animation */
+    position: relative;
+  }
+
+  /* Class to apply when text is expanded (toggled by JS) */
+  .mentor-bio.expanded {
+    max-height: 50em; /* Set a very high value so it expands fully */
+  }
+
+  /* "See more" link styling */
+  .see-more-btn {
+    display: inline-block !important;
+    color: white;
+    text-decoration: none;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    margin-top: 8px;
+    width: 100%; /* Force it on its own line */
+    text-align: right;
+    opacity: 0.7;
+  }
+
+  .see-more-btn:hover {
+    opacity: 1;
+  }
+}
+
+/* --- FOOLPROOF THUMBNAIL HIGHLIGHT FIX --- */
+/* 1. Apply dimming and shrinking to Slick's outer wrapper */
+.mentor-nav-slider .slick-slide {
+  opacity: 0.3 !important;
+  transform: scale(0.85) !important;
+  transition: all 0.4s ease !important;
+}
+
+/* 2. Force the active middle slide to full brightness and scale */
+.mentor-nav-slider .slick-slide.slick-center {
+  opacity: 1 !important;
+  transform: scale(1.05) !important;
+}
+
+/* 3. Reset the internal item so it doesn't "double-dim" */
+.mentor-nav-slider .nav-item {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+/* 4. Add the white ring & cinematic glow to the active image */
+.mentor-nav-slider .slick-center .nav-thumb img {
+  border: 2px solid #ffffff !important;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.4) !important;
+}
+.see-more-btn {
+  display: none;
 }
