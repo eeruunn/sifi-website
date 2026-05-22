@@ -19,6 +19,58 @@
       type="text/css"
       href="https://cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick-theme.css"
     />
+    <link rel="preload" as="image" href="media/logo.png" fetchpriority="high" />
+
+    <link
+      rel="preload"
+      as="image"
+      href="homename.png"
+      media="(min-width: 501px)"
+      fetchpriority="high"
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="homename2.png"
+      media="(min-width: 501px)"
+      fetchpriority="high"
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="homename3.png"
+      media="(min-width: 501px)"
+      fetchpriority="high"
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="homename4.png"
+      media="(min-width: 501px)"
+      fetchpriority="high"
+    />
+
+    <link
+      rel="preload"
+      as="image"
+      href="homenamem.png"
+      media="(max-width: 500px)"
+      fetchpriority="high"
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="homename3m.png"
+      media="(max-width: 500px)"
+      fetchpriority="high"
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="homename4m.png"
+      media="(max-width: 500px)"
+      fetchpriority="high"
+    />
   </head>
 
   <body>
@@ -95,46 +147,39 @@
         <div class="hero-content">
           <div class="split-item">
             <div>
-              <!-- <h1 class="phrase" id="phrase">
-                Satyajit Ray<br />International<br />Film <br />Institute
-              </h1> -->
-              <!-- <div class="institute-name"><h1>Satyajit Ray</h1></div> -->
               <div class="institute-name">
-                <img
-                  src="homename.png"
-                  rel="preload"
-                  as="image"
-                  style="width: 60vw"
-                />
+                <picture>
+                  <source media="(max-width: 500px)" srcset="homenamem.png" />
+                  <img
+                    src="homename.png"
+                    alt="Satyajit Ray"
+                    fetchpriority="high"
+                  />
+                </picture>
               </div>
               <div class="institute-name">
                 <img
                   src="homename2.png"
-                  rel="preload"
-                  as="image"
-                  style="width: 60vw"
+                  alt="International"
+                  fetchpriority="high"
                 />
               </div>
               <div class="institute-name">
-                <img
-                  src="homename3.png"
-                  rel="preload"
-                  as="image"
-                  style="width: 60vw"
-                />
+                <picture>
+                  <source media="(max-width: 500px)" srcset="homename3m.png" />
+                  <img src="homename3.png" alt="Film" fetchpriority="high" />
+                </picture>
               </div>
               <div class="institute-name">
-                <img
-                  src="homename4.png"
-                  rel="preload"
-                  as="image"
-                  style="width: 60vw"
-                />
+                <picture>
+                  <source media="(max-width: 500px)" srcset="homename4m.png" />
+                  <img
+                    src="homename4.png"
+                    alt="Institute"
+                    fetchpriority="high"
+                  />
+                </picture>
               </div>
-              <!-- <div class="institute-name"><h1>International</h1></div>
-              <div class="institute-name"><h1>Film</h1></div>
-              <div class="institute-name"><h1>Institute</h1></div> -->
-              <!-- </h1> -->
             </div>
           </div>
           <div class="split-item" id="item2"></div>
@@ -994,43 +1039,6 @@
         // and was going to start overlapping.
         $(".mentor-main-slider").slick("setPosition");
       });
-    });
-
-    $(document).ready(function () {
-      // 1. Define the media query threshold
-      const mediaQuery = window.matchMedia("(max-width: 500px)");
-
-      // 2. Select your 4 typography images
-      // (Make sure to add an ID or a specific class to them in your HTML if you haven't already)
-      const $logos = $(".institute-name img");
-
-      function handleTabletChange(e) {
-        // Check if the media query matches (screen width is 500px or below)
-        if (e.matches) {
-          // --- MOBILE IMAGE SOURCES ---
-          $logos.eq(0).attr("src", "homenamem.png");
-          $logos.eq(1).attr("src", "homename2.png");
-          $logos.eq(2).attr("src", "homename3m.png");
-          $logos.eq(3).attr("src", "homename4m.png");
-        } else {
-          // --- DESKTOP IMAGE SOURCES ---
-          $logos.eq(0).attr("src", "homename.png");
-          $logos.eq(1).attr("src", "homename2.png");
-          $logos.eq(2).attr("src", "homename3.png");
-          $logos.eq(3).attr("src", "homename4.png");
-        }
-      }
-
-      // 3. Register the listener to track changes dynamically
-      if (typeof mediaQuery.addEventListener === "function") {
-        mediaQuery.addEventListener("change", handleTabletChange);
-      } else {
-        // Fallback for older mobile browsers
-        mediaQuery.addListener(handleTabletChange);
-      }
-
-      // 4. Run the check initially on page load
-      handleTabletChange(mediaQuery);
     });
   </script>
 </html>
