@@ -88,7 +88,14 @@ header {
   border-radius: 16px;
   padding: 40px;
   color: #fff;
-  height: 100%;
+
+  /* THE FIX FOR OVERFLOWING CONTENT */
+  display: flex;
+  flex-direction: column;
+  height: 100% !important; /* Ensures side-by-side cards match height on desktop */
+  min-height: fit-content !important; /* Guarantees the box wraps around all text */
+  max-height: none !important;
+  overflow: visible;
 }
 
 .course-overview {
@@ -182,6 +189,7 @@ header {
   display: grid;
   grid-template-columns: 1fr;
   gap: 30px;
+  align-items: stretch;
 }
 @media (min-width: 900px) {
   .details-grid {
@@ -416,6 +424,27 @@ header {
     padding-top: 80px;
     gap: 30px;
   }
+
+  /* 1. KILL THE GRID ON MOBILE: Force simple vertical stacking */
+  .details-grid,
+  .fees-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 30px;
+  }
+
+  /* 2. BLOCK-LEVEL CARDS: Forces the box to naturally wrap all text */
+  .glass-card,
+  .fee-year-card,
+  .course-overview {
+    display: block !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    overflow: visible !important;
+    padding: 30px 20px !important;
+  }
+
   .split-item {
     width: 100%;
     height: auto;
@@ -424,9 +453,11 @@ header {
     justify-content: center;
     align-items: center;
   }
+
   #item2 {
     display: flex !important;
   }
+
   .institute-name h1 {
     text-align: center;
     margin-left: 0;
@@ -434,24 +465,35 @@ header {
     line-height: 1.1;
     margin-bottom: 10px;
   }
+
   .course-overview {
     max-width: 90%;
-    padding: 25px;
     background: rgba(0, 0, 0, 0.6);
   }
+
   .course-overview-title {
     font-size: 1.5rem;
     margin-bottom: 15px;
   }
+
   .course_overview-content {
     gap: 15px;
     margin-bottom: 10px;
   }
+
   .course_overview-content img {
     width: 30px;
     height: 30px;
   }
+
   .course_overview-content p {
     font-size: 1rem;
   }
+}
+/* --- DESKTOP HERO OVERLAP FIX --- */
+.course-overview {
+  height: auto !important; /* Stops it from stretching to 100vh */
+  min-height: fit-content !important;
+  display: block !important; /* Reverts it to a standard content box */
+  margin: auto; /* Ensures it stays perfectly centered */
 }
