@@ -975,6 +975,43 @@
         $(".mentor-main-slider").slick("setPosition");
       });
     });
+
+    $(document).ready(function () {
+      // 1. Define the media query threshold
+      const mediaQuery = window.matchMedia("(max-width: 500px)");
+
+      // 2. Select your 4 typography images
+      // (Make sure to add an ID or a specific class to them in your HTML if you haven't already)
+      const $logos = $(".institute-name img");
+
+      function handleTabletChange(e) {
+        // Check if the media query matches (screen width is 500px or below)
+        if (e.matches) {
+          // --- MOBILE IMAGE SOURCES ---
+          $logos.eq(0).attr("src", "homenamem.png");
+          $logos.eq(1).attr("src", "homename2.png");
+          $logos.eq(2).attr("src", "homename3m.png");
+          $logos.eq(3).attr("src", "homename4m.png");
+        } else {
+          // --- DESKTOP IMAGE SOURCES ---
+          $logos.eq(0).attr("src", "homename.png");
+          $logos.eq(1).attr("src", "homename2.png");
+          $logos.eq(2).attr("src", "homename3.png");
+          $logos.eq(3).attr("src", "homename4.png");
+        }
+      }
+
+      // 3. Register the listener to track changes dynamically
+      if (typeof mediaQuery.addEventListener === "function") {
+        mediaQuery.addEventListener("change", handleTabletChange);
+      } else {
+        // Fallback for older mobile browsers
+        mediaQuery.addListener(handleTabletChange);
+      }
+
+      // 4. Run the check initially on page load
+      handleTabletChange(mediaQuery);
+    });
   </script>
 </html>
 <!-- <div class="card">
