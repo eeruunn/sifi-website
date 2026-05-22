@@ -1514,7 +1514,12 @@ h3 {
 .institute-name {
   overflow: hidden;
 }
-.institute-name h1 {
+.institute-name img {
+  margin-left: 3rem;
+  margin-bottom: 0.5rem;
+}
+.institute-name h1,
+.institute-name img {
   opacity: 0;
   animation-name: slideUp;
   animation-duration: 2s;
