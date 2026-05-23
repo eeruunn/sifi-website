@@ -1622,6 +1622,8 @@ h3 {
   .institute-name img {
     margin-left: 0rem;
     margin-bottom: 0.5rem;
+    width: 80vw !important; /* The !important forces it to ignore the inline HTML style */
+    height: auto !important; /* Ensures the image doesn't stretch or warp */
   }
   .menu {
     display: block;
