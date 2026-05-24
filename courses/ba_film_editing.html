@@ -3,38 +3,42 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="css/style.css" rel="stylesheet" />
-    <link href="css/style_coursepages.css" rel="stylesheet" />
+    <link href="../css/style_global.css" rel="stylesheet" />
+    <link href="../css/style_coursepages.css" rel="stylesheet" />
     <link
       href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;600&display=swap"
       rel="stylesheet"
     />
-    <title>BA Film Direction & Script Writing</title>
+    <title>BA Film Editing & DI Honors | SIFI</title>
   </head>
   <body>
     <div class="drawer" id="drawer">
       <div class="drawer-content">
         <div class="drawerbtncon">
-          <img src="media/close.png" id="drawerclose" onclick="closeDrawer()" />
+          <img
+            src="../media/icons/close.png"
+            id="drawerclose"
+            onclick="closeDrawer()"
+          />
         </div>
 
         <a
-          href="index.html#admissions"
+          href="../index.html#admissions"
           class="drawer-link"
           onclick="closeDrawer()"
           >ADMISSIONS</a
         >
         <a
-          href="index.html#programs-mobile"
+          href="../index.html#programs-mobile"
           class="drawer-link"
           onclick="closeDrawer()"
           >PROGRAMS</a
         >
 
-        <a href="index.html#contact" class="drawer-link" onclick="closeDrawer()"
+        <a href="#contact" class="drawer-link" onclick="closeDrawer()"
           >CONTACT</a
         >
-        <a href="about.html" class="drawer-link" onclick="closeDrawer()"
+        <a href="../about.html" class="drawer-link" onclick="closeDrawer()"
           >ABOUT</a
         >
       </div>
@@ -46,50 +50,53 @@
         <div class="nav-container">
           <div class="menu">
             <img
-              src="media/menu.png"
+              src="../media/icons/menu.png"
               id="menubtn"
               onclick="openDrawer()"
               style="width: 30px; cursor: pointer"
             />
           </div>
           <a
-            href="index.html#admissions"
+            href="../index.html#admissions"
             class="nav-link"
             style="font-family: 'Bebas Neue'; letter-spacing: 2px"
             >ADMISSIONS</a
           >
           <a
-            href="index.html#programs-desktop"
+            href="../index.html#programs-desktop"
             class="nav-link"
             style="font-family: 'Bebas Neue'; letter-spacing: 2px"
             >PROGRAMS</a
           >
 
           <div class="logo-wrap" style="z-index: 2000">
-            <a href="index.html" style="text-decoration: none">
+            <a href="../index.html" style="text-decoration: none">
               <div
                 class="logo-link"
                 style="display: flex; flex-direction: row; align-items: center"
               >
-                <div class="logo-icon"><img src="media/logo.png" /></div>
+                <div class="logo-icon">
+                  <img src="../media/logos/logo.png" />
+                </div>
               </div>
             </a>
           </div>
+
           <a
-            href="index.html#contact"
+            href="#contact"
             class="nav-link"
             style="font-family: 'Bebas Neue'; letter-spacing: 2px"
             >CONTACT</a
           >
           <a
-            href="about.html"
+            href="../about.html"
             class="nav-link"
             style="font-family: 'Bebas Neue'; letter-spacing: 2px"
             >ABOUT</a
           >
           <div class="menu">
-            <a href="index.html#contact"
-              ><img src="media/contact-us.png" style="width: 30px"
+            <a href="#contact"
+              ><img src="../media/icons/contact-us.png" style="width: 30px"
             /></a>
           </div>
         </div>
@@ -102,7 +109,7 @@
             loop
             playsinline
             preload="none"
-            poster="media/thumbdirection.jpeg"
+            poster="../media/thumbnails/thumbediting.jpeg"
             style="
               width: 100%;
               height: 100%;
@@ -111,43 +118,43 @@
               filter: contrast(1.1);
             "
           >
-            <source src="media/direction.mp4" type="video/mp4" />
+            <source src="../media/background/editing.mp4" type="video/mp4" />
           </video>
         </div>
 
         <div class="hero-content">
           <div class="split-item">
             <div class="institute-name">
-              <h1>BA Film<br />Direction &<br />Script Writing<br />Honours</h1>
+              <h1>BA Film Editing<br />& DI (Colouring)<br />Honors</h1>
             </div>
           </div>
           <div class="split-item" id="item2">
             <div class="course-overview">
               <div class="course-overview-title">Course Overview</div>
               <div class="course_overview-content">
-                <img src="media/intake.png" alt="Intake" />
+                <img src="../media/icons/intake.png" alt="Intake" />
                 <p><strong>Intake:</strong> 25 Seats</p>
               </div>
               <div class="course_overview-content">
-                <img src="media/criteria.png" alt="Criteria" />
+                <img src="../media/icons/criteria.png" alt="Criteria" />
                 <p><strong>Eligibility:</strong> Any Plus Two</p>
               </div>
               <div class="course_overview-content">
-                <img src="media/duration.png" alt="Duration" />
+                <img src="../media/icons/duration.png" alt="Duration" />
                 <p><strong>Duration:</strong> 4-Year Honors Program</p>
               </div>
               <div class="course_overview-content">
-                <img src="media/agelimit.png" alt="Age Limit" />
+                <img src="../media/icons/agelimit.png" alt="Age Limit" />
                 <p><strong>Age Limit:</strong> None</p>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="scroll-container">
+        <!-- <div class="scroll-container">
           <div class="mouse"><div class="wheel"></div></div>
           <div class="scroll-text">SCROLL DOWN</div>
-        </div>
+        </div> -->
       </header>
 
       <main class="main-content">
@@ -159,45 +166,50 @@
             <div class="glass-card">
               <h3>Course Description</h3>
               <p>
-                The BA in Film Direction & Script Writing is an intensive
-                undergraduate program (8 semesters + internship/project)
-                designed to nurture creative storytellers, filmmakers, and
-                screenwriters. A script forms the foundation of every film,
-                providing structure, dialogue, character arcs, and thematic
-                depth[. Direction transforms that written script into a
-                cinematic experience, orchestrating performances, visuals,
-                sound, and editing.
+                The BA Film Editing & DI (Colouring) program is a specialized
+                undergraduate course designed to develop creative and technical
+                expertise in the field of film editing, post-production, digital
+                intermediate (DI), and colour grading. This program provides
+                comprehensive training in non-linear editing, storytelling
+                through editing, post-production workflows, color correction,
+                and digital finishing techniques using industry-standard tools.
               </p>
               <p>
-                The program combines artistic, technical and practical training
-                with critical theory to produce skilled professionals ready for
-                careers in cinema, television, OTT, and other visual
-                storytelling platforms.
+                Students gain practical exposure through studio-based learning,
+                live projects, short films, documentaries, OTT content creation,
+                and collaborative production exercises. The program enables
+                students to build advanced technical skills, creative
+                storytelling abilities, and professional portfolios for careers
+                in film, television, OTT, advertising, and digital media
+                industries.
               </p>
             </div>
 
             <div class="glass-card">
               <h3>What You'll Learn</h3>
               <p>
-                By integrating academic training with practical exposure, the
-                program connects students directly with industry realities:
+                The program is designed to equip students with the technical and
+                narrative skills to succeed in post-production:
               </p>
               <ul>
                 <li>
-                  Training in screenplay development, adaptation, and writing
-                  for multiple formats.
+                  Provide a comprehensive foundation in editing principles,
+                  narrative structures, and montage theories.
                 </li>
                 <li>
-                  Equipping you with directorial techniques—from managing sets
-                  to visual storytelling.
+                  Train in industry-standard editing software and DI workflows.
                 </li>
                 <li>
-                  Knowledge of film production, distribution, marketing, and
-                  audience engagement.
+                  Develop creative abilities in visual continuity, rhythm,
+                  pacing, and storytelling through editing.
                 </li>
                 <li>
-                  Understanding of film aesthetics, history, and theory applied
-                  to modern trends.
+                  Equip you with specialized skills in DI coloring, LUT
+                  creation, HDR workflows, and cinematic look development.
+                </li>
+                <li>
+                  Offer hands-on practice through film projects, short films,
+                  advertisements, and collaborative productions.
                 </li>
               </ul>
             </div>
@@ -223,13 +235,13 @@
                   -webkit-text-fill-color: transparent;
                 "
               >
-                "LEARN BY DOING—CREATE BY PRACTICING"
+                "WHERE STORIES FIND THEIR FINAL FORM"
               </p>
             </div>
 
             <div class="glass-card full-width-grid">
               <h3 style="text-align: center; margin-bottom: 20px">
-                Key Highlights
+                Key Highlights & Core Learning
               </h3>
               <div
                 style="
@@ -240,38 +252,39 @@
               >
                 <ul style="margin: 0">
                   <li>
-                    In-depth training in screenplay writing, character
-                    development, structure, and genre.
+                    <strong>Industry-Oriented:</strong> Practical studio-based
+                    learning with advanced Editing & DI Labs.
                   </li>
                   <li>
-                    Hands-on experience in directing actors, staging scenes, and
-                    visualizing scripts.
+                    <strong>Editing Theory:</strong> Narrative Structure,
+                    Fundamentals of Film Editing, and Non-Linear Editing
+                    Techniques.
                   </li>
                   <li>
-                    Study of classical and contemporary world cinema and Indian
-                    cinema traditions.
+                    <strong>Workflow Mastery:</strong> Digital Intermediate (DI)
+                    Workflow, Color Correction & Color Grading.
                   </li>
                   <li>
-                    Emphasis on collaborative production processes and
-                    leadership in film units.
+                    <strong>Sound & Vision:</strong> Sound Synchronization &
+                    Online Editing.
                   </li>
                 </ul>
                 <ul style="margin: 0">
                   <li>
-                    Regular short film projects, script labs, peer reviews, and
-                    capstone projects.
+                    <strong>Modern Practices:</strong> Exposure to OTT and
+                    Contemporary Post-Production Practices.
                   </li>
                   <li>
-                    Mentorship by experienced filmmakers, screenwriters, and
-                    critics.
+                    <strong>Advanced Techniques:</strong> Multi-Camera Editing,
+                    Motion Graphics & Finishing Techniques.
                   </li>
                   <li>
-                    Integrated learning of production planning, script
-                    breakdowns, storyboarding, and post-production.
+                    <strong>Career Building:</strong> Portfolio & Show-reel
+                    Development with Live Projects & Internship Opportunities.
                   </li>
                   <li>
-                    Lectures, Case studies, Practicum, Role plays, and Field
-                    Trips.
+                    <strong>Management:</strong> Post-Production Management and
+                    Collaborative Productions.
                   </li>
                 </ul>
               </div>
@@ -294,8 +307,8 @@
                 Career Avenues
               </h3>
               <p style="text-align: center; margin-bottom: 25px">
-                Graduates can pursue various paths in the film and media
-                industries, including:
+                On successful completion of the program, graduates will have
+                career opportunities as:
               </p>
               <div
                 style="
@@ -314,10 +327,10 @@
                 >
                   <strong
                     style="color: #fff; display: block; margin-bottom: 5px"
-                    >Film Director</strong
+                    >Film / Video Editor</strong
                   >
                   <span style="font-size: 0.9rem; color: #aaa"
-                    >Feature films, short films, documentaries, TV.</span
+                    >Film, Music Video, Promo & Trailer Editor.</span
                   >
                 </div>
                 <div
@@ -329,10 +342,10 @@
                 >
                   <strong
                     style="color: #fff; display: block; margin-bottom: 5px"
-                    >Screenwriter</strong
+                    >Colorist</strong
                   >
                   <span style="font-size: 0.9rem; color: #aaa"
-                    >Scripts for film, TV series, web series.</span
+                    >DI Colorist / Junior Colorist.</span
                   >
                 </div>
                 <div
@@ -344,10 +357,10 @@
                 >
                   <strong
                     style="color: #fff; display: block; margin-bottom: 5px"
-                    >Producer</strong
+                    >Finishing & Online</strong
                   >
                   <span style="font-size: 0.9rem; color: #aaa"
-                    >Overseeing projects from development to distribution.</span
+                    >Online Editor, Conform Artist, Broadcast Finishing.</span
                   >
                 </div>
                 <div
@@ -359,10 +372,10 @@
                 >
                   <strong
                     style="color: #fff; display: block; margin-bottom: 5px"
-                    >Content Developer</strong
+                    >Post-Production Management</strong
                   >
                   <span style="font-size: 0.9rem; color: #aaa"
-                    >For OTT & Digital Platforms.</span
+                    >Post-production Supervisor & DIT Assistant.</span
                   >
                 </div>
               </div>
@@ -373,6 +386,7 @@
         <section class="section-container" id="fees">
           <span class="eyebrow">Investment</span>
           <h2 class="section-title">FEES STRUCTURE</h2>
+
           <div class="fees-grid">
             <div class="fee-year-card">
               <div class="fee-header">
@@ -414,7 +428,7 @@
                   ><span class="price">₹1,000</span>
                 </div>
                 <div class="fee-row">
-                  <span>Hostel & Canteen Deposit (Refundable)</span
+                  <span>Hostel & Canteen Deposit</span
                   ><span class="price">₹10,000</span>
                 </div>
                 <div class="fee-row total-highlight">
@@ -583,15 +597,21 @@
             </div>
 
             <div class="social-links">
-              <a href="#"><img src="media/instagram.png" alt="IG" /></a>
-              <a href="#"><img src="media/linkedin.png" alt="LI" /></a>
-              <a href="#"><img src="media/youtube.png" alt="YT" /></a>
+              <a href="#"
+                ><img src="../media/icons/instagram.png" alt="IG"
+              /></a>
+              <a href="#"><img src="../media/icons/linkedin.png" alt="LI" /></a>
+              <a href="#"><img src="../media/icons/youtube.png" alt="YT" /></a>
             </div>
           </div>
 
           <footer class="footer-branding">
             <div class="branding-container">
-              <img src="media/logo2.png" alt="Logo" class="footer-logo" />
+              <img
+                src="../media/logos/logo2.png"
+                alt="Logo"
+                class="footer-logo"
+              />
             </div>
             <p class="copyright-text">© 2026 SIFI. ALL RIGHTS RESERVED.</p>
           </footer>

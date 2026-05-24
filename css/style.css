@@ -1,380 +1,3 @@
-:root {
-  --primary: #a15127; /* Neon Cyan */
-  --bg: #050505;
-  --text: #ffffff;
-  --heading_color_gradient: linear-gradient(to left, #5b1315, #f69840);
-  --glass: rgba(255, 255, 255, 0.05);
-}
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  font-family: "Helvetica Neue", Arial, sans-serif;
-  background-color: var(--bg);
-  color: var(--text);
-  overflow: hidden; /* Hide scrollbar for the body, scroll the wrapper */
-}
-
-/* FILM GRAIN OVERLAY */
-.grain {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 9999;
-  opacity: 0.05;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-}
-
-/* PARALLAX WRAPPER */
-.parallax-wrapper {
-  height: 100vh;
-  overflow-x: hidden;
-  overflow-y: auto;
-  perspective: 10px; /* The magic depth */
-}
-
-/* PARALLAX GROUPS */
-header {
-  position: relative;
-  height: 100dvh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transform-style: preserve-3d;
-  z-index: -1;
-}
-
-/* BACKGROUND LAYER (Far away) */
-/* UPDATED BACKGROUND LAYER */
-.bg-layer {
-  position: absolute;
-
-  /* 1. EXTEND THE EDGES vertically (The "Bleed") */
-  top: -15vh; /* Pull it up above the screen */
-  bottom: -15vh; /* Push it down below the screen */
-  left: 0;
-  right: 0;
-
-  /* 2. INCREASE SCALE (Compensate for the extra height) */
-  /* Was scale(2) -> Change to scale(2.5) */
-  transform: translateZ(-10px) scale(2.5);
-
-  z-index: -2;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden; /* Important so video doesn't overflow */
-}
-
-/* NEW: Video Styling */
-.bg-video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* Ensures video fills screen without stretching */
-  opacity: 0.4; /* Low opacity so text is readable */
-  filter: contrast(1); /* Makes it look like black & white film */
-}
-
-/* Rest of your CSS (root, body, parallax-wrapper, etc.) stays the same */
-
-/* FOREGROUND CONTENT (Base depth) */
-/* PARENT CONTAINER */
-.hero-content {
-  width: 100%; /* Force full screen width */
-  height: 100%; /* Ensure it fills the header height */
-  display: flex; /* Puts items side-by-side */
-  align-items: center; /* Vertically centers them */
-  transform: translateZ(0);
-  z-index: 1;
-}
-/* HERO TEXT INITIAL STATES */
-.phrase {
-  transition: opacity 0.3s ease;
-}
-
-/* THE TWO HALVES (Text & Image Containers) */
-.split-item {
-  flex: 1; /* Makes them take equal space (50% each) */
-  display: flex;
-  justify-content: center; /* Centers content inside the 50% box */
-  align-items: center;
-  height: 100%;
-}
-
-/* IMAGE STYLING */
-.hero-image {
-  width: 50%; /* Fills its 50% container */
-  height: 50%; /* Fills height */
-  object-fit: cover; /* Ensures image covers area without stretching */
-  opacity: 0.8; /* Optional: blends slightly with background */
-}
-
-/* ADJUST TEXT ALIGNMENT */
-h1 {
-  text-align: left; /* Resets text alignment */
-  margin-left: 2.5vw; /* Adds some padding from the center line */
-}
-
-h1 {
-  font-size: 8vw;
-  text-transform: uppercase;
-  letter-spacing: -5px;
-  line-height: 0.9;
-}
-
-.subtitle {
-  font-size: 1.5rem;
-  letter-spacing: 5px;
-  background-image: var(--heading_color_gradient);
-  font-weight: bold;
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-  -webkit-text-fill-color: transparent;
-  margin-top: 20px;
-  text-transform: uppercase;
-}
-
-/* SECTIONS */
-.section {
-  position: relative;
-  padding: 100px 10vw;
-  background: var(--bg);
-  z-index: 2; /* Sits on top of parallax header */
-}
-
-.section h2 {
-  font-size: 4rem;
-  margin-bottom: 50px;
-  border-bottom: 1px solid var(--primary);
-  display: inline-block;
-}
-
-/* GRID LAYOUT FOR COURSES */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 40px;
-}
-
-.card {
-  background: rgba(255, 255, 255, 0.03);
-  padding: 40px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  transition: 0.3s;
-  cursor: pointer;
-}
-
-.card:hover {
-  transform: translateY(-10px);
-  background: rgba(10, 255, 240, 0.05);
-  border-color: var(--primary);
-}
-
-.card h3 {
-  font-size: 2rem;
-  margin-bottom: 15px;
-}
-
-.card p {
-  color: #aaa;
-  line-height: 1.6;
-}
-
-/* FOOTER */
-footer {
-  padding: 50px;
-  text-align: center;
-  border-top: 1px solid #333;
-  color: #555;
-  background: var(--bg);
-}
-/* Blinking Cursor Animation */
-.cursor {
-  display: inline-block;
-  font-weight: bold;
-  color: var(--primary); /* Uses your neon cyan color */
-  animation: blink 1s step-end infinite;
-}
-
-@keyframes blink {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0;
-  }
-}
-/* SECTION STYLING IMPROVEMENTS */
-.section-container {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.eyebrow {
-  background-image: var(--heading_color_gradient);
-  font-weight: bold;
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-  -webkit-text-fill-color: transparent;
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  font-size: 1rem;
-  display: block;
-  width: fit-content;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 10px;
-}
-
-h2 {
-  font-family: "Bebas Neue", sans-serif;
-  font-size: 5rem !important;
-  margin-bottom: 40px;
-  line-height: 1;
-}
-
-/* VISION SECTION SPECIFICS */
-.vision-grid {
-  display: grid;
-  grid-template-columns: 1.5fr 1fr;
-  gap: 60px;
-  align-items: center;
-}
-
-.vision-text p {
-  font-size: 1.2rem;
-  line-height: 1.6;
-  color: #ccc;
-  margin-bottom: 20px;
-}
-
-.stat-item {
-  border-bottom: 1px solid #333;
-  padding: 20px 0;
-  font-family: "Bebas Neue", sans-serif;
-  font-size: 1.5rem;
-  display: flex;
-  align-items: center;
-}
-
-.stat-item span {
-  color: var(--primary);
-  margin-right: 20px;
-  font-size: 1rem;
-}
-
-/* CARDS IMPROVEMENT */
-.card-number {
-  font-family: "Bebas Neue";
-  font-size: 3rem;
-  color: rgba(10, 255, 240, 0.2);
-  margin-bottom: 10px;
-}
-
-/* CONTACT SECTION SPECIFICS */
-.contact-section {
-  background: #0a0a0a;
-  padding-top: 150px;
-}
-
-.contact-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 100px;
-}
-
-.contact-details {
-  margin-top: 40px;
-}
-
-.contact-details p {
-  margin-bottom: 10px;
-  font-size: 1.1rem;
-}
-
-.final-footer {
-  margin-top: 100px;
-  border-top: 1px solid #222;
-  padding: 40px 0;
-  text-align: center;
-  font-size: 0.8rem;
-  letter-spacing: 1px;
-}
-
-/* Navigation Helpers */
-.nav-container {
-  position: absolute;
-  top: 30px;
-  left: 0;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  z-index: 10;
-  padding: 0 5%; /* Adds a little margin from the screen edges */
-  box-sizing: border-box;
-}
-
-.nav-link {
-  flex: 1;
-  text-align: center;
-  color: white;
-  text-decoration: none;
-  font-family: "Bebas Neue", sans-serif;
-  letter-spacing: 2px; /* Increased for cinematic feel */
-  font-size: 1.1rem;
-  transition: color 0.3s;
-}
-
-.logo-wrap {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center; /* Mathematically centers items */
-  gap: 12px; /* Adjust space between image and text */
-}
-
-.logo-icon img {
-  height: 50px; /* Set this to your desired size */
-  width: auto;
-  display: block; /* Removes extra bottom margin on images */
-}
-
-.logo-text {
-  color: white;
-  font-family: "Bebas Neue", sans-serif;
-  font-size: 2.2rem; /* Proportional to the 50px logo */
-  line-height: 1; /* Crucial: removes extra vertical space around letters */
-  letter-spacing: 3px;
-  text-transform: uppercase;
-
-  /* VISUAL FIX: Nudge the text down to align its visual 'middle' 
-     with the logo's middle. Adjust 2px up or down as needed. */
-  transform: translateY(2px);
-}
-
-.nav-link:hover {
-  background-image: var(--heading_color_gradient);
-  font-weight: bold;
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-  width: fit-content;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  -webkit-text-fill-color: transparent;
-}
-
 .hero-footer-text {
   overflow: hidden;
   position: absolute;
@@ -393,11 +16,7 @@ h2 {
   opacity: 0;
   animation-name: slideUp;
   animation-duration: 2s;
-
-  /* Using a 'Power' ease for a high-end feel */
   animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
-
-  /* Other shorthand properties */
   animation-delay: 1.5s;
   animation-fill-mode: forwards;
 }
@@ -419,87 +38,6 @@ h2 {
   padding: 0; /* Removing padding to allow grid to hit edges */
 }
 
-.split-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr; /* Two equal halves */
-  width: 100%;
-  height: 100vh;
-}
-
-.grid-side {
-  height: 100%;
-  display: flex;
-  align-items: center;
-  padding: 0 10%;
-}
-
-.content-side {
-  background: rgba(255, 255, 255, 0.02); /* Subtle contrast for the text side */
-}
-
-.inner-content h2 {
-  font-size: 5rem;
-  font-family: "Bebas Neue", sans-serif;
-  background-image: var(--heading_color_gradient);
-  font-weight: bold;
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-  -webkit-text-fill-color: transparent;
-}
-
-.inner-content p {
-  font-size: 1.3rem;
-  line-height: 1.8;
-  color: #ccc;
-  margin-top: 20px;
-}
-
-/* RE-STYLING CARDS FOR FULLSCREEN VIEW */
-.courses-section .grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 30px;
-  width: 100%;
-  margin-top: 40px;
-}
-
-.card {
-  height: 250px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-/* CONTACT SECTION BOTTOM ALIGNMENT */
-.contact-section {
-  flex-direction: column;
-  justify-content: center;
-}
-
-.final-footer {
-  position: absolute;
-  bottom: 40px;
-  width: 100%;
-  text-align: center;
-  opacity: 0.5;
-  font-size: 0.8rem;
-}
-
-/* HELPERS */
-.eyebrow {
-  background-image: var(--heading_color_gradient);
-  font-weight: bold;
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-  -webkit-text-fill-color: transparent;
-  text-transform: uppercase;
-  letter-spacing: 4px;
-  font-size: 0.8rem;
-  margin-bottom: 10px;
-  display: block;
-}
 /* GLOBAL SECTION SETTINGS */
 .fullscreen-section {
   min-height: 100vh;
@@ -511,28 +49,6 @@ h2 {
   background: var(--bg);
   padding: 0 10vw;
   box-sizing: border-box;
-}
-
-/* TYPOGRAPHY COLORS */
-.white-text {
-  color: #ffffff !important;
-  font-family: "Bebas Neue", sans-serif;
-  font-size: 6vw !important; /* Large cinematic size */
-  letter-spacing: 2px;
-}
-
-.eyebrow {
-  background-image: var(--heading_color_gradient);
-  font-weight: bold;
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-  -webkit-text-fill-color: transparent;
-  text-transform: uppercase;
-  letter-spacing: 5px;
-  font-size: 0.9rem;
-  margin-bottom: 20px;
-  display: block;
 }
 
 /* VISION SECTION (CENTERED) */
@@ -555,55 +71,6 @@ h2 {
   font-size: 1.5rem;
 }
 
-/* CONTACT SECTION LAYOUT */
-.contact-layout {
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-  align-items: flex-start;
-}
-
-.details p {
-  font-size: 1.5rem;
-  margin-bottom: 10px;
-  color: #fff;
-}
-
-.contact-right {
-  display: flex;
-  gap: 80px;
-}
-
-.link-group h4 {
-  font-family: "Bebas Neue";
-  color: var(--primary);
-  margin-bottom: 20px;
-  font-size: 1.5rem;
-}
-
-.link-group a {
-  display: block;
-  color: #fff;
-  text-decoration: none;
-  font-size: 1.1rem;
-  margin-bottom: 10px;
-  transition: opacity 0.3s;
-}
-
-.link-group a:hover {
-  opacity: 0.5;
-}
-
-/* FOOTER */
-.bottom-footer {
-  position: absolute;
-  bottom: 30px;
-  width: 100%;
-  text-align: center;
-  color: #444;
-  font-size: 0.8rem;
-  letter-spacing: 2px;
-}
 .vision-section {
   position: relative;
   overflow: hidden;
@@ -617,17 +84,6 @@ h2 {
   width: 100%;
   height: 100%;
   z-index: 0;
-}
-
-/* THE INDIVIDUAL SLIDES */
-.slide {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center;
-  opacity: 0;
-  animation: crossFade 15s infinite; /* Total duration for all slides */
 }
 
 /* OVERLAY: This makes the white text pop */
@@ -648,41 +104,8 @@ h2 {
   z-index: 2;
 }
 
-/* CROSS-FADE ANIMATION */
-/* If you have 3 images, each should be visible for roughly 33% of the time */
-@keyframes crossFade {
-  0% {
-    opacity: 0;
-  }
-  10% {
-    opacity: 1;
-  } /* Fade in */
-  33% {
-    opacity: 1;
-  } /* Stay visible */
-  43% {
-    opacity: 0;
-  } /* Fade out */
-  100% {
-    opacity: 0;
-  }
-}
-
-/* Offset each slide's start time */
-.slide:nth-child(1) {
-  animation-delay: 0s;
-}
-.slide:nth-child(2) {
-  animation-delay: 5s;
-}
-.slide:nth-child(3) {
-  animation-delay: 10s;
-}
-
 /* OPTIONAL: TEXT GLOW (To make it even more visible) */
-.white-text {
-  text-shadow: 0 0 20px rgba(0, 0, 0, 0.8), 0 0 40px rgba(0, 0, 0, 0.4);
-}
+
 /* THE VISION SECTION CONTAINER */
 .vision-section {
   position: relative;
@@ -691,19 +114,6 @@ h2 {
   align-items: center;
   justify-content: center;
   transform-style: preserve-3d; /* Required for parallax */
-}
-
-/* THE BACKGROUND WRAPPER (Pushed back in Z-space) */
-.parallax-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 120%; /* Slightly taller to account for movement */
-  z-index: -1;
-  /* translateZ pushes it back, scale makes it fill the view again */
-  transform: translateZ(-5px) scale(1.6);
-  pointer-events: none;
 }
 
 /* THE INDIVIDUAL SLIDES */
@@ -718,48 +128,12 @@ h2 {
   animation: crossFade 15s infinite, kenBurns 15s infinite;
 }
 
-/* DARK OVERLAY FOR READABILITY */
-.parallax-bg::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.7),
-    rgba(0, 0, 0, 0.4),
-    rgba(0, 0, 0, 0.7)
-  );
-  z-index: 1;
-}
-
 /* TEXT CONTENT (Stays at Z=0) */
 .centered-content {
   position: relative;
   z-index: 2;
   transform: translateZ(0);
   text-align: center;
-}
-
-/* ANIMATIONS */
-@keyframes crossFade {
-  0% {
-    opacity: 0;
-  }
-  10% {
-    opacity: 1;
-  }
-  33% {
-    opacity: 1;
-  }
-  43% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 0;
-  }
 }
 
 @keyframes kenBurns {
@@ -771,16 +145,6 @@ h2 {
   }
 }
 
-/* Slide Delays */
-.slide:nth-child(1) {
-  animation-delay: 0s;
-}
-.slide:nth-child(2) {
-  animation-delay: 5s;
-}
-.slide:nth-child(3) {
-  animation-delay: 10s;
-}
 /* THE VISION SECTION */
 .vision-section {
   position: relative;
@@ -812,17 +176,6 @@ h2 {
   position: relative;
 }
 
-.slide {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center;
-  opacity: 0;
-  /* Keep the cross-fade animation, but movement is now scroll-based */
-  animation: crossFade 15s infinite;
-}
-
 /* OVERLAY FOR CONTRAST */
 .vision-overlay {
   position: absolute;
@@ -846,12 +199,6 @@ h2 {
   z-index: 2;
   transform: translateZ(0); /* Sits on the base layer */
   text-align: center;
-}
-h3 {
-  font-size: 4vh;
-  margin-inline: 8vw;
-  /* letter-spacing: -2.5px; */
-  line-height: 1;
 }
 
 /* ANIMATION FOR FADING SLIDES */
@@ -948,7 +295,7 @@ h3 {
   min-height: 150vh;
   background-color: transparent;
   /* STACKING: Top gradient layer masks the image layer below it */
-  background-image: url("wall.png");
+  background-image: url("../media/background/wall.png");
 
   background-size: cover;
   background-position: center top; /* Anchors the top of the image to the top of the section */
@@ -1048,86 +395,7 @@ h3 {
   position: relative;
   z-index: 2;
 }
-.footer-branding {
-  width: 100%;
-  height: 50vh; /* Locked to half screen height */
-  background-color: #050505;
-  padding: 0 4vw; /* Margin from the side walls */
-  box-sizing: border-box;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  overflow: hidden;
-  padding-bottom: 50px;
-  background-image: none !important;
-}
 
-.branding-container {
-  display: flex;
-  flex-direction: row;
-  align-items: center; /* Ensures vertical alignment */
-  justify-content: center;
-  gap: 1vh;
-  width: 100%;
-  height: 100%; /* Fills the 50vh */
-}
-
-.footer-logo {
-  /* This forces the image to be exactly 50vh tall */
-  height: 100%;
-  width: auto;
-  flex-shrink: 0;
-  object-fit: contain;
-  /* Removes any default bottom spacing images sometimes have */
-  display: block;
-}
-
-.footer-text {
-  font-family: "Bebas Neue", sans-serif;
-  /* We use a slightly larger font size to compensate for 
-     internal font metrics and reach the top/bottom edges */
-  font-size: 55vh;
-  /* Setting line-height to less than 1 crops the 
-     internal 'air' out of the font box */
-  line-height: 0.7;
-  color: #fff;
-  text-transform: uppercase;
-  letter-spacing: -1.5vw;
-  white-space: nowrap;
-  flex-shrink: 0;
-
-  /* Flex centering for the text itself */
-  display: flex;
-  align-items: center;
-
-  /* Nudge the text down slightly to account for the 
-     fact that Bebas Neue sits high in its box */
-  transform: translateY(6%);
-}
-
-.copyright-text {
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-family: sans-serif; /* Clean font for legal text */
-  font-size: 0.7rem;
-  color: rgba(255, 255, 255, 0.4); /* Faded so it doesn't distract */
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  margin: 0;
-  z-index: 10;
-}
-
-@media (max-width: 768px) {
-  .footer-text {
-    font-size: 45vh;
-  }
-  .copyright-text {
-    font-size: 0.5rem;
-    bottom: 10px;
-  }
-}
 .admission-section {
   background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
     /* Darkens the image */
@@ -1181,74 +449,6 @@ h3 {
   gap: 8vw;
 }
 
-/* 2. New wrapper for visual elements on the right */
-.visual-cta-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* Changed from flex-end so they perfectly stack */
-  gap: 40px; /* A bit more breathing room between them */
-  width: 100%;
-}
-
-/* 3. Make the Clapper much bigger and add a cinematic shadow */
-.clapper-img {
-  width: 100%;
-  max-width: 800px; /* Bumped up from 650px */
-  height: auto;
-  display: block;
-  filter: drop-shadow(0 30px 50px rgba(0, 0, 0, 0.8));
-
-  /* Optional: If it still feels small because of the screen split, 
-     this forces it to grow 10% larger than its container */
-  transform: scale(1.1); /* Deep shadow to separate it from background */
-}
-
-/* 4. Interactive ticket button/link styling */
-.ticket-img {
-  width: 100%;
-  max-width: 500px; /* Keep your preferred size */
-  height: auto;
-  display: block;
-  transition: all 0.3s ease;
-
-  /* Fixes the dullness: Bumps up baseline brightness and contrast */
-  filter: brightness(1.08) contrast(1.05);
-  border-radius: 4px; /* Optional: smooths the hard corners slightly */
-}
-
-/* 5. Hover Effect (The "Invite") */
-.ticket-btn:hover {
-  /* Lifts up and grows slightly towards the user */
-  transform: translateY(-8px) scale(1.03);
-}
-
-.ticket-btn:hover .ticket-img {
-  /* Lights up the ticket like a lightbox */
-  filter: brightness(1.2) contrast(1.1);
-  /* A wide, cinematic golden glow */
-  box-shadow: 0 0 40px 10px rgba(212, 175, 55, 0.4);
-}
-
-/* 6. Active Effect (The "Physical Click") */
-.ticket-btn:active {
-  /* Pushes down physically into the page */
-  transform: translateY(4px) scale(0.98);
-  transition: all 0.1s ease; /* Instant snap on click */
-}
-
-.ticket-btn:active .ticket-img {
-  /* Tightens the glow to mimic pushing it against the wall */
-  box-shadow: 0 0 15px 5px rgba(212, 175, 55, 0.6);
-  filter: brightness(1.25);
-}
-
-/* --- Ensure Text in .content-left has updated styles --- */
-.white-text {
-  /* Using standard bold font */
-  font-family: inherit;
-  font-weight: bold;
-}
-
 .admission-text {
   /* Normal weight text */
   font-family: inherit;
@@ -1278,76 +478,6 @@ h3 {
   width: 100%;
 }
 
-.admission-form {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  padding: 40px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 4px;
-  width: 100%;
-
-  /* INCREASE THIS VALUE (e.g., to 600px or 100% for full width) */
-  max-width: 600px;
-
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.admission-form input,
-.admission-form select {
-  background: rgba(0, 0, 0, 0.5);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  padding: 15px;
-  color: white;
-  font-family: inherit;
-
-  /* ADD THESE TWO LINES */
-  width: 100%;
-  box-sizing: border-box; /* Prevents padding from breaking the width */
-}
-.admission-form select {
-  background: rgba(0, 0, 0, 0.5);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  padding: 15px;
-  color: white;
-  font-family: inherit;
-  width: 100%;
-  border-radius: 4px;
-  cursor: pointer;
-
-  /* 1. Remove default browser styling */
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-
-  /* 2. Add custom cinematic arrow */
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='white' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: calc(100% - 20px) center; /* Position arrow on the right */
-  padding-right: 45px; /* Give text room so it doesn't hit the arrow */
-
-  transition: all 0.3s ease;
-}
-
-.submit-btn {
-  background: white;
-  color: black;
-  border: none;
-  padding: 15px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: 0.3s ease;
-  font-family: "Bebas Neue", sans-serif;
-  letter-spacing: 2px;
-}
-
-.submit-btn:hover {
-  background-image: var(--heading_color_gradient);
-  color: white;
-  /* Neon highlight on hover */
-}
-
 /* Responsive: Stack vertically on small screens */
 @media (max-width: 992px) {
   .split-content-container {
@@ -1357,50 +487,6 @@ h3 {
   }
   .content-left {
     text-align: center;
-  }
-}
-
-.snow-container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 1;
-  overflow: hidden;
-}
-
-.snow-container::after,
-.snow-container::before {
-  content: "";
-  position: absolute;
-  top: -100%; /* Starts above the screen */
-  left: 0;
-  right: 0;
-  bottom: 0;
-  /* This creates white dots (snow) */
-  background-image: radial-gradient(4px 4px at 100px 50px, #fff, transparent),
-    radial-gradient(3px 3px at 200px 150px, #fff, transparent),
-    radial-gradient(4px 4px at 300px 250px, #fff, transparent),
-    radial-gradient(3px 3px at 400px 350px, #fff, transparent);
-  background-size: 600px 600px; /* How often the pattern repeats */
-  animation: snow-animation 10s linear infinite;
-}
-
-/* Second layer for depth - moving at a different speed */
-.snow-container::after {
-  background-size: 400px 400px;
-  animation-duration: 15s;
-  opacity: 0.5;
-}
-
-@keyframes snow-animation {
-  0% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(100%);
   }
 }
 
@@ -1417,106 +503,12 @@ h3 {
     rgba(0, 0, 0, 0.9) 100%
   );
 }
-.footer-branding,
-.contact-section {
-  border-top: none !important;
-  border: none !important;
-  outline: none !important;
-}
 
-.contact-section {
-  background: #0a0a0a;
-  min-height: 80vh; /* Extremely tall for a cinematic scroll gap */
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between; /* Pushes top content and footer apart */
-  padding-top: 100px;
-}
-
-.contact-layout {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-}
-
-.top-content {
-  text-align: center;
-  /* This ensures the Connect and Socials stay relatively close */
-}
-
-.contact-left h2 {
-  font-family: "Bebas Neue", sans-serif;
-  font-size: 5.5rem;
-  letter-spacing: 5px;
-  margin-bottom: 20px;
-}
-
-.details p {
-  font-size: 1.3rem;
-  color: rgba(255, 255, 255, 0.6);
-  margin-bottom: 8px;
-}
-
-/* SOCIAL SECTION */
-.social-wrapper {
-  margin-top: 60px; /* Space between contact info and socials */
-}
-
-.follow-us {
-  font-family: "Bebas Neue", sans-serif;
-  font-size: 1.2rem;
-  letter-spacing: 3px;
-  color: rgba(255, 255, 255, 0.4);
-  margin-bottom: 20px;
-}
-
-.social-links {
-  display: flex;
-  justify-content: center;
-  gap: 35px;
-}
-
-.social-links img {
-  width: 32px;
-  height: auto;
-  filter: brightness(0) invert(1);
-  opacity: 0.5;
-  transition: all 0.4s ease;
-}
-
-.social-links img:hover {
-  opacity: 1;
-  transform: scale(1.15);
-}
-
-/* FOOTER BRANDING (CLEAN) */
-.footer-branding {
-  width: 100%;
-  height: 50vh;
-  background: #0a0a0a;
-  display: flex;
-  align-items: center;
-  position: relative;
-  overflow: hidden;
-  border: none; /* Removes any potential lines */
-}
-
-.footer-text {
-  font-family: "Bebas Neue", sans-serif;
-  font-size: 55vh;
-  line-height: 0.7;
-  color: #fff;
-  letter-spacing: -1.5vw;
-  white-space: nowrap;
-  transform: translateY(6.5%);
-}
 .institute-name {
   overflow: hidden;
 }
 .institute-name img {
-  margin-left: 3rem;
-  margin-bottom: 0.5rem;
+  margin-left: 5rem;
 }
 .institute-name h1,
 .institute-name img {
@@ -1541,177 +533,23 @@ h3 {
     transform: translateY(0%);
   }
 }
-.menu {
-  display: none;
-}
-
-.drawer-content {
-  padding-top: 2vh;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  /* Removed flex: 1 here as it's not needed on the parent container */
-}
-
-/* Container takes up equal space */
-.drawerlink-container {
-  flex: 1;
-  width: 100%;
-  display: flex; /* Ensures the link inside can stretch to fill it */
-}
-
-/* Link fills the ENTIRE container */
-.drawer-link {
-  width: 100%;
-  height: 100%; /* This is the magic line. The whole box is now clickable. */
-
-  /* Text Centering */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  /* Visual Styles */
-  color: white;
-  text-decoration: none;
-  font-family: "Bebas Neue", sans-serif;
-  letter-spacing: 2px;
-  font-size: 2rem;
-  transition: color 0.3s;
-}
-
-/* Optional: Add a subtle background change on touch/hover to show the area */
-.drawer-link:active,
-.drawer-link:hover {
-  background-color: rgba(255, 255, 255, 0.05); /* Very subtle highlight */
-  color: var(--primary);
-}
-
-.drawerbtncon {
-  /* Ensure the button doesn't stretch, it only takes the space it needs */
-  flex: 0 0 auto;
-  margin-bottom: 2vh; /* Adjusted margin slightly */
-  padding: 3vh;
-  display: flex;
-  justify-content: end;
-}
-
-/* Keep the rest of your drawer styles as they were */
-.drawer {
-  position: absolute;
-  width: 0;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.75);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  z-index: 25;
-  transition: ease-out 0.5s;
-  overflow: hidden;
-}
-
-#drawerclose {
-  width: 3vh;
-  height: 3vh;
-  cursor: pointer; /* Added cursor pointer for better UX */
-}
 
 #programs-mobile {
   display: none;
 }
 
 @media (max-width: 500px) {
+  .hero-content {
+    flex-direction: column;
+  }
   .institute-name img {
     margin-left: 0rem;
     margin-bottom: 0.5rem;
     width: 80vw !important; /* The !important forces it to ignore the inline HTML style */
     height: auto !important; /* Ensures the image doesn't stretch or warp */
   }
-  .menu {
-    display: block;
-  }
-  .menu img {
-    width: 4vh;
-  }
-  .hero-content {
-    flex-direction: column;
-  }
   #item2 {
     display: none;
-  }
-  h1 {
-    text-align: center; /* Resets text alignment */
-    /* Adds some padding from the center line */
-  }
-
-  h1 {
-    font-size: 12vw;
-    text-transform: uppercase;
-    letter-spacing: -2.5px;
-    line-height: 1.2;
-  }
-
-  h3 {
-    font-size: 2vh;
-    margin-inline: 8vw;
-    /* letter-spacing: -2.5px; */
-    line-height: 1;
-  }
-  .nav-link {
-    display: none;
-  }
-  .footer-text {
-    font-family: "Bebas Neue", sans-serif;
-    /* We use a slightly larger font size to compensate for 
-     internal font metrics and reach the top/bottom edges */
-    font-size: 50vw;
-    /* Setting line-height to less than 1 crops the 
-     internal 'air' out of the font box */
-    line-height: 0.7;
-    color: #fff;
-    text-transform: uppercase;
-    letter-spacing: -1.5vw;
-    white-space: nowrap;
-    flex-shrink: 0;
-
-    /* Flex centering for the text itself */
-    display: flex;
-    align-items: center;
-
-    /* Nudge the text down slightly to account for the 
-     fact that Bebas Neue sits high in its box */
-    transform: translateY(6%);
-  }
-  .footer-branding {
-    width: 100%;
-    height: 50vw; /* Locked to half screen height */
-    /* background-color: #050505; */
-    padding: 0 4vw; /* Margin from the side walls */
-    box-sizing: border-box;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    overflow: hidden;
-    padding-bottom: 50px;
-    background-image: none !important;
-  }
-
-  .branding-container {
-    display: flex;
-    flex-direction: row;
-    align-items: center; /* Ensures vertical alignment */
-    justify-content: center;
-    gap: 1vh;
-    width: 100%;
-    height: 100%; /* Fills the 50vh */
-  }
-
-  .footer-logo {
-    /* This forces the image to be exactly 50vh tall */
-    height: 100%;
-    width: auto;
-    flex-shrink: 0;
-    object-fit: contain;
-    /* Removes any default bottom spacing images sometimes have */
-    display: block;
   }
 
   #programs-desktop {
@@ -1773,16 +611,6 @@ h3 {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
   }
 
-  /* Keep the centering logic */
-  /* .courses-section {
-    display: flex !important;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    padding: 0;
-  } */
-
   /* Reset text alignment */
   .eyebrow {
     text-align: center !important;
@@ -1790,13 +618,6 @@ h3 {
     display: block;
     margin-left: 0;
   }
-
-  /* Ensure the main Heading is also centered */
-  /* .white-text-mentors {
-    text-align: center;
-    width: 100%;
-    font-size: 3rem !important;
-  } */
   .slider .slick-list {
     padding-top: 40px !important;
     padding-bottom: 40px !important;
@@ -1899,49 +720,6 @@ h3 {
 }
 
 /* --- FOOTER & CONTACT --- */
-.contact-section {
-  background: #0a0a0a;
-  padding-top: 100px;
-  border-top: 1px solid #111;
-}
-.contact-layout {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 80px;
-}
-.contact-left h2 {
-  font-family: "Bebas Neue", sans-serif;
-  font-size: 4rem;
-  text-align: center;
-  letter-spacing: 3px;
-  margin-bottom: 30px;
-}
-.details {
-  text-align: center;
-}
-.details p {
-  font-family: "Poppins", sans-serif;
-  font-size: 1.2rem;
-  color: #888;
-  margin: 5px 0;
-}
-.social-links {
-  display: flex;
-  gap: 30px;
-  margin-top: 40px;
-  justify-content: center;
-}
-.social-links img {
-  width: 30px;
-  opacity: 0.5;
-  transition: 0.3s;
-  filter: brightness(0) invert(1);
-}
-.social-links img:hover {
-  opacity: 1;
-  transform: scale(1.1);
-}
 
 /* --- Mentor Section Styles (Split-Screen Portrait) --- */
 .mentors-section {
@@ -2417,366 +1195,27 @@ h3 {
     font-size: 2.8rem;
   }
 }
-
-/* --- ADMISSIONS INNER PAGE STYLES --- */
-
-.procedure-section {
-  padding: 100px 8vw;
-  background-color: #050505;
-  min-height: 100vh;
-  position: relative;
-  z-index: 10;
-}
-
-.procedure-header {
-  text-align: center;
-  margin-bottom: 60px;
-}
-
-.page-title {
-  font-family: "Bebas Neue", sans-serif;
-  font-size: 5rem;
-  color: #fff;
-  letter-spacing: 3px;
-  margin: 10px 0;
-  background: var(
-    --heading_color_gradient,
-    linear-gradient(to right, #fff, #a15127)
-  );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.procedure-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 30px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.procedure-card {
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 8px;
-  padding: 40px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-.procedure-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
-  border-color: rgba(161, 81, 39, 0.3);
-}
-
-.card-number {
-  font-family: "Bebas Neue", sans-serif;
-  font-size: 4rem;
-  color: rgba(161, 81, 39, 0.2);
-  position: absolute;
-  top: 10px;
-  right: 20px;
-  line-height: 1;
-}
-
-.card-title {
-  font-family: "Bebas Neue", sans-serif;
-  font-size: 2rem;
-  color: #fff;
-  letter-spacing: 1px;
-  margin-bottom: 20px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  padding-bottom: 10px;
-  width: fit-content;
-}
-
-.card-text {
-  font-family: "Helvetica Neue", Arial, sans-serif;
-  font-size: 1.05rem;
-  color: #bbb;
-  line-height: 1.6;
-  margin-bottom: 15px;
-}
-
-.card-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.card-list li {
-  font-family: "Helvetica Neue", Arial, sans-serif;
-  font-size: 1.05rem;
-  color: #bbb;
-  line-height: 1.6;
-  margin-bottom: 10px;
-  padding-left: 20px;
-  position: relative;
-}
-
-.card-list li::before {
-  content: "▸";
-  color: #a15127;
-  position: absolute;
-  left: 0;
-  top: 0;
-}
-
-.quote-container {
-  text-align: center;
-  max-width: 800px;
-  margin: 80px auto 0 auto;
-  padding: 40px;
-  background: radial-gradient(
-    circle,
-    rgba(161, 81, 39, 0.1) 0%,
-    rgba(5, 5, 5, 1) 70%
-  );
-}
-
-.nature-quote {
-  font-family: "Bebas Neue", sans-serif;
-  font-size: 3.5rem;
-  color: #fff;
-  letter-spacing: 2px;
-  margin-bottom: 20px;
-}
-
-.nature-subtext {
-  font-family: "Helvetica Neue", Arial, sans-serif;
-  font-size: 1.1rem;
-  color: #aaa;
-  line-height: 1.6;
-}
-
-/* Responsive */
-@media (max-width: 992px) {
-  .procedure-grid {
-    grid-template-columns: 1fr;
+/* --- TABLET OVERLAP FIX (Screens between phones and large desktops) --- */
+@media (max-width: 1200px) and (min-width: 769px) {
+  /* 1. Scale down the massive font so it fits the tablet screen */
+  .mentor-name {
+    font-size: 4rem;
+    margin-bottom: 10px;
   }
-  .page-title {
-    font-size: 3.5rem;
+
+  .mentor-title {
+    font-size: 1.2rem;
   }
-}
 
-/* --- ABOUT PAGE STYLES --- */
-
-.about-section {
-  padding: 80px 8vw 120px 8vw;
-  background-color: #050505;
-  min-height: 100vh;
-  position: relative;
-  z-index: 10;
-}
-
-.about-header {
-  text-align: center;
-  max-width: 800px;
-  margin: 0 auto 80px auto;
-}
-
-.about-intro {
-  font-family: "Helvetica Neue", Arial, sans-serif;
-  font-size: 1.2rem;
-  color: #bbb;
-  line-height: 1.7;
-  margin-top: 20px;
-}
-
-/* Satyajit Ray Tribute Layout */
-.ray-tribute-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: rgba(255, 255, 255, 0.02);
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 8px;
-  padding: 60px;
-  margin-bottom: 60px;
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
-  gap: 5vw;
-}
-
-.ray-content {
-  flex: 1;
-}
-
-.ray-title {
-  font-family: "Bebas Neue", sans-serif;
-  color: var(--primary, #a15127);
-  font-size: 1.5rem;
-  letter-spacing: 3px;
-  margin-bottom: 5px;
-}
-
-.ray-name {
-  font-family: "Bebas Neue", sans-serif;
-  font-size: 4.5rem;
-  color: #fff;
-  letter-spacing: 2px;
-  margin: 0 0 20px 0;
-  line-height: 1;
-}
-
-.ray-text {
-  font-family: "Georgia", serif;
-  font-style: italic;
-  font-size: 1.3rem;
-  color: #ddd;
-  line-height: 1.6;
-  margin-bottom: 25px;
-  border-left: 3px solid #a15127;
-  padding-left: 20px;
-}
-
-.ray-bio {
-  font-family: "Helvetica Neue", Arial, sans-serif;
-  font-size: 1.05rem;
-  color: #aaa;
-  line-height: 1.7;
-}
-
-.ray-image-wrapper {
-  flex: 1;
-  max-width: 400px;
-}
-
-.ray-image {
-  width: 100%;
-  height: auto;
-  border-radius: 4px;
-  filter: grayscale(100%) contrast(1.1);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
-}
-
-/* Vision & Mission Split */
-.core-values-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 30px;
-  margin-bottom: 100px;
-}
-
-.value-card {
-  background: rgba(255, 255, 255, 0.03);
-  padding: 50px;
-  border-radius: 8px;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
-  text-align: center;
-}
-
-.value-title {
-  font-family: "Bebas Neue", sans-serif;
-  font-size: 2.5rem;
-  color: #fff;
-  letter-spacing: 2px;
-  margin-bottom: 20px;
-}
-
-.value-text {
-  font-family: "Helvetica Neue", Arial, sans-serif;
-  font-size: 1.1rem;
-  color: #bbb;
-  line-height: 1.6;
-}
-
-/* Leadership Grid */
-.leadership-section {
-  margin-top: 80px;
-}
-
-.leadership-heading {
-  font-family: "Bebas Neue", sans-serif;
-  font-size: 4rem;
-  color: #fff;
-  text-align: center;
-  letter-spacing: 2px;
-  margin-bottom: 60px;
-}
-
-.leadership-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
-}
-
-.leader-card {
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  padding: 40px 30px;
-  border-radius: 8px;
-  text-align: center;
-  transition: transform 0.3s ease, background 0.3s ease;
-}
-
-.leader-card:hover {
-  transform: translateY(-10px);
-  background: rgba(255, 255, 255, 0.05);
-}
-
-.leader-image-box {
-  width: 150px;
-  height: 150px;
-  margin: 0 auto 25px auto;
-  border-radius: 50%;
-  overflow: hidden;
-  border: 2px solid rgba(161, 81, 39, 0.5);
-}
-
-.leader-image-box img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: grayscale(80%);
-  transition: filter 0.3s ease;
-}
-
-.leader-card:hover .leader-image-box img {
-  filter: grayscale(0%);
-}
-
-.leader-name {
-  font-family: "Bebas Neue", sans-serif;
-  font-size: 2.2rem;
-  color: #fff;
-  margin-bottom: 5px;
-  letter-spacing: 1px;
-}
-
-.leader-role {
-  font-family: "Helvetica Neue", Arial, sans-serif;
-  font-size: 0.9rem;
-  color: #a15127;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  margin-bottom: 20px;
-}
-
-.leader-bio {
-  font-family: "Helvetica Neue", Arial, sans-serif;
-  font-size: 0.95rem;
-  color: #aaa;
-  line-height: 1.6;
-}
-
-/* Responsive Overrides */
-@media (max-width: 992px) {
-  .ray-tribute-container {
-    flex-direction: column;
-    padding: 40px 20px;
+  .mentor-bio {
+    font-size: 0.95rem;
+    line-height: 1.5;
   }
-  .core-values-grid {
-    grid-template-columns: 1fr;
-  }
-  .leadership-grid {
-    grid-template-columns: 1fr;
-    max-width: 500px;
-    margin: 0 auto;
+
+  /* 2. Stop centering the text and push it down below the header */
+  .mentor-text {
+    justify-content: flex-start; /* Stops the text from growing upwards */
+    padding-top: 18vh; /* Forces it to start safely below "THE LEADING CAST" */
+    padding-bottom: 22vh; /* Keeps it safely above the thumbnail slider */
   }
 }

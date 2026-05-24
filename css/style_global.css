@@ -1,0 +1,736 @@
+:root {
+  --primary: #a15127; /* Neon Cyan */
+  --bg: #050505;
+  --text: #ffffff;
+  --heading_color_gradient: linear-gradient(to left, #5b1315, #f69840);
+  --glass: rgba(255, 255, 255, 0.05);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+h2 {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 5rem !important;
+  margin-bottom: 40px;
+  line-height: 1;
+}
+body {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  overflow: hidden;
+}
+header {
+  position: relative;
+  height: 100dvh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform-style: preserve-3d;
+  z-index: -1;
+}
+.grain {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+.parallax-wrapper {
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  perspective: 10px; /* The magic depth */
+}
+.menu {
+  display: none;
+}
+.drawer-content {
+  padding-top: 2vh;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  /* Removed flex: 1 here as it's not needed on the parent container */
+}
+.drawerlink-container {
+  margin-bottom: 10px;
+  width: 100%;
+  display: flex; /* Ensures the link inside can stretch to fill it */
+}
+.drawer-link:active,
+.drawer-link:hover {
+  background-color: rgba(255, 255, 255, 0.05); /* Very subtle highlight */
+  color: var(--primary);
+}
+
+.drawerbtncon {
+  /* Ensure the button doesn't stretch, it only takes the space it needs */
+  flex: 0 0 auto;
+  margin-bottom: 2vh; /* Adjusted margin slightly */
+  padding: 3vh;
+  display: flex;
+  justify-content: end;
+}
+.drawer {
+  position: absolute;
+  width: 0;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: 25;
+  transition: ease-out 0.5s;
+  overflow: hidden;
+}
+
+#drawerclose {
+  width: 3vh;
+  height: 3vh;
+  cursor: pointer; /* Added cursor pointer for better UX */
+}
+.drawer-link {
+  width: 100%;
+  padding: 15px 0; /* Gives a comfortable height for tapping without filling the screen */
+
+  /* Text Centering */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Visual Styles */
+  color: white;
+  text-decoration: none;
+  font-family: "Bebas Neue", sans-serif;
+  letter-spacing: 2px;
+  font-size: 2rem;
+  transition: color 0.3s, background-color 0.3s;
+}
+
+.nav-container {
+  position: absolute;
+  top: 30px;
+  left: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  z-index: 10;
+  padding: 0 5%; /* Adds a little margin from the screen edges */
+  box-sizing: border-box;
+}
+
+.nav-link {
+  flex: 1;
+  text-align: center;
+  color: white;
+  text-decoration: none;
+  font-family: "Bebas Neue", sans-serif;
+  letter-spacing: 2px; /* Increased for cinematic feel */
+  font-size: 1.1rem;
+  transition: color 0.3s;
+}
+
+.logo-wrap {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Mathematically centers items */
+  gap: 12px; /* Adjust space between image and text */
+}
+
+.logo-icon img {
+  height: 50px; /* Set this to your desired size */
+  width: auto;
+  display: block; /* Removes extra bottom margin on images */
+}
+
+.logo-text {
+  color: white;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 2.2rem; /* Proportional to the 50px logo */
+  line-height: 1; /* Crucial: removes extra vertical space around letters */
+  letter-spacing: 3px;
+  text-transform: uppercase;
+
+  /* VISUAL FIX: Nudge the text down to align its visual 'middle' 
+     with the logo's middle. Adjust 2px up or down as needed. */
+  transform: translateY(2px);
+}
+
+.nav-link:hover {
+  background-image: var(--heading_color_gradient);
+  font-weight: bold;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  width: fit-content;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  -webkit-text-fill-color: transparent;
+}
+.bg-layer {
+  position: absolute;
+  top: -15vh;
+  bottom: -15vh;
+  left: 0;
+  right: 0;
+  transform: translateZ(-10px) scale(2.5);
+  z-index: -2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.bg-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.4;
+  filter: contrast(1);
+}
+.hero-content {
+  width: 100%; /* Force full screen width */
+  height: 100%; /* Ensure it fills the header height */
+  display: flex; /* Puts items side-by-side */
+  align-items: center; /* Vertically centers them */
+  transform: translateZ(0);
+  z-index: 1;
+}
+.hero-image {
+  width: 50%; /* Fills its 50% container */
+  height: 50%; /* Fills height */
+  object-fit: cover; /* Ensures image covers area without stretching */
+  opacity: 0.8; /* Optional: blends slightly with background */
+}
+.split-item {
+  flex: 1; /* Makes them take equal space (50% each) */
+  display: flex;
+  justify-content: center; /* Centers content inside the 50% box */
+  align-items: center;
+  height: 100%;
+}
+
+.white-text {
+  color: #ffffff !important;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 6vw !important; /* Large cinematic size */
+  letter-spacing: 2px;
+}
+.white-text {
+  text-shadow: 0 0 20px rgba(0, 0, 0, 0.8), 0 0 40px rgba(0, 0, 0, 0.4);
+}
+.white-text {
+  /* Using standard bold font */
+  font-family: inherit;
+  font-weight: bold;
+}
+.eyebrow {
+  background-image: var(--heading_color_gradient);
+  font-weight: bold;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+  display: block;
+}
+.eyebrow {
+  text-align: center !important;
+  width: 100%;
+  display: block;
+  margin-left: 0;
+}
+.eyebrow {
+  background-image: var(--heading_color_gradient);
+  font-weight: bold;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 1rem;
+  display: block;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10px;
+}
+.eyebrow {
+  background-image: var(--heading_color_gradient);
+  font-weight: bold;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  font-size: 0.8rem;
+  margin-bottom: 10px;
+  display: block;
+}
+.eyebrow {
+  background-image: var(--heading_color_gradient);
+  font-weight: bold;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+  display: block;
+}
+.fullscreen-section {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center; /* Centers content vertically */
+  position: relative;
+  background: var(--bg);
+  padding: 80px 10vw;
+  box-sizing: border-box;
+  border-bottom: 1px solid #111;
+}
+.fullscreen-section {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background: var(--bg);
+  padding: 0 10vw;
+  box-sizing: border-box;
+}
+
+.contact-layout {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.footer-branding,
+.contact-section {
+  border-top: none !important;
+  border: none !important;
+  outline: none !important;
+}
+
+.contact-section {
+  background: #0a0a0a;
+  min-height: 80vh; /* Extremely tall for a cinematic scroll gap */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Pushes top content and footer apart */
+  padding-top: 100px;
+}
+.contact-section {
+  background: #0a0a0a;
+  padding-top: 100px;
+  border-top: 1px solid #111;
+}
+.contact-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+.contact-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 80px;
+}
+.contact-section {
+  flex-direction: column;
+  justify-content: center;
+}
+.contact-section {
+  background: #0a0a0a;
+  padding-top: 150px;
+}
+.contact-left h2 {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 4rem;
+  text-align: center;
+  letter-spacing: 3px;
+  margin-bottom: 30px;
+}
+.contact-left h2 {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 5.5rem;
+  letter-spacing: 5px;
+  margin-bottom: 20px;
+}
+
+.details {
+  text-align: center;
+}
+.details p {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.2rem;
+  color: #888;
+  margin: 5px 0;
+}
+.contact-details {
+  margin-top: 40px;
+}
+
+.contact-details p {
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+}
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 100px;
+}
+/* .details p {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #fff;
+} */
+.details p {
+  font-size: 1.3rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 8px;
+}
+.social-links {
+  display: flex;
+  gap: 30px;
+  margin-top: 40px;
+  justify-content: center;
+}
+.social-links img {
+  width: 30px;
+  opacity: 0.5;
+  transition: 0.3s;
+  filter: brightness(0) invert(1);
+}
+.social-links img:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+footer {
+  padding: 50px;
+  text-align: center;
+  border-top: 1px solid #333;
+  color: #555;
+  background: var(--bg);
+}
+.footer-branding {
+  width: 100%;
+  height: 50vh;
+  background: #0a0a0a;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  border: none; /* Removes any potential lines */
+}
+.footer-branding {
+  width: 100%;
+  height: 50vh;
+  background: #0a0a0a;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  border: none; /* Removes any potential lines */
+}
+.branding-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center; /* Ensures vertical alignment */
+  justify-content: center;
+  gap: 1vh;
+  width: 100%;
+  height: 100%; /* Fills the 50vh */
+}
+
+.footer-logo {
+  /* This forces the image to be exactly 50vh tall */
+  height: 100%;
+  width: auto;
+  flex-shrink: 0;
+  object-fit: contain;
+  /* Removes any default bottom spacing images sometimes have */
+  display: block;
+}
+.footer-text {
+  font-family: "Bebas Neue", sans-serif;
+  /* We use a slightly larger font size to compensate for 
+     internal font metrics and reach the top/bottom edges */
+  font-size: 55vh;
+  /* Setting line-height to less than 1 crops the 
+     internal 'air' out of the font box */
+  line-height: 0.7;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: -1.5vw;
+  white-space: nowrap;
+  flex-shrink: 0;
+
+  /* Flex centering for the text itself */
+  display: flex;
+  align-items: center;
+
+  /* Nudge the text down slightly to account for the 
+     fact that Bebas Neue sits high in its box */
+  transform: translateY(6%);
+}
+.copyright-text {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: sans-serif; /* Clean font for legal text */
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.4); /* Faded so it doesn't distract */
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin: 0;
+  z-index: 10;
+}
+h3 {
+  font-size: 4vh;
+  margin-inline: 8vw;
+  /* letter-spacing: -2.5px; */
+  line-height: 1;
+}
+@media (max-width: 500px) {
+  .menu {
+    display: block;
+  }
+  .menu img {
+    width: 4vh;
+  }
+  h1 {
+    text-align: center; /* Resets text alignment */
+    /* Adds some padding from the center line */
+  }
+
+  h1 {
+    font-size: 12vw;
+    text-transform: uppercase;
+    letter-spacing: -2.5px;
+    line-height: 1.2;
+  }
+
+  h3 {
+    font-size: 2vh;
+    margin-inline: 8vw;
+    /* letter-spacing: -2.5px; */
+    line-height: 1;
+  }
+  .nav-link {
+    display: none;
+  }
+  .footer-text {
+    font-family: "Bebas Neue", sans-serif;
+    /* We use a slightly larger font size to compensate for 
+     internal font metrics and reach the top/bottom edges */
+    font-size: 50vw;
+    /* Setting line-height to less than 1 crops the 
+     internal 'air' out of the font box */
+    line-height: 0.7;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: -1.5vw;
+    white-space: nowrap;
+    flex-shrink: 0;
+
+    /* Flex centering for the text itself */
+    display: flex;
+    align-items: center;
+
+    /* Nudge the text down slightly to account for the 
+     fact that Bebas Neue sits high in its box */
+    transform: translateY(6%);
+  }
+  .footer-branding {
+    width: 100%;
+    height: 50vw; /* Locked to half screen height */
+    /* background-color: #050505; */
+    padding: 0 4vw; /* Margin from the side walls */
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    overflow: hidden;
+    padding-bottom: 50px;
+    background-image: none !important;
+  }
+
+  .branding-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center; /* Ensures vertical alignment */
+    justify-content: center;
+    gap: 1vh;
+    width: 100%;
+    height: 100%; /* Fills the 50vh */
+  }
+
+  .footer-logo {
+    /* This forces the image to be exactly 50vh tall */
+    height: 100%;
+    width: auto;
+    flex-shrink: 0;
+    object-fit: contain;
+    /* Removes any default bottom spacing images sometimes have */
+    display: block;
+  }
+
+  #programs-desktop {
+    display: none !important;
+  }
+
+  /* 2. FORCE SHOW THE MOBILE SECTION */
+  #programs-mobile {
+    display: flex !important; /* Keep flex so vertical centering works */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* 3. Keep .courses-section generic, but don't let it override IDs */
+  .courses-section {
+    width: 100%;
+    min-height: 100vh;
+    padding: 0;
+    overflow: hidden;
+  }
+  /* 2. Container for the slider */
+
+  /* 3. The Slider Itself */
+  .slider {
+    width: 100%;
+    display: block;
+    margin-top: 20px;
+  }
+
+  /* 4. The Individual Slides (The "Item" div) */
+  .item {
+    /* Critical for Center Mode: gives space between slides */
+    padding: 0 15px;
+    box-sizing: border-box;
+    /* Transition for the scaling effect */
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    opacity: 0.5; /* Fade out side images */
+    transform: scale(0.9); /* Shrink side images */
+  }
+
+  /* 5. The Active Center Slide */
+  .slider .slick-center {
+    opacity: 1;
+    transform: scale(1.1); /* Scale up the center image */
+    z-index: 10;
+  }
+
+  /* 6. The Image Styling */
+  .poster {
+    width: 100%;
+    height: auto; /* Let the height adjust naturally */
+    aspect-ratio: auto; /* Remove the strict 2/3 ratio */
+    object-fit: contain; /* Ensures the whole image is always visible */
+
+    display: block;
+    margin: 0 auto;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+  }
+
+  /* Keep the centering logic */
+  /* .courses-section {
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 0;
+  } */
+
+  /* Reset text alignment */
+  .eyebrow {
+    text-align: center !important;
+    width: 100%;
+    display: block;
+    margin-left: 0;
+  }
+
+  /* Ensure the main Heading is also centered */
+  /* .white-text-mentors {
+    text-align: center;
+    width: 100%;
+    font-size: 3rem !important;
+  } */
+  .slider .slick-list {
+    padding-top: 40px !important;
+    padding-bottom: 40px !important;
+  }
+  .section2-container,
+  .course-content {
+    width: 100%;
+    max-width: 100%;
+    overflow: visible; /* Important: Don't clip the shadow or scale */
+  }
+  .vision-statement {
+    font-family: "Inter", sans-serif;
+    font-weight: 200;
+    text-transform: uppercase;
+    letter-spacing: 4px; /* Spread the letters out for a luxury look */
+    font-size: 1rem;
+  }
+  .admission-text {
+    font-family: "Inter", sans-serif;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px; /* Spread the letters out for a luxury look */
+    font-size: 0.8rem;
+  }
+  .split-content-container {
+    flex-direction: column; /* Stacks text on top, form on bottom */
+    padding: 100px 5vw; /* Adjust padding */
+    gap: 40px; /* Space between text and form */
+  }
+
+  /* 2. Center the text */
+  .content-left {
+    width: 100%;
+    text-align: center;
+  }
+
+  /* 3. Make the Form Container Full Width */
+  .content-right {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* 4. Force the Form to fill the screen */
+  .admission-form {
+    max-width: 100% !important; /* Overrides the desktop 600px limit */
+    width: 100%;
+  }
+}
+@media (max-width: 768px) {
+  .footer-text {
+    font-size: 45vh;
+  }
+  .copyright-text {
+    font-size: 0.5rem;
+    bottom: 10px;
+  }
+}

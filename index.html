@@ -3,7 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="css/style_global.css" rel="stylesheet" />
     <link href="css/style.css" rel="stylesheet" />
+
     <link
       href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
       rel="stylesheet"
@@ -19,55 +21,60 @@
       type="text/css"
       href="https://cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick-theme.css"
     />
-    <link rel="preload" as="image" href="media/logo.png" fetchpriority="high" />
-
     <link
       rel="preload"
       as="image"
-      href="homename.png"
-      media="(min-width: 501px)"
-      fetchpriority="high"
-    />
-    <link
-      rel="preload"
-      as="image"
-      href="homename2.png"
-      media="(min-width: 501px)"
-      fetchpriority="high"
-    />
-    <link
-      rel="preload"
-      as="image"
-      href="homename3.png"
-      media="(min-width: 501px)"
-      fetchpriority="high"
-    />
-    <link
-      rel="preload"
-      as="image"
-      href="homename4.png"
-      media="(min-width: 501px)"
+      href="media/logos/logo.png"
       fetchpriority="high"
     />
 
     <link
       rel="preload"
       as="image"
-      href="homenamem.png"
+      href="media/logos/homename.png"
+      media="(min-width: 501px)"
+      fetchpriority="high"
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="media/logos/homename2.png"
+      media="(min-width: 501px)"
+      fetchpriority="high"
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="media/logos/homename3.png"
+      media="(min-width: 501px)"
+      fetchpriority="high"
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="media/logos/homename4.png"
+      media="(min-width: 501px)"
+      fetchpriority="high"
+    />
+
+    <link
+      rel="preload"
+      as="image"
+      href="media/logos/homenamem.png"
       media="(max-width: 500px)"
       fetchpriority="high"
     />
     <link
       rel="preload"
       as="image"
-      href="homename3m.png"
+      href="media/logos/homename3m.png"
       media="(max-width: 500px)"
       fetchpriority="high"
     />
     <link
       rel="preload"
       as="image"
-      href="homename4m.png"
+      href="media/logos/homename4m.png"
       media="(max-width: 500px)"
       fetchpriority="high"
     />
@@ -77,7 +84,11 @@
     <div class="drawer" id="drawer">
       <div class="drawer-content">
         <div class="drawerbtncon">
-          <img src="media/close.png" id="drawerclose" onclick="closeDrawer()" />
+          <img
+            src="media/icons/close.png"
+            id="drawerclose"
+            onclick="closeDrawer()"
+          />
         </div>
         <div class="drawerlink-container">
           <a href="#admissions" class="drawer-link" onclick="closeDrawer()"
@@ -108,7 +119,11 @@
       <header>
         <div class="nav-container">
           <div class="menu">
-            <img src="media/menu.png" id="menubtn" onclick="openDrawer()" />
+            <img
+              src="media/icons/menu.png"
+              id="menubtn"
+              onclick="openDrawer()"
+            />
           </div>
 
           <a href="#admissions" class="nav-link">ADMISSIONS</a>
@@ -119,14 +134,14 @@
                 class="logo-link"
                 style="display: flex; flex-direction: row; align-items: center"
               >
-                <div class="logo-icon"><img src="media/logo.png" /></div>
+                <div class="logo-icon"><img src="media/logos/logo.png" /></div>
               </div>
             </a>
           </div>
           <a href="#contact" class="nav-link">CONTACT</a>
           <a href="about.html" class="nav-link">ABOUT</a>
           <div class="menu">
-            <a href="#contact"><img src="media/contact-us.png" /></a>
+            <a href="#contact"><img src="media/icons/contact-us.png" /></a>
           </div>
         </div>
 
@@ -138,9 +153,9 @@
             loop
             playsinline
             preload="none"
-            poster="media/videothumb.jpg"
+            poster="media/thumbnails/videothumb.jpg"
           >
-            <source src="media/backvid2.mp4" type="video/mp4" />
+            <source src="media/background/backvid2.mp4" type="video/mp4" />
           </video>
         </div>
 
@@ -149,9 +164,12 @@
             <div>
               <div class="institute-name">
                 <picture>
-                  <source media="(max-width: 500px)" srcset="homenamem.png" />
+                  <source
+                    media="(max-width: 500px)"
+                    srcset="media/logos/homenamem.png"
+                  />
                   <img
-                    src="homename.png"
+                    src="media/logos/homename.png"
                     style="width: 60vw"
                     alt="Satyajit Ray"
                     fetchpriority="high"
@@ -160,7 +178,7 @@
               </div>
               <div class="institute-name">
                 <img
-                  src="homename2.png"
+                  src="media/logos/homename2.png"
                   style="width: 60vw"
                   alt="International"
                   fetchpriority="high"
@@ -168,9 +186,12 @@
               </div>
               <div class="institute-name">
                 <picture>
-                  <source media="(max-width: 500px)" srcset="homename3m.png" />
+                  <source
+                    media="(max-width: 500px)"
+                    srcset="media/logos/homename3m.png"
+                  />
                   <img
-                    src="homename3.png"
+                    src="media/logos/homename3.png"
                     alt="Film"
                     style="width: 60vw"
                     fetchpriority="high"
@@ -179,9 +200,12 @@
               </div>
               <div class="institute-name">
                 <picture>
-                  <source media="(max-width: 500px)" srcset="homename4m.png" />
+                  <source
+                    media="(max-width: 500px)"
+                    srcset="media/logos/homename4m.png"
+                  />
                   <img
-                    src="homename4.png"
+                    src="media/logos/homename4.png"
                     style="width: 60vw"
                     alt="Institute"
                     fetchpriority="high"
@@ -258,34 +282,58 @@
           <span class="eyebrow">Academic Path</span>
           <h2 class="white-text">COURSES WE OFFER</h2>
           <div class="posters-grid">
-            <a href="course1.html">
+            <a href="courses/ba_cinematography.html">
               <div class="item">
-                <img src="1.png" alt="Course 1" class="poster" />
+                <img
+                  src="media/course_posters/1.png"
+                  alt="Course 1"
+                  class="poster"
+                />
               </div>
             </a>
-            <a href="course2.html">
+            <a href="courses/ba_film_editing.html">
               <div class="item">
-                <img src="2.png" alt="Course 2" class="poster" />
+                <img
+                  src="media/course_posters/2.png"
+                  alt="Course 2"
+                  class="poster"
+                />
               </div>
             </a>
-            <a href="course3.html">
+            <a href="courses/ba_vfx_&_animation.html">
               <div class="item">
-                <img src="3.png" alt="Course 3" class="poster" />
+                <img
+                  src="media/course_posters/3.png"
+                  alt="Course 3"
+                  class="poster"
+                />
               </div>
             </a>
-            <a href="course4.html">
+            <a href="courses/ba_film_direction_&_script_writing.html">
               <div class="item">
-                <img src="4.png" alt="Course 4" class="poster" />
+                <img
+                  src="media/course_posters/4.png"
+                  alt="Course 4"
+                  class="poster"
+                />
               </div>
             </a>
-            <a href="course5.html">
+            <a href="courses/ba_sound_recording_&_sound_design.html">
               <div class="item">
-                <img src="5.png" alt="Course 5" class="poster" />
+                <img
+                  src="media/course_posters/5.png"
+                  alt="Course 5"
+                  class="poster"
+                />
               </div>
             </a>
-            <a href="course6.html">
+            <a href="courses/ba_film_making_&_acting.html">
               <div class="item">
-                <img src="6.png" alt="Course 6" class="poster" />
+                <img
+                  src="media/course_posters/6.png"
+                  alt="Course 6"
+                  class="poster"
+                />
               </div>
             </a>
           </div>
@@ -302,33 +350,56 @@
           <div class="slidercontainer">
             <div class="slider">
               <div class="item">
-                <a href="course1.html"
-                  ><img src="1.png" alt="Course 1" class="poster"
+                <a href="courses/ba_cinematography.html"
+                  ><img
+                    src="media/course_posters/1.png"
+                    alt="Course 1"
+                    class="poster"
                 /></a>
               </div>
               <div class="item">
-                <a href="course2.html">
-                  <img src="2.png" alt="Course 2" class="poster" />
+                <a href="courses/ba_film_editing.html">
+                  <img
+                    src="media/course_posters/2.png"
+                    alt="Course 2"
+                    class="poster"
+                  />
                 </a>
               </div>
               <div class="item">
-                <a href="course3.html">
-                  <img src="3.png" alt="Course 3" class="poster" />
+                <a href="courses/ba_vfx_&_animation.html">
+                  <img
+                    src="media/course_posters/3.png"
+                    alt="Course 3"
+                    class="poster"
+                  />
                 </a>
               </div>
               <div class="item">
-                <a href="course4.html">
-                  <img src="4.png" alt="Course 4" class="poster" />
+                <a href="courses/ba_film_direction_&_script_writing.html">
+                  <img
+                    src="media/course_posters/4.png"
+                    alt="Course 4"
+                    class="poster"
+                  />
                 </a>
               </div>
               <div class="item">
-                <a href="course5.html">
-                  <img src="5.png" alt="Course 5" class="poster" />
+                <a href="courses/ba_sound_recording_&_sound_design.html">
+                  <img
+                    src="media/course_posters/5.png"
+                    alt="Course 5"
+                    class="poster"
+                  />
                 </a>
               </div>
               <div class="item">
-                <a href="course6.html">
-                  <img src="6.png" alt="Course 6" class="poster" />
+                <a href="courses/ba_film_making_&_acting.html">
+                  <img
+                    src="media/course_posters/6.png"
+                    alt="Course 6"
+                    class="poster"
+                  />
                 </a>
               </div>
             </div>
@@ -376,7 +447,7 @@
             <div class="mentor-content">
               <div class="mentor-text">
                 <h2 class="mentor-name">Kamal</h2>
-                <h3 class="mentor-title">Head of Directing</h3>
+                <h3 class="mentor-title">Chaimran</h3>
                 <p class="mentor-bio limit-bio">
                   A true auteur who has shaped the visual language of Malayalam
                   cinema for nearly four decades, National Award-winning
@@ -393,7 +464,7 @@
                 <a href="#" class="see-more-btn">see more</a>
               </div>
               <div class="mentor-image">
-                <img src="mentors/m1.png" alt="Kamal" />
+                <img src="media/mentors/m1.png" alt="Kamal" />
               </div>
             </div>
           </div>
@@ -416,7 +487,7 @@
                 <a href="#" class="see-more-btn">see more</a>
               </div>
               <div class="mentor-image">
-                <img src="mentors/m2.jpeg" alt="Dr Rajesh Kalia" />
+                <img src="media/mentors/m2.jpeg" alt="Dr Rajesh Kalia" />
               </div>
             </div>
           </div>
@@ -439,7 +510,7 @@
                 <a href="#" class="see-more-btn">see more</a>
               </div>
               <div class="mentor-image">
-                <img src="mentors/m3.jpeg" alt="Balachandran VK" />
+                <img src="media/mentors/m3.jpeg" alt="Balachandran VK" />
               </div>
             </div>
           </div>
@@ -463,7 +534,7 @@
                 <a href="#" class="see-more-btn">see more</a>
               </div>
               <div class="mentor-image">
-                <img src="mentors/m4.jpeg" alt="Dr Ratheesh K" />
+                <img src="media/mentors/m4.jpeg" alt="Dr Ratheesh K" />
               </div>
             </div>
           </div>
@@ -489,7 +560,7 @@
                 <a href="#" class="see-more-btn">see more</a>
               </div>
               <div class="mentor-image">
-                <img src="mentors/m5.jpeg" alt="Shiju k" />
+                <img src="media/mentors/m5.jpeg" alt="Shiju k" />
               </div>
             </div>
           </div>
@@ -514,7 +585,7 @@
                 <a href="#" class="see-more-btn">see more</a>
               </div>
               <div class="mentor-image">
-                <img src="mentors/m6.jpeg" alt="Jijo K Mathew" />
+                <img src="media/mentors/m6.jpeg" alt="Jijo K Mathew" />
               </div>
             </div>
           </div>
@@ -539,7 +610,7 @@
                 <a href="#" class="see-more-btn">see more</a>
               </div>
               <div class="mentor-image">
-                <img src="mentors/m7.jpg" alt="Roopesh Kumar" />
+                <img src="media/mentors/m7.jpg" alt="Roopesh Kumar" />
               </div>
             </div>
           </div>
@@ -562,7 +633,7 @@
                 <a href="#" class="see-more-btn">see more</a>
               </div>
               <div class="mentor-image">
-                <img src="mentors/m8.jpeg" alt="Kesiya Jacob" />
+                <img src="media/mentors/m8.jpeg" alt="Kesiya Jacob" />
               </div>
             </div>
           </div>
@@ -586,7 +657,7 @@
                 <a href="#" class="see-more-btn">see more</a>
               </div>
               <div class="mentor-image">
-                <img src="mentors/m9.jpg" alt="Athul Raj" />
+                <img src="media/mentors/m9.jpg" alt="Athul Raj" />
               </div>
             </div>
           </div>
@@ -610,7 +681,7 @@
                 <a href="#" class="see-more-btn">see more</a>
               </div>
               <div class="mentor-image">
-                <img src="mentors/m10.jpeg" alt="Ranish Babu" />
+                <img src="media/mentors/m10.jpeg" alt="Ranish Babu" />
               </div>
             </div>
           </div>
@@ -632,7 +703,7 @@
                 <a href="#" class="see-more-btn">see more</a>
               </div>
               <div class="mentor-image">
-                <img src="mentors/m11.jpeg" alt="Anjali" />
+                <img src="media/mentors/m11.jpeg" alt="Anjali" />
               </div>
             </div>
           </div>
@@ -653,7 +724,7 @@
                 <a href="#" class="see-more-btn">see more</a>
               </div>
               <div class="mentor-image">
-                <img src="mentors/m12.jpg" alt="Abina Mathew" />
+                <img src="media/mentors/m12.jpg" alt="Abina Mathew" />
               </div>
             </div>
           </div>
@@ -662,84 +733,84 @@
         <div class="mentor-nav-slider">
           <div class="nav-item">
             <div class="nav-thumb">
-              <img src="mentors/m1.png" alt="Kamal" />
+              <img src="media/mentors/m1.png" alt="Kamal" />
             </div>
             <h4>Kamal</h4>
             <p>Director</p>
           </div>
           <div class="nav-item">
             <div class="nav-thumb">
-              <img src="mentors/m2.jpeg" alt="Resul" />
+              <img src="media/mentors/m2.jpeg" alt="Resul" />
             </div>
             <h4>Dr. Rakesh Kalia</h4>
             <p>Principal</p>
           </div>
           <div class="nav-item">
             <div class="nav-thumb">
-              <img src="mentors/m3.jpeg" alt="Resul" />
+              <img src="media/mentors/m3.jpeg" alt="Resul" />
             </div>
             <h4>Balachandran V.K</h4>
             <p>Administrative Officer</p>
           </div>
           <div class="nav-item">
             <div class="nav-thumb">
-              <img src="mentors/m4.jpeg" alt="Resul" />
+              <img src="media/mentors/m4.jpeg" alt="Resul" />
             </div>
             <h4>Dr. Ratheesh K</h4>
             <p>Director</p>
           </div>
           <div class="nav-item">
             <div class="nav-thumb">
-              <img src="mentors/m5.jpeg" alt="Resul" />
+              <img src="media/mentors/m5.jpeg" alt="Resul" />
             </div>
             <h4>Shiju K</h4>
             <p>Assistant Professor</p>
           </div>
           <div class="nav-item">
             <div class="nav-thumb">
-              <img src="mentors/m6.jpeg" alt="Resul" />
+              <img src="media/mentors/m6.jpeg" alt="Resul" />
             </div>
             <h4>Jijo K Mathew</h4>
             <p>Assistant Professor</p>
           </div>
           <div class="nav-item">
             <div class="nav-thumb">
-              <img src="mentors/m7.jpg" alt="Resul" />
+              <img src="media/mentors/m7.jpg" alt="Resul" />
             </div>
             <h4>Rupesh Kumar</h4>
             <p>Assistant Professor</p>
           </div>
           <div class="nav-item">
             <div class="nav-thumb">
-              <img src="mentors/m8.jpeg" alt="Resul" />
+              <img src="media/mentors/m8.jpeg" alt="Resul" />
             </div>
             <h4>Kesiya Jacob</h4>
             <p>Assistant Professor</p>
           </div>
           <div class="nav-item">
             <div class="nav-thumb">
-              <img src="mentors/m9.jpg" alt="Resul" />
+              <img src="media/mentors/m9.jpg" alt="Resul" />
             </div>
             <h4>Athul Raj</h4>
             <p>Assistant Professor</p>
           </div>
           <div class="nav-item">
             <div class="nav-thumb">
-              <img src="mentors/m10.jpeg" alt="Resul" />
+              <img src="media/mentors/m10.jpeg" alt="Resul" />
             </div>
             <h4>Ranish Babu</h4>
             <p>Assistant Professor</p>
           </div>
           <div class="nav-item">
             <div class="nav-thumb">
-              <img src="mentors/m11.jpeg" alt="Resul" />
+              <img src="media/mentors/m11.jpeg" alt="Resul" />
             </div>
             <h4>Anjali</h4>
             <p>Assistant Professor</p>
           </div>
           <div class="nav-item">
             <div class="nav-thumb">
-              <img src="mentors/m12.jpg" alt="Resul" />
+              <img src="media/mentors/m12.jpg" alt="Resul" />
             </div>
             <h4>Abina Mathew</h4>
             <p>Assistant Professor</p>
@@ -751,13 +822,8 @@
       <!--========================Enrollement Section ============================-->
       <!--========================Enrollement Section ============================-->
       <section class="fullscreen-section admission-section" id="admissions">
-        <div class="parallax-bg-container">
+        <!-- <div class="parallax-bg-container">
           <div class="vision-bg-slideshow">
-            <div class="snow-container">
-              <div class="snow-layer layer1"></div>
-              <div class="snow-layer layer2"></div>
-              <div class="snow-layer layer3"></div>
-            </div>
             <div
               class="slide"
               style="
@@ -766,7 +832,7 @@
             ></div>
           </div>
           <div class="vision-overlay"></div>
-        </div>
+        </div> -->
 
         <div class="split-content-container">
           <div class="content-left">
@@ -814,23 +880,23 @@
             </h2>
             <div class="details" style="margin-top: 30px">
               <p>sifiwayanad@gmail.com</p>
-              <p>+91 7306108959</p>
-              <p>Thonichal</p>
-              <p>Mananthavady, Wayanad</p>
+              <p>+91 8281520380 / +91 9447203755</p>
+              <p>Thonichal, P. O Nallurnadu</p>
+              <p>Mananthavady, Wayanad, 670 645</p>
               <p>Kerala, India</p>
             </div>
           </div>
 
           <div class="social-links">
-            <a href="#"><img src="media/instagram.png" alt="IG" /></a>
-            <a href="#"><img src="media/linkedin.png" alt="LI" /></a>
-            <a href="#"><img src="media/youtube.png" alt="YT" /></a>
+            <a href="#"><img src="media/icons/instagram.png" alt="IG" /></a>
+            <a href="#"><img src="media/icons/linkedin.png" alt="LI" /></a>
+            <a href="#"><img src="media/icons/youtube.png" alt="YT" /></a>
           </div>
         </div>
 
         <footer class="footer-branding">
           <div class="branding-container">
-            <img src="media/logo2.png" alt="Logo" class="footer-logo" />
+            <img src="media/logos/logo2.png" alt="Logo" class="footer-logo" />
           </div>
           <p class="copyright-text">© 2026 SIFI. ALL RIGHTS RESERVED.</p>
         </footer>
@@ -867,56 +933,12 @@
             }
           }
         }
-
-        // Run on page load
         initMobileSlider();
-
-        // Run whenever the browser is resized
         $(window).on("resize", function () {
           initMobileSlider();
         });
       });
-      // ... inside your script ...
-
-      // ...
     </script>
-
-    <!-- <script>
-      $(document).ready(function () {
-        function initMobileSlider() {
-          var $slider = $(".posters-grid");
-
-          if ($(window).width() < 769) {
-            if (!$slider.hasClass("slick-initialized")) {
-              $slider.slick({
-                centerMode: true,
-                centerPadding: "60px",
-                slidesToShow: 1,
-                infinite: true,
-                autoplay: false,
-                arrows: false,
-                dots: true,
-                variableWidth: false,
-              });
-
-              // BUG FIX: Force Slick to recalculate dimensions after load
-              setTimeout(function () {
-                $slider.slick("setPosition");
-              }, 100);
-            }
-          } else {
-            if ($slider.hasClass("slick-initialized")) {
-              $slider.slick("unslick");
-            }
-          }
-        }
-
-        initMobileSlider();
-        $(window).on("resize", function () {
-          initMobileSlider();
-        });
-      });
-    </script> -->
   </body>
   <script>
     var i = 0;
@@ -960,16 +982,9 @@
         scrollPos + viewportHeight > sectionTop &&
         scrollPos < sectionTop + viewportHeight
       ) {
-        // Calculate progress: 0 when section enters, 1 when section center hits screen center
         let distance = scrollPos + viewportHeight - sectionTop;
         let progress = distance / (viewportHeight * 1.5);
-
-        // Zoom Out Logic:
-        // Starts at 1.0 (Full Screen)
-        // Ends at 0.5 (Half Screen)
         let scaleValue = 1.0 - progress * 0.5;
-
-        // Limit the scale so it doesn't get TOO small or stay too big
         if (scaleValue < 0.5) scaleValue = 0.5;
         if (scaleValue > 1.0) scaleValue = 1.0;
 
@@ -1042,37 +1057,8 @@
         } else {
           $(this).text("see more");
         }
-
-        // Tell Slick to recalculate heights in case a text block was expanded
-        // and was going to start overlapping.
         $(".mentor-main-slider").slick("setPosition");
       });
     });
   </script>
 </html>
-<!-- <div class="card">
-              <h3>Directing</h3>
-              <p>
-                Master the art of visual storytelling. From script to screen,
-                command the narrative.
-              </p>
-            </div>
-            <div class="card">
-              <h3>Cinematography</h3>
-              <p>
-                Learn lighting and advanced camera mechanics. Paint with light.
-              </p>
-            </div>
-            <div class="card">
-              <h3>VFX & Future Media</h3>
-              <p>
-                Virtual production, Unreal Engine, and AI-assisted workflows.
-              </p>
-            </div>
-            <div class="card">
-              <h3>Post-Production</h3>
-              <p>
-                The final rewrite. Mastering the rhythm of the edit and sound
-                design.
-              </p>
-            </div> -->

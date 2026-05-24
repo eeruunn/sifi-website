@@ -130,6 +130,7 @@ header {
   color: #fff;
   letter-spacing: 2px;
   margin-bottom: 20px;
+  text-align: center;
 }
 
 .value-text {
@@ -137,6 +138,7 @@ header {
   font-size: 1.1rem;
   color: #bbb;
   line-height: 1.6;
+  text-align: center;
 }
 
 .leadership-heading {
@@ -325,20 +327,40 @@ header {
 @media (max-width: 992px) {
   .ray-hero-split {
     flex-direction: column;
-    height: auto;
+    height: 100vh;
   }
+
+  /* 2. Force the image to take exactly 50% */
   .ray-left-slideshow {
-    height: 50vh; /* Slideshow takes top half on mobile */
+    flex: 1 !important; /* Overrides the desktop flex: 2 */
+    height: 50vh;
+    width: 100%;
   }
+
+  /* 3. Force the text to take the other 50% and center it */
+  .ray-right-content {
+    flex: 1 !important;
+    height: 50vh;
+    padding: 0 6vw; /* Removes heavy top padding to pull quote up */
+    justify-content: center; /* Vertically centers the quote in its half */
+  }
+
+  /* 4. Scale text slightly so it fits perfectly in the bottom half */
+  .ray-massive-quote {
+    font-size: 2.2rem;
+    margin: 10px 0 15px 0;
+  }
+
+  .ray-subtext {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
   .cinematic-overlay {
     background: linear-gradient(to top, #050505 0%, transparent 40%);
   }
-  .ray-right-content {
-    padding: 40px 5vw;
-  }
-  .ray-massive-quote {
-    font-size: 3rem;
-  }
+
+  /* Keep your existing core-values-grid mobile CSS below this... */
   .core-values-grid,
   .leadership-grid {
     grid-template-columns: 1fr;

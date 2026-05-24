@@ -3,38 +3,42 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="css/style.css" rel="stylesheet" />
-    <link href="css/style_coursepages.css" rel="stylesheet" />
+    <link href="../css/style_global.css" rel="stylesheet" />
+    <link href="../css/style_coursepages.css" rel="stylesheet" />
     <link
       href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;600&display=swap"
       rel="stylesheet"
     />
-    <title>BA Cinematography Honors | SIFI</title>
+    <title>BA Film Direction & Script Writing</title>
   </head>
   <body>
     <div class="drawer" id="drawer">
       <div class="drawer-content">
         <div class="drawerbtncon">
-          <img src="media/close.png" id="drawerclose" onclick="closeDrawer()" />
+          <img
+            src="../media/icons/close.png"
+            id="drawerclose"
+            onclick="closeDrawer()"
+          />
         </div>
 
         <a
-          href="index.html#admissions"
+          href="../index.html#admissions"
           class="drawer-link"
           onclick="closeDrawer()"
           >ADMISSIONS</a
         >
         <a
-          href="index.html#programs-mobile"
+          href="../index.html#programs-mobile"
           class="drawer-link"
           onclick="closeDrawer()"
           >PROGRAMS</a
         >
 
-        <a href="index.html#contact" class="drawer-link" onclick="closeDrawer()"
+        <a href="#contact" class="drawer-link" onclick="closeDrawer()"
           >CONTACT</a
         >
-        <a href="about.html" class="drawer-link" onclick="closeDrawer()"
+        <a href="../about.html" class="drawer-link" onclick="closeDrawer()"
           >ABOUT</a
         >
       </div>
@@ -46,49 +50,51 @@
         <div class="nav-container">
           <div class="menu">
             <img
-              src="media/menu.png"
+              src="../media/menu.png"
               id="menubtn"
               onclick="openDrawer()"
               style="width: 30px; cursor: pointer"
             />
           </div>
           <a
-            href="index.html#admissions"
+            href="../index.html#admissions"
             class="nav-link"
             style="font-family: 'Bebas Neue'; letter-spacing: 2px"
             >ADMISSIONS</a
           >
           <a
-            href="index.html#programs-desktop"
+            href="../index.html#programs-desktop"
             class="nav-link"
             style="font-family: 'Bebas Neue'; letter-spacing: 2px"
             >PROGRAMS</a
           >
 
           <div class="logo-wrap" style="z-index: 2000">
-            <a href="index.html" style="text-decoration: none">
+            <a href="../index.html" style="text-decoration: none">
               <div
                 class="logo-link"
                 style="display: flex; flex-direction: row; align-items: center"
               >
-                <div class="logo-icon"><img src="media/logo.png" /></div>
+                <div class="logo-icon">
+                  <img src="../media/logos/logo.png" />
+                </div>
               </div>
             </a>
           </div>
           <a
-            href="index.html#contact"
+            href="#contact"
             class="nav-link"
             style="font-family: 'Bebas Neue'; letter-spacing: 2px"
             >CONTACT</a
           >
           <a
-            href="about.html"
+            href="../about.html"
             class="nav-link"
             style="font-family: 'Bebas Neue'; letter-spacing: 2px"
             >ABOUT</a
           >
           <div class="menu">
-            <a href="index.html#contact"
+            <a href="#contact"
               ><img src="media/contact-us.png" style="width: 30px"
             /></a>
           </div>
@@ -102,7 +108,7 @@
             loop
             playsinline
             preload="none"
-            poster="media/thumbcinematography.jpeg"
+            poster="../media/thumbnails/thumbdirection.jpeg"
             style="
               width: 100%;
               height: 100%;
@@ -111,43 +117,43 @@
               filter: contrast(1.1);
             "
           >
-            <source src="media/cinematography.mp4" type="video/mp4" />
+            <source src="../media/background/direction.mp4" type="video/mp4" />
           </video>
         </div>
 
         <div class="hero-content">
           <div class="split-item">
             <div class="institute-name">
-              <h1>BA in<br />Cinematography<br />Honors</h1>
+              <h1>BA Film<br />Direction &<br />Script Writing<br />Honours</h1>
             </div>
           </div>
           <div class="split-item" id="item2">
             <div class="course-overview">
               <div class="course-overview-title">Course Overview</div>
               <div class="course_overview-content">
-                <img src="media/intake.png" alt="Intake" />
+                <img src="../media/icons/intake.png" alt="Intake" />
                 <p><strong>Intake:</strong> 25 Seats</p>
               </div>
               <div class="course_overview-content">
-                <img src="media/criteria.png" alt="Criteria" />
+                <img src="../media/icons/criteria.png" alt="Criteria" />
                 <p><strong>Eligibility:</strong> Any Plus Two</p>
               </div>
               <div class="course_overview-content">
-                <img src="media/duration.png" alt="Duration" />
+                <img src="../media/icons/duration.png" alt="Duration" />
                 <p><strong>Duration:</strong> 4-Year Honors Program</p>
               </div>
               <div class="course_overview-content">
-                <img src="media/agelimit.png" alt="Age Limit" />
+                <img src="../media/icons/agelimit.png" alt="Age Limit" />
                 <p><strong>Age Limit:</strong> None</p>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="scroll-container">
+        <!-- <div class="scroll-container">
           <div class="mouse"><div class="wheel"></div></div>
           <div class="scroll-text">SCROLL DOWN</div>
-        </div>
+        </div> -->
       </header>
 
       <main class="main-content">
@@ -159,52 +165,45 @@
             <div class="glass-card">
               <h3>Course Description</h3>
               <p>
-                The Bachelor of Arts in Cinematography is a specialized
-                undergraduate program designed for aspiring filmmakers, visual
-                storytellers, and cinematographers. This program blends artistic
-                vision with technical proficiency to prepare students for the
-                dynamic world of film, television, and digital content creation.
+                The BA in Film Direction & Script Writing is an intensive
+                undergraduate program (8 semesters + internship/project)
+                designed to nurture creative storytellers, filmmakers, and
+                screenwriters. A script forms the foundation of every film,
+                providing structure, dialogue, character arcs, and thematic
+                depth[. Direction transforms that written script into a
+                cinematic experience, orchestrating performances, visuals,
+                sound, and editing.
               </p>
               <p>
-                The curriculum blends core cinematic principles with hands-on
-                experience in camera operations, lighting, composition, and
-                post-production to develop professional cinematographers for the
-                film, television, OTT, and advertising industries. The program
-                emphasizes practical learning through workshops, lab sessions,
-                short film projects, and industry internships, culminating in a
-                capstone or thesis film.
+                The program combines artistic, technical and practical training
+                with critical theory to produce skilled professionals ready for
+                careers in cinema, television, OTT, and other visual
+                storytelling platforms.
               </p>
             </div>
 
             <div class="glass-card">
               <h3>What You'll Learn</h3>
               <p>
-                Students are encouraged to develop their creative voice while
-                gaining the competence to work in collaborative, professional
-                environments. The program has been designed to:
+                By integrating academic training with practical exposure, the
+                program connects students directly with industry realities:
               </p>
               <ul>
                 <li>
-                  Train students in the art and craft of image-making, from the
-                  fundamentals of photography to advanced digital
-                  cinematography.
+                  Training in screenplay development, adaptation, and writing
+                  for multiple formats.
                 </li>
                 <li>
-                  Provide hands-on experience with industry-standard cameras,
-                  lighting setups, and post-production tools.
+                  Equipping you with directorial techniques—from managing sets
+                  to visual storytelling.
                 </li>
                 <li>
-                  Encourage students to develop a unique visual style and
-                  artistic sensibility.
+                  Knowledge of film production, distribution, marketing, and
+                  audience engagement.
                 </li>
                 <li>
-                  Integrate knowledge of film history, aesthetics & industry
-                  practices to connect theory with practice.
-                </li>
-                <li>
-                  Prepare graduates for careers in feature films, documentaries,
-                  television, commercials, streaming content, and emerging media
-                  technologies (VR/AR).
+                  Understanding of film aesthetics, history, and theory applied
+                  to modern trends.
                 </li>
               </ul>
             </div>
@@ -230,7 +229,7 @@
                   -webkit-text-fill-color: transparent;
                 "
               >
-                "WHERE LIGHT BECOMES EMOTION"
+                "LEARN BY DOING—CREATE BY PRACTICING"
               </p>
             </div>
 
@@ -247,45 +246,38 @@
               >
                 <ul style="margin: 0">
                   <li>
-                    <strong>Experiential Learning:</strong> Hands-on training
-                    with industry-standard cameras, lenses, lighting, and grip
-                    equipment.
+                    In-depth training in screenplay writing, character
+                    development, structure, and genre.
                   </li>
                   <li>
-                    <strong>Industry-Relevant Curriculum:</strong> Developed in
-                    consultation with cinematographers, filmmakers, and industry
-                    experts.
+                    Hands-on experience in directing actors, staging scenes, and
+                    visualizing scripts.
                   </li>
                   <li>
-                    <strong>Hands-On Training:</strong> Extensive practical
-                    exposure to cameras, lighting setups, and editing software.
+                    Study of classical and contemporary world cinema and Indian
+                    cinema traditions.
                   </li>
                   <li>
-                    <strong>Collaborative Approach:</strong> Collaboration with
-                    students of direction, editing, sound, and production
-                    design.
-                  </li>
-                  <li>
-                    <strong>Workshops & Masterclasses:</strong> Regular sessions
-                    with renowned cinematographers and directors.
+                    Emphasis on collaborative production processes and
+                    leadership in film units.
                   </li>
                 </ul>
                 <ul style="margin: 0">
                   <li>
-                    <strong>Portfolio Development:</strong> Guidance in building
-                    a professional show-reel & portfolio.
+                    Regular short film projects, script labs, peer reviews, and
+                    capstone projects.
                   </li>
                   <li>
-                    <strong>Internships & Projects:</strong> Opportunities to
-                    work on live sets and real-world projects.
+                    Mentorship by experienced filmmakers, screenwriters, and
+                    critics.
                   </li>
                   <li>
-                    <strong>Film Screenings & Analysis:</strong> Critical
-                    studies of classic and contemporary cinema.
+                    Integrated learning of production planning, script
+                    breakdowns, storyboarding, and post-production.
                   </li>
                   <li>
-                    <strong>State-of-the-Art Facilities:</strong> Access to
-                    studios, labs, and production equipment.
+                    Lectures, Case studies, Practicum, Role plays, and Field
+                    Trips.
                   </li>
                 </ul>
               </div>
@@ -308,9 +300,8 @@
                 Career Avenues
               </h3>
               <p style="text-align: center; margin-bottom: 25px">
-                Graduates can pursue a wide range of creative and technical
-                roles in the film, television, and digital content industry,
-                including:
+                Graduates can pursue various paths in the film and media
+                industries, including:
               </p>
               <div
                 style="
@@ -329,10 +320,10 @@
                 >
                   <strong
                     style="color: #fff; display: block; margin-bottom: 5px"
-                    >Cinematographer / DoP</strong
+                    >Film Director</strong
                   >
                   <span style="font-size: 0.9rem; color: #aaa"
-                    >Director of Photography leading visual storytelling.</span
+                    >Feature films, short films, documentaries, TV.</span
                   >
                 </div>
                 <div
@@ -344,11 +335,10 @@
                 >
                   <strong
                     style="color: #fff; display: block; margin-bottom: 5px"
-                    >Camera Operations</strong
+                    >Screenwriter</strong
                   >
                   <span style="font-size: 0.9rem; color: #aaa"
-                    >Camera, Steadicam, Gimbal, Drone & Underwater
-                    Operators.</span
+                    >Scripts for film, TV series, web series.</span
                   >
                 </div>
                 <div
@@ -360,10 +350,10 @@
                 >
                   <strong
                     style="color: #fff; display: block; margin-bottom: 5px"
-                    >Camera Department</strong
+                    >Producer</strong
                   >
                   <span style="font-size: 0.9rem; color: #aaa"
-                    >1st AC (Focus Puller), 2nd AC, DIT, & Video Assist.</span
+                    >Overseeing projects from development to distribution.</span
                   >
                 </div>
                 <div
@@ -375,10 +365,10 @@
                 >
                   <strong
                     style="color: #fff; display: block; margin-bottom: 5px"
-                    >Lighting & Content Creation</strong
+                    >Content Developer</strong
                   >
                   <span style="font-size: 0.9rem; color: #aaa"
-                    >Lighting Designer / Gaffer & OTT Content Creator.</span
+                    >For OTT & Digital Platforms.</span
                   >
                 </div>
               </div>
@@ -389,7 +379,6 @@
         <section class="section-container" id="fees">
           <span class="eyebrow">Investment</span>
           <h2 class="section-title">FEES STRUCTURE</h2>
-
           <div class="fees-grid">
             <div class="fee-year-card">
               <div class="fee-header">
@@ -600,15 +589,21 @@
             </div>
 
             <div class="social-links">
-              <a href="#"><img src="media/instagram.png" alt="IG" /></a>
-              <a href="#"><img src="media/linkedin.png" alt="LI" /></a>
-              <a href="#"><img src="media/youtube.png" alt="YT" /></a>
+              <a href="#"
+                ><img src="../media/icons/instagram.png" alt="IG"
+              /></a>
+              <a href="#"><img src="../media/icons/linkedin.png" alt="LI" /></a>
+              <a href="#"><img src="../media/icons/youtube.png" alt="YT" /></a>
             </div>
           </div>
 
           <footer class="footer-branding">
             <div class="branding-container">
-              <img src="media/logo2.png" alt="Logo" class="footer-logo" />
+              <img
+                src="../media/logos/logo2.png"
+                alt="Logo"
+                class="footer-logo"
+              />
             </div>
             <p class="copyright-text">© 2026 SIFI. ALL RIGHTS RESERVED.</p>
           </footer>
