@@ -443,7 +443,7 @@
           </h2>
         </div>
         <div class="mentor-main-slider">
-          <div class="mentor-slide">
+          <!-- <div class="mentor-slide">
             <div class="mentor-content">
               <div class="mentor-text">
                 <h2 class="mentor-name">Kamal</h2>
@@ -467,7 +467,7 @@
                 <img src="media/mentors/m1.jpg" alt="Kamal" />
               </div>
             </div>
-          </div>
+          </div> -->
 
           <div class="mentor-slide">
             <div class="mentor-content">
@@ -733,13 +733,13 @@
         </div>
         <!-- thumbnail slider -->
         <div class="mentor-nav-slider">
-          <div class="nav-item">
+          <!-- <div class="nav-item">
             <div class="nav-thumb">
               <img src="media/mentors/m1.jpg" alt="Kamal" />
             </div>
             <h4>Kamal</h4>
             <p>Director</p>
-          </div>
+          </div> -->
           <div class="nav-item">
             <div class="nav-thumb">
               <img src="media/mentors/m2.jpeg" alt="Resul" />
@@ -824,34 +824,39 @@
       <!--========================Campus Section ============================-->
       <!--========================Campus Section ============================-->
       <section class="fullscreen-section campus-bg-section" id="campus">
-        <!-- The Background Slideshow -->
         <div class="campus-slideshow">
-          <!-- Replace these URLs with your actual image paths -->
           <div
             class="campus-slide"
-            style="background-image: url('media/campus/campus_main.jpeg')"
+            style="
+              --bg-desktop: url(../'media/campus/campus_2.jpeg');
+              --bg-mobile: url('../media/campus/campus_2_mobile.jpeg');
+            "
+          ></div>
+
+          <div
+            class="campus-slide"
+            style="
+              --bg-desktop: url('../media/campus/campus_3.jpeg');
+              --bg-mobile: url('../media/campus/campus_3_mobile.jpeg');
+            "
           ></div>
           <div
             class="campus-slide"
-            style="background-image: url('media/campus/campus_2.jpeg')"
-          ></div>
-          <div
-            class="campus-slide"
-            style="background-image: url('media/campus/campus_3.jpeg')"
+            style="
+              --bg-desktop: url('../media/campus/campus_main.jpeg');
+              --bg-mobile: url('../media/campus/campus_main_mobile.jpeg');
+            "
           ></div>
         </div>
 
-        <!-- Dark overlay gradient to ensure white text is always readable -->
         <div class="campus-overlay"></div>
 
         <div class="campus-content">
-          <!-- Top Left: Heading -->
           <div class="campus-header">
             <span class="eyebrow campus-eyebrow">The SIFI Environment</span>
             <h2 class="white-text" style="margin-bottom: 0">OUR CAMPUS</h2>
           </div>
 
-          <!-- Bottom Left: Description & Button -->
           <div class="campus-body">
             <p class="admission-text campus-desc">
               Set against the breathtaking, cinematic backdrop of Wayanad, the
