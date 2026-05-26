@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link href="css/style_global.css" rel="stylesheet" />
+
+    <link href="css/style_campus.css" rel="stylesheet" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+    <title>Campus | SIFI</title>
+  </head>
+
+  <body>
+    <div class="drawer" id="drawer">
+      <div class="drawer-content">
+        <div class="drawerbtncon">
+          <img
+            src="media/icons/close.png"
+            id="drawerclose"
+            onclick="closeDrawer()"
+          />
+        </div>
+        <div class="drawerlink-container">
+          <a
+            href="index.html#admissions"
+            class="drawer-link"
+            onclick="closeDrawer()"
+            >ADMISSIONS</a
+          >
+        </div>
+        <div class="drawerlink-container">
+          <a
+            href="index.html#programs-desktop"
+            class="drawer-link"
+            onclick="closeDrawer()"
+            >PROGRAMS</a
+          >
+        </div>
+        <div class="drawerlink-container">
+          <a
+            href="index.html#contact"
+            class="drawer-link"
+            onclick="closeDrawer()"
+            >CONTACT</a
+          >
+        </div>
+        <div class="drawerlink-container">
+          <a href="about.html" class="drawer-link" onclick="closeDrawer()"
+            >ABOUT</a
+          >
+        </div>
+      </div>
+    </div>
+
+    <div class="grain"></div>
+
+    <div class="parallax-wrapper">
+      <nav
+        class="nav-container"
+        style="position: fixed; top: 30px; z-index: 1000"
+      >
+        <div class="menu">
+          <img src="media/icons/menu.png" id="menubtn" onclick="openDrawer()" />
+        </div>
+        <a href="index.html#admissions" class="nav-link">ADMISSIONS</a>
+        <a href="index.html#programs-desktop" class="nav-link">PROGRAMS</a>
+        <div class="logo-wrap">
+          <a href="index.html" style="text-decoration: none">
+            <div class="logo-icon"><img src="media/logos/logo.png" /></div>
+          </a>
+        </div>
+        <a href="index.html#contact" class="nav-link">CONTACT</a>
+        <a href="about.html" class="nav-link">ABOUT</a>
+        <div class="menu">
+          <a href="index.html#contact"
+            ><img src="media/icons/contact-us.png"
+          /></a>
+        </div>
+      </nav>
+
+      <section class="campus-page-hero">
+        <div class="campus-hero-overlay"></div>
+        <div class="campus-hero-content">
+          <span class="eyebrow" style="text-align: center; width: 100%"
+            >Welcome to Wayanad</span
+          >
+          <h1 class="campus-title">THE LIVING STUDIO</h1>
+          <p class="campus-subtitle">
+            Where nature and cinema converge. Explore our sprawling,
+            purpose-built creative sanctuary designed to shape the filmmakers of
+            tomorrow.
+          </p>
+        </div>
+      </section>
+
+      <section class="gallery-section">
+        <div class="gallery-grid">
+          <div class="gallery-item item-wide">
+            <img src="media/campus/campus_main.jpeg" alt="Main Campus View" />
+            <div class="item-overlay">
+              <h4>MAIN CAMPUS</h4>
+            </div>
+          </div>
+
+          <div class="gallery-item item-tall">
+            <img src="media/campus/studio.jpg" alt="Edit Suites" />
+            <div class="item-overlay">
+              <h4>EDIT SUITES</h4>
+            </div>
+          </div>
+
+          <div class="gallery-item">
+            <img src="media/campus/library.jpg" alt="Library" />
+            <div class="item-overlay">
+              <h4>LIBRARY</h4>
+            </div>
+          </div>
+
+          <div class="gallery-item">
+            <video autoplay muted loop playsinline>
+              <source src="media/campus/drone_shot.mp4" type="video/mp4" />
+            </video>
+            <div class="item-overlay">
+              <h4>AERIAL VIEW</h4>
+            </div>
+          </div>
+
+          <div class="gallery-item">
+            <img src="media/campus/hostel.jpg" alt="Hostels" />
+            <div class="item-overlay">
+              <h4>RESIDENCES</h4>
+            </div>
+          </div>
+
+          <div class="gallery-item item-wide">
+            <img src="media/campus/theatre.jpg" alt="Screening Theatre" />
+            <div class="item-overlay">
+              <h4>SCREENING THEATRE</h4>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer class="footer-branding" style="height: 30vh">
+        <div class="branding-container">
+          <img src="media/logos/logo2.png" alt="Logo" class="footer-logo" />
+        </div>
+        <p class="copyright-text">© 2026 SIFI. ALL RIGHTS RESERVED.</p>
+      </footer>
+    </div>
+
+    <script>
+      function openDrawer() {
+        document.getElementById("drawer").style.width = "75vw";
+      }
+      function closeDrawer() {
+        document.getElementById("drawer").style.width = "0vw";
+      }
+    </script>
+  </body>
+</html>

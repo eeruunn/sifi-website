@@ -1186,6 +1186,108 @@
   transform: translateX(10px);
 }
 
+/* =========================================
+   CAMPUS SECTION (BACKGROUND IMAGE LAYOUT)
+   ========================================= */
+
+.campus-bg-section {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  /* Optional: 'fixed' gives it a slight parallax effect as you scroll past */
+  background-attachment: scroll;
+  padding: 10vh 8vw; /* Matches the spacing of your other sections */
+  align-items: stretch; /* Allows inner content to take full height */
+  overflow: hidden;
+}
+
+/* Cinematic Vignette/Shadow Overlay */
+.campus-overlay {
+  position: absolute;
+  inset: 0;
+  /* Dark at the top for the heading, clear in the middle, dark at the bottom for text */
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.8) 0%,
+    rgba(0, 0, 0, 0.2) 40%,
+    rgba(0, 0, 0, 0.3) 60%,
+    rgba(0, 0, 0, 0.9) 100%
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Content Container (Grid/Flex setup) */
+.campus-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Pushes header to top, body to bottom */
+  width: 100%;
+  min-height: 80vh; /* Ensures the gap between top and bottom */
+}
+
+/* Header Positioning */
+.campus-header {
+  align-self: flex-start;
+  text-align: left;
+}
+
+.campus-eyebrow {
+  margin-left: 0 !important;
+  text-align: left !important;
+}
+
+/* Body (Text & Button) Positioning */
+.campus-body {
+  max-width: 650px; /* Prevents text from stretching across the whole screen */
+  align-self: flex-start;
+  text-align: left;
+  margin-top: auto; /* Forces it to the absolute bottom */
+}
+
+.campus-desc {
+  text-align: left !important;
+  margin-bottom: 30px;
+  color: #e0e0e0;
+  text-transform: none; /* If you want standard sentence casing, remove this to keep it uppercase */
+}
+
+/* Make button wrap its content instead of full width */
+.campus-btn {
+  width: fit-content !important;
+  padding: 15px 30px;
+}
+
+/* Mobile & Tablet Overrides */
+@media (max-width: 768px) {
+  .campus-bg-section {
+    padding: 12vh 5vw;
+    background-attachment: scroll; /* Fixes iOS background bug */
+  }
+
+  .campus-content {
+    justify-content: flex-end; /* Pushes everything to bottom on mobile */
+    gap: 20px;
+  }
+
+  .campus-header,
+  .campus-body {
+    align-self: center;
+    text-align: center;
+  }
+
+  .campus-eyebrow,
+  .campus-desc {
+    text-align: center !important;
+  }
+
+  .campus-btn {
+    margin: 0 auto;
+  }
+}
+
 /* Mobile Tweaks */
 @media (max-width: 992px) {
   .minimal-cta-box {
