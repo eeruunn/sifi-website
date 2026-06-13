@@ -47,6 +47,71 @@
     <div class="grain"></div>
 
     <div class="parallax-wrapper">
+      <style>
+        /* This creates the continuous growing and shrinking animation */
+        @keyframes pulse-btn {
+          0% {
+            transform: scale(1);
+          }
+          50% {
+            transform: scale(1.1);
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
+          }
+          100% {
+            transform: scale(1);
+          }
+        }
+
+        /* Moving the button styles into a class to attach the animation */
+        .apply-pulse-btn {
+          background-color: white;
+          color: #d10000;
+          text-decoration: none;
+          padding: 4px 16px;
+          margin-left: 15px;
+          border-radius: 2px;
+          font-size: 1.2rem;
+          display: inline-block; /* Required for the scale animation to work */
+          animation: pulse-btn 1.5s infinite ease-in-out; /* 1.5 second loop, forever */
+          transition: 0.3s;
+        }
+
+        /* Adds a slight hover effect when they actually put their mouse on it */
+        .apply-pulse-btn:hover {
+          background-color: #f0f0f0;
+          transform: scale(1.15);
+          animation-play-state: paused; /* Optional: pauses the pulsing while they hover */
+        }
+      </style>
+
+      <div
+        style="
+          background-color: #d10000;
+          width: 100%;
+          text-align: center;
+          padding: 10px 15px;
+          z-index: 3000;
+          position: relative;
+          top: 0;
+          left: 0;
+        "
+      >
+        <p
+          style="
+            font-family: 'Bebas Neue', sans-serif;
+            color: white;
+            margin: 0;
+            font-size: 1.3rem;
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          "
+        >
+          ADMISSIONS FOR 2026 MANAGEMENT QUOTA ARE NOW OPEN.
+          <a href="apply.html" class="apply-pulse-btn"> APPLY NOW </a>
+        </p>
+      </div>
       <header>
         <div class="nav-container">
           <div class="menu">

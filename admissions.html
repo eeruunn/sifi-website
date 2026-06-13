@@ -12,6 +12,69 @@
     />
     <title>Admissions | SIFI</title>
     <link rel="icon" type="image/png" href="media/logos/logo.png" />
+    <style>
+      /* --- Inline Management Quota Callout --- */
+      .management-callout {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-left: 4px solid #d10000; /* Cinematic red accent line */
+        padding: 30px 40px;
+        margin: 0 auto 60px auto;
+        max-width: 1000px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-radius: 4px;
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+      .management-callout-text h3 {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 2.2rem;
+        color: #ffffff;
+        margin: 0 0 5px 0;
+        letter-spacing: 2px;
+      }
+      .management-callout-text p {
+        color: #aaaaaa;
+        margin: 0;
+        font-family: Arial, sans-serif;
+        font-size: 1rem;
+        line-height: 1.5;
+      }
+      .management-apply-btn {
+        background-color: #d10000;
+        color: white;
+        text-decoration: none;
+        padding: 15px 40px;
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 1.3rem;
+        letter-spacing: 2px;
+        transition: background-color 0.3s, transform 0.2s;
+        white-space: nowrap;
+        display: inline-block;
+      }
+      .management-apply-btn:hover {
+        background-color: #a80000;
+      }
+      .management-apply-btn:active {
+        transform: scale(0.98);
+      }
+
+      /* Mobile formatting */
+      @media (max-width: 768px) {
+        .management-callout {
+          flex-direction: column;
+          align-items: flex-start;
+          padding: 25px;
+        }
+        .management-apply-btn {
+          width: 100%;
+          text-align: center;
+          box-sizing: border-box;
+        }
+      }
+    </style>
   </head>
 
   <body>
@@ -91,7 +154,18 @@
           <span class="eyebrow">Join the Legacy</span>
           <h2 class="white-text">ADMISSION PROCEDURE</h2>
         </div>
-
+        <div class="management-callout">
+          <div class="management-callout-text">
+            <h3>MANAGEMENT QUOTA ADMISSIONS OPEN</h3>
+            <p>
+              Direct applications for the 2026 academic year are now live.
+              Limited seats are available for all BA programs.
+            </p>
+          </div>
+          <div>
+            <a href="apply.html" class="management-apply-btn">APPLY NOW</a>
+          </div>
+        </div>
         <div class="procedure-grid">
           <div class="procedure-card">
             <div class="card-number">01</div>

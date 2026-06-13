@@ -4,7 +4,7 @@
 
 header {
   position: absolute !important;
-  top: 0;
+  top: 45px;
   left: 0;
   width: 100%;
   height: 15vh;
@@ -325,6 +325,9 @@ header {
 
 /* --- Mobile Responsiveness --- */
 @media (max-width: 992px) {
+  header {
+    top: 80px;
+  }
   .ray-hero-split {
     flex-direction: column;
     height: 100vh;
