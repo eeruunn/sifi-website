@@ -1,7 +1,7 @@
 .hero-footer-text {
   overflow: hidden;
   position: absolute;
-  bottom: 30px;
+  bottom: 50px;
   left: 0;
   width: 100%;
   text-align: center;
@@ -1319,6 +1319,9 @@
 
 /* Mobile & Tablet Overrides */
 @media (max-width: 768px) {
+  .hero-footer-text {
+    margin-bottom: 75px;
+  }
   .campus-bg-section {
     padding: 12vh 5vw;
     background-attachment: scroll; /* Fixes iOS background bug */
