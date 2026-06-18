@@ -1,3 +1,107 @@
+/* --- SIFI DROPDOWN NAVIGATION --- */
+
+/* 1. Container Setup */
+.dropdown {
+  position: relative;
+  /* Since you have style="flex: 1" inline, this ensures the content centers */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 2. The Dropdown Box */
+.dropdown-content {
+  display: none; /* Hidden by default */
+  position: absolute;
+  top: 100%; /* Placed directly below the nav link */
+  left: 50%;
+  transform: translateX(-50%); /* Perfectly centers it under the link */
+
+  /* Theming */
+  background-color: #000000; /* Deep black to match the sections */
+  min-width: 240px;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.9); /* Heavy cinematic shadow */
+  z-index: 4000; /* Crucial: Keeps it above the hero video and grain layer */
+  border-top: 3px solid #d10000; /* Your signature SIFI red as an accent line */
+}
+
+/* 3. Dropdown Links */
+.dropdown-content a {
+  color: #ffffff;
+  padding: 15px 20px;
+  text-decoration: none;
+  display: block;
+  text-align: center;
+  font-family: sans-serif; /* Matches your body text */
+  font-size: 0.9rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase; /* Keeps the uniform cinematic feel */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Subtle divider */
+  transition: all 0.3s ease-in-out;
+}
+
+/* Remove border from the last link so it looks clean */
+.dropdown-content a:last-child {
+  border-bottom: none;
+}
+
+/* 4. Hover State for Dropdown Links */
+.dropdown-content a:hover {
+  background-color: #d10000; /* Turns SIFI red on hover */
+  color: #ffffff;
+  letter-spacing: 2px; /* Slight cinematic expansion effect */
+}
+
+/* 5. Show Dropdown on Hover + Animation */
+.dropdown:hover .dropdown-content {
+  display: block;
+  animation: dropFade 0.3s ease forwards;
+}
+
+/* 6. Smooth Entrance Animation */
+@keyframes dropFade {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -10px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+/* --- DROPDOWN ARROW ICON --- */
+
+/* 1. Adjust the link to align the text and arrow perfectly */
+.dropdown .nav-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px; /* Creates a nice gap between the word ADMISSIONS and the arrow */
+}
+
+/* 2. Create the downward arrow using pure CSS */
+.dropdown .nav-link::after {
+  content: "";
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 6px solid #ffffff; /* White arrow */
+  transition: transform 0.3s ease, border-top-color 0.3s ease; /* Smooth animation */
+  margin-top: 2px; /* Optical alignment */
+}
+
+/* 3. Flip the arrow and change its color when hovering over the menu */
+.dropdown:hover .nav-link::after {
+  transform: rotate(180deg); /* Flips the arrow upside down */
+  border-top-color: #d10000; /* Turns the arrow SIFI red on hover */
+}
+
+/* Optional: Turn the text itself red when hovering over the dropdown to match the arrow */
+.dropdown:hover .nav-link {
+  color: #d10000;
+}
 .hero-footer-text {
   overflow: hidden;
   position: absolute;
@@ -58,9 +162,9 @@
 
 .vision-statement {
   font-family: "Inter", sans-serif;
-  font-weight: 200;
-  text-transform: uppercase;
-  letter-spacing: 4px; /* Spread the letters out for a luxury look */
+  font-weight: 400;
+  /* text-transform: uppercase; */
+  /*  letter-spacing: 4px; Spread the letters out for a luxury look */
   font-size: 1.5rem;
 }
 .admission-text {
@@ -286,29 +390,7 @@
 
 /* SECTION 3 ADJUSTMENTS */
 .courses-section {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start; /* Aligns content to the top */
-  align-items: center;
-  position: relative;
-  width: 100%;
-  min-height: 150vh;
-  background-color: transparent;
-  /* STACKING: Top gradient layer masks the image layer below it */
-  background-image: url("../media/background/wall.png");
-
-  background-size: cover;
-  background-position: center top; /* Anchors the top of the image to the top of the section */
-  background-repeat: no-repeat;
-  /* filter: grayscale(0%) contrast(150%) brightness(100%); */
-  /* REMOVED: background-attachment: fixed; */
-  /* This ensures the image scrolls naturally with the content */
-
-  /* margin-top: -150px; */
-  border: none;
-  padding-top: 100px;
-  padding-bottom: 100px;
-  z-index: 2;
+  background-color: #000;
 }
 .vision-section::after {
   content: "";
@@ -327,27 +409,23 @@
   pointer-events: none;
   z-index: 1;
 }
-.courses-section::after {
+/* .courses-section::after {
   content: "";
   position: absolute;
-  /* Instead of inset: 0, we anchor it strictly to the bottom */
   bottom: 0;
   left: 0;
   width: 100%;
-  /* This ensures the vignette is always 30% of the screen height */
   height: 30vh;
-
-  /* Linear gradient starting from solid black at the very bottom */
   background: linear-gradient(
     to top,
     rgba(0, 0, 0, 1) 0%,
-    /* Pure black at the screen edge */ rgba(0, 0, 0, 0.8) 30%,
-    /* Deep shadow */ rgba(0, 0, 0, 0) 100% /* Fades out completely */
+     rgba(0, 0, 0, 0.8) 30%,
+     rgba(0, 0, 0, 0) 100% 
   );
 
   pointer-events: none;
-  z-index: 5; /* Increased to stay above the images */
-}
+  z-index: 5; 
+} */
 /* POSTER GRID – 3 x 2 layout */
 .posters-grid {
   display: grid;
@@ -379,13 +457,13 @@
 }
 
 /* HOVER EFFECT (matches your cinematic style) */
-.courses-section .posters-grid {
-  grid-template-columns: repeat(3, 1fr); /* 3 posters per row */
+/* .courses-section .posters-grid {
+  grid-template-columns: repeat(3, 1fr); 
 }
 .courses-section h2 {
   text-align: center;
-  width: 100%;
-}
+  width: 100%; */
+/* } */
 .section2-container {
   display: flex;
   flex-direction: column;
@@ -565,12 +643,12 @@
   }
 
   /* 3. Keep .courses-section generic, but don't let it override IDs */
-  .courses-section {
+  /* .courses-section {
     width: 100%;
     min-height: 100vh;
     padding: 0;
     overflow: hidden;
-  }
+  } */
   /* 2. Container for the slider */
 
   /* 3. The Slider Itself */
@@ -631,8 +709,8 @@
   .vision-statement {
     font-family: "Inter", sans-serif;
     font-weight: 200;
-    text-transform: uppercase;
-    letter-spacing: 4px; /* Spread the letters out for a luxury look */
+    /* text-transform: uppercase; */
+    /*letter-spacing: 4px;  Spread the letters out for a luxury look */
     font-size: 1rem;
   }
   .admission-text {
@@ -770,14 +848,14 @@
 
 .mentor-name {
   font-family: "Bebas Neue", sans-serif;
-  font-size: 6rem;
+  font-size: 4rem;
   margin: 0 0 5px 0;
   line-height: 1;
   letter-spacing: 3px;
 }
 
 .mentor-title {
-  font-size: 1.5rem;
+  font-size: 1rem;
   color: var(--primary, #a15127);
   font-weight: bold;
   margin-bottom: 20px;
@@ -786,10 +864,14 @@
 }
 
 .mentor-bio {
-  font-size: 1.1rem;
+  font-size: 1rem;
   line-height: 1.6;
   color: #ddd;
   max-width: 90%;
+  word-spacing: 2;
+  font-weight: 600;
+
+  font-family: "Inter", sans-serif;
 }
 
 /* Right Side - Portrait Image */
@@ -1382,5 +1464,288 @@
     justify-content: flex-start; /* Stops the text from growing upwards */
     padding-top: 18vh; /* Forces it to start safely below "THE LEADING CAST" */
     padding-bottom: 22vh; /* Keeps it safely above the thumbnail slider */
+  }
+}
+
+/* new courses section */
+
+.courses-container {
+  margin: 100px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 3rem;
+  min-height: 100vh;
+}
+
+.courses-heading {
+  position: relative;
+  width: 100%;
+  text-align: center;
+  margin-top: 50px;
+}
+
+h1 {
+  color: white;
+}
+
+.course-box {
+  height: 100%;
+}
+
+.course {
+  display: grid;
+  grid-template-rows: 250px 1fr 50px;
+  padding-bottom: 20px;
+  height: 100%;
+  background-color: black;
+  cursor: pointer;
+
+  /* WebKit Anti-Flicker & Transitions */
+  -webkit-transition: -webkit-transform 0.3s ease, -webkit-box-shadow 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+.course:hover {
+  -webkit-transform: scale(1.05) translateZ(0);
+  transform: scale(1.05) translateZ(0);
+  /* -webkit-box-shadow: 0px 10px 20px rgba(255, 255, 255, 0.15);
+  box-shadow: 0px 10px 20px rgba(255, 255, 255, 0.15); */
+  z-index: 10;
+  position: relative;
+}
+
+.course-name h2 {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+
+.course-desc {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-weight: 100;
+  margin-top: 24px;
+  margin-bottom: 24px;
+  color: #aaa;
+}
+
+.course .course-image {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.course .course-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.course .course-name {
+  color: white;
+}
+
+.course-detail-btn {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  height: 100%;
+  margin-top: 24px;
+  border: 1px solid white;
+  -webkit-transition: background-color 0.3s ease-in;
+  transition: background-color 0.3s ease-in;
+}
+
+.course-detail-btn a {
+  text-decoration: none;
+  color: white;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  -webkit-transition: color 0.3s ease-in;
+  transition: color 0.3s ease-in;
+
+  /* --- ADD THESE 5 LINES --- */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.course-detail-btn:hover {
+  background-color: white;
+}
+
+.course-detail-btn:hover a {
+  color: black;
+}
+.courses-heading-wrapper {
+  text-align: center;
+  width: 100%;
+  margin-bottom: 60px; /* The exact gap between the heading and the course cards */
+  z-index: 10;
+}
+.courses-section {
+  padding-top: 50px;
+}
+
+.course-section-heading {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 4rem !important; /* Cinematic size matching your other sections */
+  color: #ffffff;
+  letter-spacing: 4px;
+  margin: 0 !important; /* Resets any global margins */
+  text-transform: uppercase;
+  text-shadow: 0 10px 30px rgba(0, 0, 0, 0.8); /* Gives it a slight pop off the background */
+}
+
+@media (max-width: 768px) {
+  .courses-heading {
+    margin-top: 20px; /* Reduce top gap to save space */
+  }
+
+  .courses-container {
+    /* 1. Make the container fill the exact screen height minus the heading */
+    height: calc(100vh - 100px);
+    min-height: auto;
+    margin: 20px;
+    gap: 2rem;
+    padding-bottom: 100px;
+    grid-template-columns: none;
+    grid-auto-flow: column;
+    grid-auto-columns: 85%;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+  }
+
+  .courses-container::-webkit-scrollbar {
+    display: none; /* Chrome, Safari */
+  }
+
+  .course {
+    /* 2. Change image from 250px to 35% so the button always has room */
+    grid-template-rows: 35% 1fr 50px;
+  }
+
+  .course-box {
+    scroll-snap-align: center;
+  }
+
+  .course:hover {
+    -webkit-transform: none;
+    transform: none;
+    box-shadow: none;
+  }
+  .course {
+    grid-template-rows: 60% 1fr 1fr;
+  }
+  .course-detail-btn {
+    height: 50px;
+  }
+}
+
+.institute-section {
+  min-height: 100vh;
+  width: 100%;
+  background-color: #000; /* Consistent SIFI Black */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 50px 0;
+}
+
+.institute-info-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  max-width: 1400px;
+  gap: 8vw;
+}
+
+.institute-info-text-container {
+  flex: 1;
+  text-align: left;
+}
+
+.institute-info-text-title {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 3.5rem; /* Slightly smaller looks more elegant in Title Case */
+  line-height: 1.1;
+  letter-spacing: 1px; /* Tighter spacing for better readability */
+  text-transform: none; /* This removes the ALL CAPS */
+  margin-bottom: 25px;
+  text-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+  text-align: start;
+}
+
+.highlight {
+  color: #d10000;
+}
+
+.institute-info-text-desc {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-weight: 400; /* Slightly lighter for a modern, airy feel */
+  font-size: 1.1rem; /* Slightly larger for easier reading */
+  line-height: 1.8;
+  color: #cfcfcf;
+  margin-bottom: 2rem;
+  max-width: 650px; /* Slightly wider to let the story breathe */
+  letter-spacing: 0.3px;
+  text-align: justify; /* Keep left-aligned for better readability than justified */
+}
+
+.institute-info-vid-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.institute-info-vid-container video,
+.institute-info-vid-container iframe {
+  height: 80vh;
+  width: auto; /* Maintains aspect ratio */
+  aspect-ratio: 9 / 16; /* Forces the portrait/smartphone shape */
+  object-fit: cover;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+  transition: transform 0.4s ease;
+  background-color: #000;
+}
+
+.institute-info-vid-container video:hover,
+.institute-info-vid-container iframe:hover {
+  transform: translateY(-5px);
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .institute-info-container {
+    flex-direction: column;
+    text-align: center;
+  }
+  .institute-info-text-container {
+    text-align: center;
+    align-items: center;
+  }
+  .institute-info-vid-container video,
+  .institute-info-vid-container iframe {
+    height: auto;
+    width: 100%;
   }
 }

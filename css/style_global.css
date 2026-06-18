@@ -11,7 +11,7 @@
   margin: 0;
   padding: 0;
 }
-h2 {
+.section-title {
   font-family: "Bebas Neue", sans-serif;
   font-size: 5rem !important;
   margin-bottom: 40px;
@@ -292,6 +292,7 @@ header {
   margin-bottom: 20px;
   display: block;
 }
+
 .fullscreen-section {
   min-height: 100vh;
   width: 100%;
@@ -524,7 +525,7 @@ h3 {
 
   h1 {
     font-size: 12vw;
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
     letter-spacing: -2.5px;
     line-height: 1.2;
   }
@@ -690,8 +691,7 @@ h3 {
   .vision-statement {
     font-family: "Inter", sans-serif;
     font-weight: 200;
-    text-transform: uppercase;
-    letter-spacing: 4px; /* Spread the letters out for a luxury look */
+    /*letter-spacing: 4px;  Spread the letters out for a luxury look */
     font-size: 1rem;
   }
   .admission-text {

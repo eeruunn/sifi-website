@@ -5,9 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="css/style_global.css" rel="stylesheet" />
     <link href="css/style.css" rel="stylesheet" />
-
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@200;400;600&display=swap"
+      rel="stylesheet"
+    />
     <link
       href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@1,14..32,500&display=swap"
       rel="stylesheet"
     />
     <title>Satyajit Ray International Film Institute</title>
@@ -79,6 +90,53 @@
       fetchpriority="high"
     />
     <link rel="icon" type="image/png" href="media/logos/logo.png" />
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const container = document.querySelector(".courses-container");
+        let autoSlideInterval;
+
+        // Function to handle the auto-sliding logic
+        function startAutoSlide() {
+          // Only run on mobile screens
+          if (window.innerWidth > 768) return;
+
+          autoSlideInterval = setInterval(() => {
+            // Get the width of one card plus the gap
+            const card = container.querySelector(".course-box");
+            const gap = parseInt(window.getComputedStyle(container).gap) || 0;
+            const scrollAmount = card.offsetWidth + gap;
+
+            // Check if we have scrolled to the very end
+            const maxScroll = container.scrollWidth - container.clientWidth;
+
+            if (container.scrollLeft >= maxScroll - 10) {
+              // If at the end, smoothly rewind to the first card
+              container.scrollTo({ left: 0, behavior: "smooth" });
+            } else {
+              // Otherwise, slide to the next card
+              container.scrollBy({ left: scrollAmount, behavior: "smooth" });
+            }
+          }, 3000); // 3000ms = slides every 3 seconds
+        }
+
+        function stopAutoSlide() {
+          clearInterval(autoSlideInterval);
+        }
+
+        // 1. Start the slider
+        startAutoSlide();
+
+        // 2. Pause the slider if the user touches the screen so they can read!
+        container.addEventListener("touchstart", stopAutoSlide);
+        container.addEventListener("touchend", startAutoSlide);
+
+        // 3. Re-check if the user rotates their phone
+        window.addEventListener("resize", () => {
+          stopAutoSlide();
+          startAutoSlide();
+        });
+      });
+    </script>
   </head>
 
   <body>
@@ -97,7 +155,7 @@
           >
         </div>
         <div class="drawerlink-container">
-          <a href="#programs-mobile" class="drawer-link" onclick="closeDrawer()"
+          <a href="#programs" class="drawer-link" onclick="closeDrawer()"
             >PROGRAMS</a
           >
         </div>
@@ -183,7 +241,6 @@
           <a href="apply.html" class="apply-pulse-btn"> APPLY NOW </a>
         </p>
       </div>
-      <!-- END ANNOUNCEMENT BAR -->
       <header>
         <div class="nav-container">
           <div class="menu">
@@ -195,7 +252,7 @@
           </div>
 
           <a href="#admissions" class="nav-link">ADMISSIONS</a>
-          <a href="#programs-desktop" class="nav-link">PROGRAMS</a>
+          <a href="#programs" class="nav-link">PROGRAMS</a>
           <div class="logo-wrap" style="z-index: 2000">
             <a href="index.html" style="text-decoration: none">
               <div
@@ -293,8 +350,44 @@
           <h5>AFFILIATED TO KANNUR UNIVERSITY</h5>
         </div> -->
       </header>
+      <section class="institute-section">
+        <div class="institute-info-container">
+          <div class="institute-info-text-container">
+            <!-- <span class="eyebrow">The Legacy</span> -->
 
-      <section class="fullscreen-section vision-section" id="vision">
+            <h2 class="institute-info-text-title">
+              Learning Cinema Amidst the Natural Beauty of
+              <span class="highlight"> Wayanad</span>
+            </h2>
+
+            <p class="institute-info-text-desc">
+              Inspired by the timeless legacy of Satyajit Ray, the Satyajit Ray
+              International Film Institute (SIFI) is envisioned as a premier
+              destination for creative excellence in cinema and media education.
+              Located in the serene landscape of Mananthavady, in the culturally
+              rich district of Wayanad, Kerala, our institute offers a truly
+              inspiring environment for film education. Surrounded by lush
+              greenery and mist-covered hills, the region serves as a living
+              film set—ideal for visual storytelling and cinematic exploration.
+              The institute offers a unique blend of artistic inspiration,
+              technical training, and industry-oriented learning.
+            </p>
+          </div>
+
+          <div class="institute-info-vid-container">
+            <iframe
+              src="https://www.youtube.com/embed/m9iWqFnnPvo?autoplay=1&mute=1&loop=1&playlist=m9iWqFnnPvo&controls=0&showinfo=0&modestbranding=1&rel=0"
+              title="YouTube video player"
+              frameborder="0"
+              allow="autoplay; encrypted-media"
+              allowfullscreen
+            >
+            </iframe>
+          </div>
+        </div>
+      </section>
+
+      <!-- <section class="fullscreen-section vision-section" id="vision">
         <div class="parallax-bg-container">
           <div class="vision-bg-slideshow" id="vision-zoom-bg">
             <div
@@ -337,11 +430,135 @@
             films that breathe.
           </p>
         </div>
+      </section> -->
+      <!---==========================Courses section==============================-->
+      <!---==========================Courses section==============================-->
+      <!---==========================Courses section==============================-->
+      <section class="courses-section" id="programs">
+        <div class="courses-heading-wrapper">
+          <span
+            class="eyebrow"
+            style="display: block; text-align: center; width: 100%"
+            >Academic Path</span
+          >
+          <h2 class="course-section-heading">OUR COURSES</h2>
+        </div>
+        <div class="courses-container">
+          <div class="course-box" style="width: 100%">
+            <div class="course">
+              <div class="course-image">
+                <img src="media/course_images/cine_img.png" />
+              </div>
+              <div class="course-name">
+                <h2>BA Cinematography Honors</h2>
+                <h4 class="course-desc">
+                  Master the art of visual storytelling with advanced training
+                  in camera techniques, lighting design, and professional film
+                  production.
+                </h4>
+              </div>
+              <div class="course-detail-btn">
+                <a href="courses/ba_cinematography.html">Explore Course</a>
+              </div>
+            </div>
+          </div>
+          <div class="course-box" style="width: 100%">
+            <div class="course">
+              <div class="course-image">
+                <img src="media/course_images/editing_img.png" />
+              </div>
+              <div class="course-name">
+                <h2>BA Film Editing and DI(Colouring)</h2>
+                <h4 class="course-desc">
+                  Shape the emotional impact of cinema with advanced training in
+                  visual sequencing, digital color grading, and professional
+                  post-production.
+                </h4>
+              </div>
+              <div class="course-detail-btn">
+                <a href="courses/ba_film_editing.html">Explore Course</a>
+              </div>
+            </div>
+          </div>
+          <div class="course-box" style="width: 100%">
+            <div class="course">
+              <div class="course-image">
+                <img src="media/course_images/vfx_img.png" />
+              </div>
+              <div class="course-name">
+                <h2>BA VFX and 3D Animation</h2>
+                <h4 class="course-desc">
+                  Bring impossible realities to life with advanced training in
+                  3D animation, digital compositing, and professional CGI
+                  production.
+                </h4>
+              </div>
+              <div class="course-detail-btn">
+                <a href="courses/ba_vfx_&_animation.html">Explore Course</a>
+              </div>
+            </div>
+          </div>
+          <div class="course-box" style="width: 100%">
+            <div class="course">
+              <div class="course-image">
+                <img src="media/course_images/sound_img.png" />
+              </div>
+              <div class="course-name">
+                <h2>BA Sound Recording and Sound Design</h2>
+                <h4 class="course-desc">
+                  Master the art of audio engineering, foley creation, and
+                  surround sound mixing for major motion pictures.
+                </h4>
+              </div>
+              <div class="course-detail-btn">
+                <a href="courses/ba_sound_recording_&_sound_design.html"
+                  >Explore Course</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="course-box" style="width: 100%">
+            <div class="course">
+              <div class="course-image">
+                <img src="media/course_images/direct_img.png" />
+              </div>
+              <div class="course-name">
+                <h2>BA Film Direction and Script Writing</h2>
+                <h4 class="course-desc">
+                  Learn how to guide actors, manage production sets, and
+                  translate scripts into compelling visual narratives.
+                </h4>
+              </div>
+              <div class="course-detail-btn">
+                <a href="courses/ba_film_direction_&_script_writing.html"
+                  >Explore Course</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="course-box" style="width: 100%">
+            <div class="course">
+              <div class="course-image">
+                <img src="media/course_images/act_img.png" />
+              </div>
+              <div class="course-name">
+                <h2>BA Film Making and Acting</h2>
+                <h4 class="course-desc">
+                  Develop your unique voice while learning the foundational
+                  structures of writing feature films and television series.
+                </h4>
+              </div>
+              <div class="course-detail-btn">
+                <a href="courses/ba_film_making_&_acting.html"
+                  >Explore Course</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
-      <!---==========================Courses section==============================-->
-      <!---==========================Courses section==============================-->
-      <!---==========================Courses section==============================-->
-      <section
+
+      <!-- <section
         class="courses-section"
         id="programs-desktop"
         style="background-color: black"
@@ -473,10 +690,11 @@
             </div>
           </div>
         </div>
-      </section>
+      </section> -->
       <!--========================Team Section ============================-->
       <!--========================Team Section ============================-->
       <!--========================Team Section ============================-->
+
       <section class="mentors-section" id="mentors">
         <div
           style="
@@ -664,17 +882,22 @@
               <div class="mentor-text">
                 <h2 class="mentor-name">Rupesh Kumar</h2>
                 <h3 class="mentor-title">
-                  Assistant Professor (Film Editing & DI)
+                  Assistant Professor | Filmmaker | Film Scholar
                 </h3>
                 <p class="mentor-bio limit-bio">
-                  Rupesh Kumar treats the edit suite as the place where a film
-                  truly comes to life. With two decades of deep industry
-                  experience, Rupesh is a master of pacing, structural rhythm,
-                  and the precise art of Digital Intermediate (DI) color
-                  grading. Armed with a Master of Communication & Journalism
-                  from Kerala University and an MA in English from Kannur
-                  University, his editing philosophy combines deep narrative
-                  psychology with high-end post-production engineering.
+                  Rupesh Kumar is a filmmaker, film scholar, and cinema educator
+                  with over two decades of experience in film education,
+                  filmmaking, and visual storytelling. He has taught Film
+                  Studies, Cinema & Television, and Visual Communication at
+                  institutions in India and abroad, and is a frequent guest
+                  lecturer on cinema and film aesthetics. He has directed seven
+                  documentaries and two short films, with screenings and
+                  recognition at film festivals, universities, and academic
+                  forums. His industry experience includes work as an Assistant
+                  Director, Creative Director, Script Consultant, and Actor in
+                  the Malayalam film industry. A respected film critic and
+                  author of Cinemascope, he writes extensively on cinema, world
+                  cinema, film aesthetics, and visual culture.
                 </p>
                 <a href="#" class="see-more-btn">see more</a>
               </div>
@@ -687,17 +910,21 @@
             <div class="mentor-content">
               <div class="mentor-text">
                 <h2 class="mentor-name">Kesiya Jacob</h2>
-                <h3 class="mentor-title">
-                  Assistant Professor (VFX & 3D Animation)
-                </h3>
+                <h3 class="mentor-title">Assistant Professor</h3>
                 <p class="mentor-bio limit-bio">
-                  Representing the new vanguard of digital media and spatial
-                  design, Kesiya Jacob infuses the animation wing with modern
-                  energy and deep platform knowledge. Holding a Master’s degree
-                  in Communication & Journalism, Kesiya leverages her 5 years of
-                  focused specialization to break down complex compositing,
-                  world-building, and digital design workflows into intuitive,
-                  industry-ready techniques for her students.
+                  Kesiya Jacob is a media professional, educator, and creative
+                  practitioner with academic qualifications in Journalism and
+                  Mass Communication. She began her career as an Assistant
+                  Professor in Journalism and Mass Communication, teaching
+                  media, communication, and cinema-related subjects while
+                  mentoring students in creative and practical media production.
+                  Kesiya has guided students in the making of short films and
+                  documentaries and coordinated Film and Theatre Clubs,
+                  organizing screenings, workshops, and film-related events. Her
+                  expertise bridges media production, cinema studies, and
+                  creative education, fostering critical thinking, storytelling
+                  skills, and artistic expression among aspiring media
+                  professionals and filmmakers.
                 </p>
                 <a href="#" class="see-more-btn">see more</a>
               </div>
@@ -782,13 +1009,20 @@
                 <h2 class="mentor-name">Abina Mathew</h2>
                 <h3 class="mentor-title">Assistant Professor</h3>
                 <p class="mentor-bio limit-bio">
-                  Abina Mathew guides young creatives through the intricate
-                  processes of creative development and pre-production strategy.
-                  Combining an academic foundation with a keen understanding of
-                  modern media landscapes, Abina focuses on teaching students
-                  structural narrative design, project curation, and the
-                  critical processes required to take an idea from a blank page
-                  to a set-ready blueprint.
+                  Abina Mathew is a film educator and media scholar with
+                  academic backgrounds in Journalism and Mass Communication and
+                  English Language and Literature. Her academic and professional
+                  interests focus on cinema, film studies, and visual
+                  storytelling. Her undergraduate and postgraduate research
+                  explored film-related themes, including film theory,
+                  criticism, representation, and visual culture. She also gained
+                  industry experience as a journalist with Mathrubhumi, covering
+                  films, filmmakers, film festivals, and writing reviews,
+                  interviews, feature stories, and analytical articles on
+                  cinema. As an Assistant Professor, she combines academic
+                  inquiry with industry perspectives, encouraging students to
+                  explore cinema as a medium of storytelling, artistic
+                  expression, and social engagement.
                 </p>
                 <a href="#" class="see-more-btn">see more</a>
               </div>
@@ -803,13 +1037,17 @@
                 <h2 class="mentor-name">George Thomas</h2>
                 <h3 class="mentor-title">Assistant Professor</h3>
                 <p class="mentor-bio limit-bio">
-                  George Thomas guides aspiring professionals through the
-                  intricate relationships between critical thought and creative
-                  expression. Balancing two decades of pedagogical mastery with
-                  a keen eye for structural clarity, George focuses on teaching
-                  students foundational communication, analytical design, and
-                  the essential critical processes required to elevate an
-                  initial concept into a thoroughly polished, professional work.
+                  George Thomas holds an M.A. in English from Loyola College,
+                  Chennai, and is UGC-NET qualified. He served in higher
+                  education for over 26 years and retired as an Associate
+                  Professor, teaching Functional English with specializations in
+                  Translation Studies and Film Studies. His expertise in
+                  language, translation, and cinema enables him to guide
+                  students in areas such as film communication, dubbing,
+                  subtitling, and cross-cultural interpretation. As a faculty
+                  member for Ability Enhancement Courses, he focuses on
+                  strengthening students’ communication skills for academic and
+                  professional success in film and media.
                 </p>
                 <a href="#" class="see-more-btn">see more</a>
               </div>
