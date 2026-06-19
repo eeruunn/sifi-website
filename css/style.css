@@ -1684,13 +1684,13 @@ h1 {
 
 .institute-info-text-title {
   font-family: "Bebas Neue", sans-serif;
-  font-size: 3.5rem; /* Slightly smaller looks more elegant in Title Case */
+  font-size: 5rem; /* Slightly smaller looks more elegant in Title Case */
   line-height: 1.1;
   letter-spacing: 1px; /* Tighter spacing for better readability */
   text-transform: none; /* This removes the ALL CAPS */
   margin-bottom: 25px;
   text-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
-  text-align: start;
+  text-align: center;
 }
 
 .highlight {
@@ -1698,15 +1698,15 @@ h1 {
 }
 
 .institute-info-text-desc {
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-  font-weight: 400; /* Slightly lighter for a modern, airy feel */
-  font-size: 1.1rem; /* Slightly larger for easier reading */
+  font-family: monospace;
+  font-weight: 200; /* Slightly lighter for a modern, airy feel */
+  font-size: 1rem; /* Slightly larger for easier reading */
   line-height: 1.8;
-  color: #cfcfcf;
+  color: #fff;
   margin-bottom: 2rem;
   max-width: 650px; /* Slightly wider to let the story breathe */
   letter-spacing: 0.3px;
-  text-align: justify; /* Keep left-aligned for better readability than justified */
+  text-align: center; /* Keep left-aligned for better readability than justified */
 }
 
 .institute-info-vid-container {
@@ -1717,17 +1717,23 @@ h1 {
 
 .institute-info-vid-container video,
 .institute-info-vid-container iframe {
-  height: 80vh;
+  height: 90vh;
   width: auto; /* Maintains aspect ratio */
   aspect-ratio: 9 / 16; /* Forces the portrait/smartphone shape */
   object-fit: cover;
-  border-radius: 10px;
+  border-radius: 2px;
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
   transition: transform 0.4s ease;
   background-color: #000;
 }
 
+.institute-info-text-motto {
+  font-size: 1.75rem;
+  text-align: center;
+  margin-bottom: 50px;
+  font-family: "Bebas Neue", sans-serif;
+}
 .institute-info-vid-container video:hover,
 .institute-info-vid-container iframe:hover {
   transform: translateY(-5px);
@@ -1745,7 +1751,10 @@ h1 {
   }
   .institute-info-vid-container video,
   .institute-info-vid-container iframe {
-    height: auto;
+    height: 75vh;
     width: 100%;
+  }
+  .institute-info-text-title {
+    font-size: 3rem;
   }
 }
