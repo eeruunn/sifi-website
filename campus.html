@@ -17,6 +17,43 @@
   </head>
 
   <body>
+    <style>
+      /* This creates the continuous growing and shrinking animation */
+      @keyframes pulse-btn {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.1);
+          box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      /* Moving the button styles into a class to attach the animation */
+      .apply-pulse-btn {
+        background-color: white;
+        color: #d10000;
+        text-decoration: none;
+        padding: 4px 16px;
+        margin-left: 15px;
+        border-radius: 2px;
+        font-size: 1.2rem;
+        display: inline-block; /* Required for the scale animation to work */
+        animation: pulse-btn 1.5s infinite ease-in-out; /* 1.5 second loop, forever */
+        transition: 0.3s;
+      }
+
+      /* Adds a slight hover effect when they actually put their mouse on it */
+      .apply-pulse-btn:hover {
+        background-color: #f0f0f0;
+        transform: scale(1.15);
+        animation-play-state: paused; /* Optional: pauses the pulsing while they hover */
+      }
+    </style>
+
     <div
       style="
         background-color: #d10000;
@@ -64,7 +101,7 @@
         </div>
         <div class="drawerlink-container">
           <a
-            href="index.html#programs-desktop"
+            href="index.html#programs"
             class="drawer-link"
             onclick="closeDrawer()"
             >PROGRAMS</a
@@ -97,9 +134,9 @@
           <img src="media/icons/menu.png" id="menubtn" onclick="openDrawer()" />
         </div>
         <a href="index.html#admissions" class="nav-link">ADMISSIONS</a>
-        <a href="index.html#programs-desktop" class="nav-link">PROGRAMS</a>
+        <a href="index.html#programs" class="nav-link">PROGRAMS</a>
         <div class="logo-wrap">
-          <a href="index.html" style="text-decoration: none">
+          <a href="/" style="text-decoration: none">
             <div class="logo-icon"><img src="media/logos/logo.png" /></div>
           </a>
         </div>
@@ -116,7 +153,7 @@
         <div class="campus-hero-overlay"></div>
         <div class="campus-hero-content">
           <span class="eyebrow" style="text-align: center; width: 100%"
-            >Welcome to Wayanad</span
+            >Welcome to SIFI</span
           >
           <h1 class="campus-title">THE LIVING STUDIO</h1>
           <p class="campus-subtitle">
@@ -129,58 +166,191 @@
 
       <section class="gallery-section">
         <div class="gallery-grid">
-          <div class="gallery-item item-wide">
-            <img src="media/campus/campus_main.jpeg" alt="Main Campus View" />
-            <div class="item-overlay">
-              <h4>MAIN CAMPUS</h4>
-            </div>
+          <div class="gallery-item item-tall">
+            <img
+              src="media/gallery_images/IMG_1115.webp"
+              alt="Gallery Image 1"
+            />
+          </div>
+
+          <div class="gallery-item">
+            <img
+              src="media/gallery_images/IMG_1125.webp"
+              alt="Gallery Image 2"
+            />
+          </div>
+
+          <div class="gallery-item">
+            <img
+              src="media/gallery_images/IMG_1130.webp"
+              alt="Gallery Image 3"
+            />
           </div>
 
           <div class="gallery-item item-tall">
-            <img src="media/campus/studio.jpg" alt="Edit Suites" />
-            <div class="item-overlay">
-              <h4>EDIT SUITES</h4>
-            </div>
+            <img
+              src="media/gallery_images/IMG_1132.webp"
+              alt="Gallery Image 4"
+            />
           </div>
 
           <div class="gallery-item">
-            <img src="media/campus/library.jpg" alt="Library" />
-            <div class="item-overlay">
-              <h4>LIBRARY</h4>
-            </div>
+            <img
+              src="media/gallery_images/IMG_1140.webp"
+              alt="Gallery Image 5"
+            />
           </div>
 
           <div class="gallery-item">
-            <video autoplay muted loop playsinline>
-              <source src="media/campus/drone_shot.mp4" type="video/mp4" />
-            </video>
-            <div class="item-overlay">
-              <h4>AERIAL VIEW</h4>
-            </div>
+            <img
+              src="media/gallery_images/IMG_1144.webp"
+              alt="Gallery Image 6"
+            />
           </div>
 
           <div class="gallery-item">
-            <img src="media/campus/hostel.jpg" alt="Hostels" />
-            <div class="item-overlay">
-              <h4>RESIDENCES</h4>
-            </div>
+            <img
+              src="media/gallery_images/IMG_1147.webp"
+              alt="Gallery Image 7"
+            />
           </div>
 
-          <div class="gallery-item item-wide">
-            <img src="media/campus/theatre.jpg" alt="Screening Theatre" />
-            <div class="item-overlay">
-              <h4>SCREENING THEATRE</h4>
-            </div>
+          <div class="gallery-item item-tall">
+            <img
+              src="media/gallery_images/IMG_1148.webp"
+              alt="Gallery Image 8"
+            />
+          </div>
+
+          <div class="gallery-item">
+            <img
+              src="media/gallery_images/IMG_1154.webp"
+              alt="Gallery Image 9"
+            />
+          </div>
+
+          <div class="gallery-item">
+            <img
+              src="media/gallery_images/IMG_1156.webp"
+              alt="Gallery Image 10"
+            />
+          </div>
+
+          <div class="gallery-item">
+            <img
+              src="media/gallery_images/IMG_1161.webp"
+              alt="Gallery Image 11"
+            />
+          </div>
+
+          <div class="gallery-item item-tall">
+            <img
+              src="media/gallery_images/IMG_1162.webp"
+              alt="Gallery Image 12"
+            />
+          </div>
+
+          <div class="gallery-item">
+            <img
+              src="media/gallery_images/IMG_1163.webp"
+              alt="Gallery Image 13"
+            />
+          </div>
+
+          <div class="gallery-item">
+            <img
+              src="media/gallery_images/IMG_1165.webp"
+              alt="Gallery Image 14"
+            />
+          </div>
+
+          <div class="gallery-item">
+            <img
+              src="media/gallery_images/IMG_1173.webp"
+              alt="Gallery Image 15"
+            />
+          </div>
+
+          <div class="gallery-item item-tall">
+            <img
+              src="media/gallery_images/IMG_1174.webp"
+              alt="Gallery Image 16"
+            />
+          </div>
+
+          <div class="gallery-item">
+            <img
+              src="media/gallery_images/IMG_1175.webp"
+              alt="Gallery Image 17"
+            />
+          </div>
+
+          <div class="gallery-item">
+            <img
+              src="media/gallery_images/IMG_1176.webp"
+              alt="Gallery Image 18"
+            />
+          </div>
+
+          <div class="gallery-item">
+            <img
+              src="media/gallery_images/IMG_1178.webp"
+              alt="Gallery Image 19"
+            />
+          </div>
+
+          <div class="gallery-item item-tall">
+            <img
+              src="media/gallery_images/IMG_1179.webp"
+              alt="Gallery Image 20"
+            />
+          </div>
+
+          <div class="gallery-item">
+            <img
+              src="media/gallery_images/IMG_1182.webp"
+              alt="Gallery Image 21"
+            />
           </div>
         </div>
       </section>
 
-      <footer class="footer-branding" style="height: 30vh">
-        <div class="branding-container">
-          <img src="media/logos/logo2.png" alt="Logo" class="footer-logo" />
+      <section class="contact-section" id="contact">
+        <div class="contact-layout">
+          <div class="contact-left">
+            <span class="eyebrow" style="margin-bottom: 20px"
+              >Get in Touch</span
+            >
+            <h2 style="font-family: 'Bebas Neue'; font-size: 3rem; margin: 0">
+              CONNECT
+            </h2>
+            <div class="details" style="margin-top: 30px">
+              <p>sifiwayanad@gmail.com</p>
+              <p>+91 8281520380 / +91 9447203755</p>
+              <p>Thonichal, P. O Nallurnadu</p>
+              <p>Mananthavady, Wayanad, 670 645</p>
+              <p>Kerala, India</p>
+            </div>
+          </div>
+
+          <div class="social-links">
+            <a href="https://www.instagram.com/sathyajithrayfilminstitute?"
+              ><img src="media/icons/instagram.png" alt="IG"
+            /></a>
+            <a href="https://www.facebook.com/share/1EW1DxGs17/"
+              ><img src="media/icons/facebook.png" alt="FB"
+            /></a>
+            <a href="#"><img src="media/icons/youtube.png" alt="YT" /></a>
+          </div>
         </div>
-        <p class="copyright-text">© 2026 SIFI. ALL RIGHTS RESERVED.</p>
-      </footer>
+
+        <footer class="footer-branding">
+          <div class="branding-container">
+            <img src="media/logos/logo2.png" alt="Logo" class="footer-logo" />
+          </div>
+          <p class="copyright-text">© 2026 SIFI. ALL RIGHTS RESERVED.</p>
+        </footer>
+      </section>
     </div>
 
     <script>
@@ -190,6 +360,74 @@
       function closeDrawer() {
         document.getElementById("drawer").style.width = "0vw";
       }
+    </script>
+    <div id="lightbox" class="lightbox">
+      <span class="close-btn" onclick="closeLightbox()">&times;</span>
+      <button class="nav-btn prev-btn" onclick="changeImage(-1)">
+        &#10094;
+      </button>
+      <img class="lightbox-img" id="lightbox-img" src="" alt="Expanded View" />
+      <button class="nav-btn next-btn" onclick="changeImage(1)">
+        &#10095;
+      </button>
+    </div>
+    <script>
+      function openDrawer() {
+        document.getElementById("drawer").style.width = "75vw";
+      }
+      function closeDrawer() {
+        document.getElementById("drawer").style.width = "0vw";
+      }
+
+      let currentImageIndex = 0;
+      const galleryImages = document.querySelectorAll(".gallery-item img");
+      const lightbox = document.getElementById("lightbox");
+      const lightboxImg = document.getElementById("lightbox-img");
+
+      // Open lightbox when an image is clicked
+      galleryImages.forEach((img, index) => {
+        img.parentElement.addEventListener("click", () => {
+          currentImageIndex = index;
+          updateLightboxImage();
+          lightbox.style.display = "flex";
+        });
+      });
+
+      // Close lightbox function
+      function closeLightbox() {
+        lightbox.style.display = "none";
+      }
+
+      // Next/Previous image function
+      function changeImage(direction) {
+        currentImageIndex += direction;
+
+        if (currentImageIndex >= galleryImages.length) {
+          currentImageIndex = 0;
+        } else if (currentImageIndex < 0) {
+          currentImageIndex = galleryImages.length - 1;
+        }
+
+        updateLightboxImage();
+      }
+
+      function updateLightboxImage() {
+        lightboxImg.src = galleryImages[currentImageIndex].src;
+      }
+
+      lightbox.addEventListener("click", (e) => {
+        if (e.target === lightbox) {
+          closeLightbox();
+        }
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (lightbox.style.display === "flex") {
+          if (e.key === "Escape") closeLightbox();
+          if (e.key === "ArrowRight") changeImage(1);
+          if (e.key === "ArrowLeft") changeImage(-1);
+        }
+      });
     </script>
   </body>
 </html>

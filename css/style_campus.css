@@ -1,8 +1,8 @@
 /* =========================================
-   CAMPUS PAGE SPECIFIC STYLES
+   GENERIC GALLERY PAGE STYLES
    ========================================= */
 
-/* Hero Section */
+/* --- Hero Section (Retained) --- */
 .campus-page-hero {
   position: relative;
   width: 100%;
@@ -10,7 +10,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: url("../media/campus/campus_main.jpeg");
+  /* Update this URL if you have a generic hero image */
+  background-image: url("../media/campus/campus_main.webp");
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -52,15 +53,14 @@
   line-height: 1.6;
 }
 
-/* Gallery Section */
+/* --- Gallery Section (Genericized) --- */
 .gallery-section {
-  background-color: var(--bg);
+  background-color: var(--bg, #050505);
   padding: 80px 5vw 120px 5vw;
 }
 
-/* 
-  CSS GRID: MASONRY LOOKBOOK STYLE 
-  This auto-fits items, but allows specific items to span across multiple rows/columns
+/* CSS GRID: MASONRY LOOKBOOK STYLE 
+  Auto-fits items, allows specific items to span across multiple rows/columns
 */
 .gallery-grid {
   display: grid;
@@ -91,7 +91,7 @@
   filter: grayscale(30%) brightness(0.8);
 }
 
-/* Modifier Classes to make the grid cinematic and irregular */
+/* Modifier Classes for irregular cinematic grid */
 .item-wide {
   grid-column: span 2;
 }
@@ -100,48 +100,14 @@
   grid-row: span 2;
 }
 
-/* Overlay that appears on hover */
-.item-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to top,
-    rgba(161, 81, 39, 0.8) 0%,
-    transparent 60%
-  );
-  display: flex;
-  align-items: flex-end;
-  padding: 20px;
-  opacity: 0;
-  transition: opacity 0.4s ease;
-}
-
-.item-overlay h4 {
-  font-family: "Bebas Neue", sans-serif;
-  font-size: 2rem;
-  color: #fff;
-  letter-spacing: 2px;
-  margin: 0;
-  transform: translateY(20px);
-  transition: transform 0.4s ease;
-}
-
-/* Hover Effects */
+/* Hover Effects - Pure Image Focus */
 .gallery-item:hover img,
 .gallery-item:hover video {
   transform: scale(1.08);
   filter: grayscale(0%) brightness(1.1);
 }
 
-.gallery-item:hover .item-overlay {
-  opacity: 1;
-}
-
-.gallery-item:hover .item-overlay h4 {
-  transform: translateY(0);
-}
-
-/* Mobile Responsiveness */
+/* --- Mobile Responsiveness --- */
 @media (max-width: 768px) {
   .campus-title {
     font-size: 4rem;
@@ -162,14 +128,94 @@
     grid-column: span 1;
     grid-row: span 1;
   }
+}
+/* =========================================
+   LIGHTBOX VIEWER STYLES
+   ========================================= */
 
-  /* Show titles by default on mobile since hover doesn't exist */
-  .item-overlay {
-    opacity: 1;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, transparent 50%);
+.lightbox {
+  display: none; /* Hidden by default */
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(5, 5, 5, 0.95);
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(5px);
+}
+
+.lightbox-img {
+  max-width: 90%;
+  max-height: 85vh;
+  object-fit: contain;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
+  animation: zoomIn 0.3s ease-out;
+}
+
+@keyframes zoomIn {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
   }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
 
-  .item-overlay h4 {
-    transform: translateY(0);
+/* Controls */
+.close-btn {
+  position: absolute;
+  top: 20px;
+  right: 40px;
+  color: #fff;
+  font-size: 40px;
+  font-family: sans-serif;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  z-index: 10000;
+}
+
+.close-btn:hover {
+  color: #a15127; /* Ties in a subtle brand accent color */
+}
+
+.nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 15px 20px;
+  font-size: 24px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  border-radius: 4px;
+}
+
+.nav-btn:hover {
+  background: rgba(161, 81, 39, 0.8);
+}
+
+.prev-btn {
+  left: 20px;
+}
+.next-btn {
+  right: 20px;
+}
+
+/* Hide arrows on mobile for a cleaner swipe-like feel (optional) */
+@media (max-width: 768px) {
+  .nav-btn {
+    padding: 10px 15px;
+    font-size: 18px;
+  }
+  .close-btn {
+    right: 20px;
+    top: 10px;
   }
 }
