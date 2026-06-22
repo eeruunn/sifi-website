@@ -1,6 +1,6 @@
 :root {
   --primary: #a15127; /* Neon Cyan */
-  --bg: #050505;
+  --bg: #000;
   --text: #ffffff;
   --heading_color_gradient: linear-gradient(to left, #5b1315, #f69840);
   --glass: rgba(255, 255, 255, 0.05);

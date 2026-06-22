@@ -801,7 +801,7 @@
 
 /* --- Mentor Section Styles (Split-Screen Portrait) --- */
 .mentors-section {
-  background-color: #050505;
+  background-color: #000;
   color: #fff;
   height: 100vh;
   width: 100vw;
@@ -900,11 +900,11 @@
   background: 
     /* Left-to-right fade */ linear-gradient(
       to right,
-      #050505 0%,
+      #000 0%,
       transparent 40%
     ),
     /* Bottom-to-top fade (hides the hard edge behind the slider) */
-      linear-gradient(to top, #050505 0%, transparent 20%);
+      linear-gradient(to top, #000 0%, transparent 20%);
   pointer-events: none;
 }
 
