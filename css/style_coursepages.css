@@ -420,9 +420,14 @@ header {
 @media (max-width: 900px) {
   .hero-content {
     flex-direction: column;
-    justify-content: center;
-    padding-top: 80px;
-    gap: 30px;
+    justify-content: flex-start;
+    align-items: center;
+
+    padding-top: 110px;
+    padding-left: 20px;
+    padding-right: 20px;
+
+    gap: 20px;
   }
 
   /* 1. KILL THE GRID ON MOBILE: Force simple vertical stacking */
@@ -460,17 +465,24 @@ header {
 
   .institute-name h1 {
     text-align: center;
-    margin-left: 0;
-    font-size: 3.5rem;
-    line-height: 1.1;
-    margin-bottom: 10px;
+    margin: 0;
+
+    font-size: clamp(2rem, 9vw, 3.2rem);
+
+    line-height: 1;
+    letter-spacing: 1px;
+
+    padding: 0 15px;
+
+    word-break: break-word;
   }
 
   .course-overview {
-    max-width: 90%;
+    width: 100%;
+    max-width: 420px;
     background: rgba(0, 0, 0, 0.6);
+    margin: 0 auto;
   }
-
   .course-overview-title {
     font-size: 1.5rem;
     margin-bottom: 15px;
@@ -496,4 +508,23 @@ header {
   min-height: fit-content !important;
   display: block !important; /* Reverts it to a standard content box */
   margin: auto; /* Ensures it stays perfectly centered */
+}
+@media (max-width: 380px) {
+  .hero-content {
+    padding-top: 95px;
+    gap: 15px;
+  }
+
+  .institute-name h1 {
+    font-size: 1.8rem;
+    line-height: 1.05;
+  }
+
+  .course-overview {
+    padding: 20px 16px !important;
+  }
+
+  .course-overview-title {
+    font-size: 1.35rem;
+  }
 }
