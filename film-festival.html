@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SIFI 2026 — Submit Your Film</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Anton&family=Manrope:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --yellow: #f5c518;
+        --ink: #17130f;
+        --maroon: #7a1b12;
+        --red: #d6402d;
+        --cream: #f5edda;
+        --blue: #22409a;
+        --green: #2e7d4f;
+        --radius: 18px;
+        --shadow: 6px 6px 0 var(--ink);
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        background: var(--cream);
+        color: var(--ink);
+        font-family: "Manrope", sans-serif;
+        -webkit-font-smoothing: antialiased;
+      }
+      h1,
+      h2,
+      h3,
+      .display {
+        font-family: "Anton", sans-serif;
+        font-weight: 400;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        line-height: 0.95;
+        margin: 0;
+      }
+      .mono {
+        font-family: "Space Mono", monospace;
+      }
+      a {
+        color: inherit;
+      }
+      img,
+      svg {
+        display: block;
+        max-width: 100%;
+      }
+
+      /* ---------- NAV ---------- */
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 18px 28px;
+        background: var(--ink);
+        color: var(--cream);
+        position: sticky;
+        top: 0;
+        z-index: 50;
+      }
+      .nav .word {
+        font-family: "Anton", sans-serif;
+        font-size: 22px;
+        letter-spacing: 1px;
+      }
+      .nav .word span {
+        color: var(--yellow);
+      }
+      .nav .deadline {
+        font-family: "Space Mono", monospace;
+        font-size: 12px;
+        background: var(--red);
+        color: var(--cream);
+        padding: 6px 12px;
+        border-radius: 100px;
+        white-space: nowrap;
+      }
+
+      /* ---------- HERO ---------- */
+      .hero {
+        background: var(--yellow);
+        padding: 56px 24px 40px;
+        position: relative;
+        overflow: hidden;
+        border-bottom: 6px solid var(--ink);
+      }
+      .hero-inner {
+        max-width: 960px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1.3fr 0.9fr;
+        gap: 24px;
+        align-items: center;
+      }
+      .eyebrow {
+        display: inline-block;
+        background: var(--ink);
+        color: var(--yellow);
+        font-family: "Space Mono", monospace;
+        font-size: 12px;
+        padding: 6px 14px;
+        border-radius: 100px;
+        margin-bottom: 18px;
+      }
+      .hero h1 {
+        font-size: clamp(38px, 6vw, 64px);
+      }
+      .hero p.sub {
+        font-size: 16px;
+        margin-top: 16px;
+        max-width: 46ch;
+        font-weight: 600;
+      }
+      .hero .venue {
+        margin-top: 6px;
+        font-size: 14px;
+        opacity: 0.85;
+        font-weight: 500;
+      }
+      .hero-cta {
+        margin-top: 26px;
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+      .btn {
+        font-family: "Manrope", sans-serif;
+        font-weight: 800;
+        border: 3px solid var(--ink);
+        border-radius: 100px;
+        padding: 14px 26px;
+        cursor: pointer;
+        font-size: 15px;
+        background: var(--ink);
+        color: var(--cream);
+        box-shadow: var(--shadow);
+        transition: transform 0.12s ease;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .btn:hover {
+        transform: translate(-2px, -2px);
+      }
+      .btn:active {
+        transform: translate(0, 0);
+        box-shadow: 2px 2px 0 var(--ink);
+      }
+      .btn.secondary {
+        background: transparent;
+        color: var(--ink);
+        box-shadow: none;
+      }
+      .mascot {
+        justify-self: center;
+        animation: bob 3.2s ease-in-out infinite;
+      }
+      .mascot .leg-l {
+        transform-origin: 150px 150px;
+        animation: walk 0.9s ease-in-out infinite;
+      }
+      .mascot .leg-r {
+        transform-origin: 110px 150px;
+        animation: walk 0.9s ease-in-out infinite reverse;
+      }
+      @keyframes walk {
+        0%,
+        100% {
+          transform: rotate(-12deg);
+        }
+        50% {
+          transform: rotate(12deg);
+        }
+      }
+      @keyframes bob {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-6px);
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .mascot,
+        .mascot * {
+          animation: none !important;
+        }
+      }
+
+      /* ---------- QUICK FACTS STRIP ---------- */
+      .strip {
+        background: var(--maroon);
+        color: var(--cream);
+        padding: 16px 24px;
+        display: flex;
+        gap: 28px;
+        flex-wrap: wrap;
+        justify-content: center;
+        font-family: "Space Mono", monospace;
+        font-size: 13px;
+        border-bottom: 6px solid var(--ink);
+      }
+      .strip b {
+        color: var(--yellow);
+      }
+
+      /* ---------- MAIN LAYOUT ---------- */
+      main {
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 48px 20px 100px;
+      }
+      .section {
+        margin-bottom: 44px;
+      }
+      .section-head {
+        display: flex;
+        align-items: baseline;
+        gap: 10px;
+        margin-bottom: 18px;
+      }
+      .section-head .num {
+        font-family: "Space Mono", monospace;
+        font-size: 14px;
+        background: var(--ink);
+        color: var(--yellow);
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+      .section-head h2 {
+        font-size: 24px;
+      }
+      .section-head p {
+        margin: 2px 0 0;
+        font-size: 13px;
+        font-weight: 600;
+        opacity: 0.65;
+      }
+
+      .card {
+        background: #fff;
+        border: 3px solid var(--ink);
+        border-radius: var(--radius);
+        padding: 24px;
+        box-shadow: var(--shadow);
+      }
+
+      label {
+        display: block;
+        font-weight: 800;
+        font-size: 13px;
+        text-transform: uppercase;
+        letter-spacing: 0.4px;
+        margin-bottom: 8px;
+      }
+      .hint {
+        font-size: 12px;
+        font-weight: 500;
+        opacity: 0.6;
+        margin-top: 6px;
+      }
+      input[type="text"],
+      input[type="email"],
+      input[type="tel"],
+      input[type="url"],
+      textarea {
+        width: 100%;
+        border: 2px solid var(--ink);
+        border-radius: 10px;
+        padding: 12px 14px;
+        font-family: "Manrope", sans-serif;
+        font-size: 15px;
+        background: var(--cream);
+        color: var(--ink);
+      }
+      textarea {
+        resize: vertical;
+        min-height: 80px;
+      }
+      input:focus,
+      textarea:focus {
+        outline: 3px solid var(--blue);
+        outline-offset: 1px;
+      }
+      .field {
+        margin-bottom: 20px;
+      }
+      .field:last-child {
+        margin-bottom: 0;
+      }
+
+      /* category pills */
+      .cat-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+      @media (max-width: 520px) {
+        .cat-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      .cat {
+        position: relative;
+        border: 3px solid var(--ink);
+        border-radius: 14px;
+        padding: 14px 16px;
+        cursor: pointer;
+        background: var(--cream);
+        transition: transform 0.1s ease;
+      }
+      .cat:hover {
+        transform: translateY(-2px);
+      }
+      .cat input {
+        position: absolute;
+        opacity: 0;
+        inset: 0;
+        cursor: pointer;
+        margin: 0;
+        width: 100%;
+        height: 100%;
+      }
+      .cat .name {
+        font-weight: 800;
+        font-size: 15px;
+      }
+      .cat .meta {
+        font-size: 12px;
+        opacity: 0.65;
+        font-weight: 600;
+        margin-top: 2px;
+      }
+      .cat .fee {
+        font-family: "Space Mono", monospace;
+        font-weight: 700;
+        font-size: 14px;
+        margin-top: 8px;
+        display: inline-block;
+      }
+      .cat.checked {
+        background: var(--yellow);
+      }
+      .cat.checked .fee {
+        color: var(--maroon);
+      }
+      .cat.checked::after {
+        content: "✓";
+        position: absolute;
+        top: 10px;
+        right: 12px;
+        font-weight: 900;
+        font-size: 16px;
+      }
+
+      /* payment box */
+      .pay-box {
+        background: var(--blue);
+        color: var(--cream);
+        border-radius: 14px;
+        padding: 18px;
+        margin-bottom: 20px;
+      }
+      .pay-box .row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      .pay-box .amount {
+        font-family: "Anton", sans-serif;
+        font-size: 34px;
+      }
+      .qr {
+        width: 120px;
+        height: 120px;
+        border: 2px dashed rgba(245, 237, 218, 0.6);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Space Mono", monospace;
+        font-size: 11px;
+        text-align: center;
+        padding: 8px;
+        flex-shrink: 0;
+      }
+      .upi-id {
+        font-family: "Space Mono", monospace;
+        font-size: 15px;
+        font-weight: 700;
+        background: rgba(255, 255, 255, 0.12);
+        padding: 6px 10px;
+        border-radius: 8px;
+        display: inline-block;
+        margin-top: 6px;
+      }
+
+      /* upload */
+      .upload {
+        border: 3px dashed var(--ink);
+        border-radius: 14px;
+        padding: 22px;
+        text-align: center;
+        cursor: pointer;
+        background: var(--cream);
+        transition: background 0.15s ease;
+      }
+      .upload.drag {
+        background: var(--yellow);
+      }
+      .upload input {
+        display: none;
+      }
+      .upload .icon {
+        font-size: 26px;
+      }
+      .upload .txt {
+        font-weight: 700;
+        font-size: 14px;
+        margin-top: 6px;
+      }
+      .upload .txt2 {
+        font-size: 12px;
+        opacity: 0.6;
+        margin-top: 2px;
+      }
+      .preview {
+        margin-top: 12px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        background: #fff;
+        border: 2px solid var(--ink);
+        border-radius: 10px;
+        padding: 8px 10px;
+      }
+      .preview img {
+        width: 44px;
+        height: 44px;
+        object-fit: cover;
+        border-radius: 6px;
+        border: 1px solid var(--ink);
+      }
+      .preview .fname {
+        font-size: 13px;
+        font-weight: 700;
+        flex: 1;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      .preview button {
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-size: 16px;
+        color: var(--red);
+        font-weight: 800;
+      }
+
+      /* declaration */
+      .declare {
+        display: flex;
+        gap: 12px;
+        align-items: flex-start;
+        background: var(--cream);
+        border: 2px solid var(--ink);
+        border-radius: 12px;
+        padding: 16px;
+      }
+      .declare input {
+        width: 20px;
+        height: 20px;
+        flex-shrink: 0;
+        margin-top: 2px;
+        accent-color: var(--red);
+      }
+      .declare label {
+        font-weight: 600;
+        text-transform: none;
+        letter-spacing: 0;
+        font-size: 14px;
+        margin: 0;
+      }
+
+      .submit-wrap {
+        text-align: center;
+        margin-top: 36px;
+      }
+      .submit-wrap .btn {
+        width: 100%;
+        justify-content: center;
+        font-size: 17px;
+        padding: 18px;
+        background: var(--red);
+      }
+      .error-msg {
+        color: var(--red);
+        font-size: 13px;
+        font-weight: 700;
+        margin-top: 14px;
+        text-align: center;
+        display: none;
+      }
+
+      footer {
+        background: var(--ink);
+        color: var(--cream);
+        text-align: center;
+        padding: 28px 20px;
+        font-size: 13px;
+      }
+      footer a {
+        text-decoration: underline;
+      }
+
+      /* ---------- SUCCESS ---------- */
+      .success {
+        display: none;
+        max-width: 520px;
+        margin: 70px auto;
+        padding: 0 20px;
+        text-align: center;
+      }
+      .success .card {
+        padding: 40px 28px;
+      }
+      .success .id {
+        font-family: "Space Mono", monospace;
+        font-size: 22px;
+        font-weight: 700;
+        background: var(--yellow);
+        border: 2px solid var(--ink);
+        border-radius: 10px;
+        padding: 12px;
+        margin: 18px 0;
+      }
+      .success h2 {
+        font-size: 30px;
+      }
+      .confetti {
+        font-size: 28px;
+        letter-spacing: 8px;
+        margin: 14px 0;
+      }
+
+      /* ---------- ADMIN ---------- */
+      .admin-wrap {
+        max-width: 900px;
+        margin: 40px auto;
+        padding: 0 20px;
+      }
+      .sub-row {
+        background: #fff;
+        border: 2px solid var(--ink);
+        border-radius: 12px;
+        padding: 14px 16px;
+        margin-bottom: 14px;
+        display: flex;
+        gap: 16px;
+        align-items: flex-start;
+        flex-wrap: wrap;
+      }
+      .sub-row img {
+        width: 90px;
+        height: 90px;
+        object-fit: cover;
+        border-radius: 8px;
+        border: 2px solid var(--ink);
+      }
+      .sub-row .meta {
+        flex: 1;
+        min-width: 220px;
+        font-size: 13px;
+      }
+      .sub-row .meta b {
+        font-size: 15px;
+      }
+      .tag {
+        display: inline-block;
+        background: var(--blue);
+        color: #fff;
+        font-size: 11px;
+        padding: 3px 8px;
+        border-radius: 100px;
+        font-weight: 700;
+        margin-right: 6px;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="nav">
+      <div class="word">SIFI <span>2026</span></div>
+      <div class="deadline">DEADLINE · 12 SEP 2026</div>
+    </nav>
+
+    <header class="hero">
+      <div class="hero-inner">
+        <div>
+          <span class="eyebrow">CALL FOR ENTRIES</span>
+          <h1>Short Film,<br />Documentary<br />&amp; Reels Festival</h1>
+          <p class="sub">
+            A festival for everyone. A platform for new voices. Submit your film
+            and join us on screen.
+          </p>
+          <p class="venue">
+            25–27 September 2026 · Satyajit Ray International Film Institute,
+            Mananthavady, Wayanad
+          </p>
+          <div class="hero-cta">
+            <a href="#form" class="btn">Submit your film ↓</a>
+          </div>
+        </div>
+        <svg class="mascot" viewBox="0 0 220 220" width="220" height="220">
+          <circle cx="60" cy="40" r="4" fill="#17130F" />
+          <circle cx="75" cy="28" r="3" fill="#17130F" />
+          <circle cx="48" cy="24" r="2.4" fill="#17130F" />
+          <g class="leg-l">
+            <rect
+              x="145"
+              y="150"
+              width="10"
+              height="46"
+              rx="5"
+              fill="#17130F"
+            />
+            <ellipse cx="150" cy="200" rx="10" ry="5" fill="#17130F" />
+          </g>
+          <g class="leg-r">
+            <rect
+              x="105"
+              y="150"
+              width="10"
+              height="46"
+              rx="5"
+              fill="#17130F"
+            />
+            <ellipse cx="110" cy="200" rx="10" ry="5" fill="#17130F" />
+          </g>
+          <rect x="60" y="70" width="130" height="90" rx="16" fill="#17130F" />
+          <rect x="90" y="50" width="34" height="24" rx="5" fill="#17130F" />
+          <circle cx="150" cy="112" r="36" fill="#17130F" />
+          <circle cx="150" cy="112" r="24" fill="#F5EDDA" />
+          <circle cx="150" cy="112" r="11" fill="#17130F" />
+          <circle cx="90" cy="95" r="9" fill="#F5EDDA" />
+          <circle cx="90" cy="95" r="4" fill="#17130F" />
+        </svg>
+      </div>
+    </header>
+
+    <div class="strip">
+      <span><b>Short Fiction</b> ₹1,000</span>
+      <span><b>Documentary</b> ₹500</span>
+      <span><b>Scripted Reel</b> ₹500</span>
+      <span><b>Music Video</b> ₹500</span>
+      <span><b>Best Short Film Prize</b> ₹1,00,000</span>
+    </div>
+
+    <main id="form">
+      <form id="entryForm" novalidate>
+        <div class="section">
+          <div class="section-head">
+            <span class="num">1</span>
+            <div>
+              <h2>Your film</h2>
+              <p>Pick a category — the entry fee updates automatically.</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="field">
+              <label>Category *</label>
+              <div class="cat-grid" id="catGrid">
+                <label class="cat" data-fee="1000"
+                  ><input
+                    type="radio"
+                    name="category"
+                    value="Short Fiction Film"
+                    required
+                  />
+                  <div class="name">Short Fiction Film</div>
+                  <div class="meta">Below 30 minutes</div>
+                  <span class="fee">₹1,000</span></label
+                >
+                <label class="cat" data-fee="500"
+                  ><input
+                    type="radio"
+                    name="category"
+                    value="Documentary Film"
+                  />
+                  <div class="name">Documentary Film</div>
+                  <div class="meta">Below 60 minutes</div>
+                  <span class="fee">₹500</span></label
+                >
+                <label class="cat" data-fee="500"
+                  ><input
+                    type="radio"
+                    name="category"
+                    value="Scripted Fiction Reel"
+                  />
+                  <div class="name">Scripted Fiction Reel</div>
+                  <div class="meta">Max 1 min 30 sec</div>
+                  <span class="fee">₹500</span></label
+                >
+                <label class="cat" data-fee="500"
+                  ><input type="radio" name="category" value="Music Video" />
+                  <div class="name">Music Video</div>
+                  <div class="meta">Any language or style</div>
+                  <span class="fee">₹500</span></label
+                >
+              </div>
+            </div>
+            <div class="field">
+              <label for="filmTitle">Film title *</label>
+              <input
+                type="text"
+                id="filmTitle"
+                required
+                placeholder="e.g. Kaalam"
+              />
+            </div>
+            <div class="field">
+              <label for="screenerLink">Screener link *</label>
+              <input
+                type="url"
+                id="screenerLink"
+                required
+                placeholder="https://drive.google.com/..."
+              />
+              <p class="hint">
+                Google Drive, Vimeo, or similar — set access to "Anyone with the
+                link can view".
+              </p>
+            </div>
+            <div class="field">
+              <label for="logline"
+                >Logline
+                <span style="font-weight: 600; opacity: 0.5"
+                  >(optional)</span
+                ></label
+              >
+              <textarea
+                id="logline"
+                maxlength="300"
+                placeholder="One or two sentences about your film"
+              ></textarea>
+            </div>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-head">
+            <span class="num">2</span>
+            <div>
+              <h2>About you</h2>
+              <p>How the Selection Committee will reach you.</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="field">
+              <label for="fullName">Full name *</label>
+              <input
+                type="text"
+                id="fullName"
+                required
+                placeholder="Director / filmmaker name"
+              />
+            </div>
+            <div class="field">
+              <label for="email">Email *</label>
+              <input
+                type="email"
+                id="email"
+                required
+                placeholder="you@example.com"
+              />
+            </div>
+            <div class="field">
+              <label for="phone">WhatsApp number *</label>
+              <input
+                type="tel"
+                id="phone"
+                required
+                placeholder="+91 XXXXX XXXXX"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-head">
+            <span class="num">3</span>
+            <div>
+              <h2>Entry fee &amp; payment</h2>
+              <p>
+                Pay by UPI, then upload your payment screenshot — we verify
+                manually.
+              </p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="pay-box">
+              <div class="row">
+                <div>
+                  <div style="font-size: 12px; opacity: 0.8; font-weight: 700">
+                    AMOUNT DUE
+                  </div>
+                  <div class="amount" id="amountDue">Select a category</div>
+                  <div class="upi-id">
+                    sifi@upi
+                    <span style="opacity: 0.7; font-weight: 500"
+                      >(replace with real UPI ID)</span
+                    >
+                  </div>
+                </div>
+                <div class="qr">SIFI PAYMENT QR — add QR image here</div>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="utr">Transaction / UTR number *</label>
+              <input
+                type="text"
+                id="utr"
+                required
+                placeholder="Reference number from your payment app"
+              />
+            </div>
+            <div class="field">
+              <label>Payment screenshot *</label>
+              <div class="upload" id="uploadArea">
+                <input
+                  type="file"
+                  id="fileInput"
+                  accept="image/jpeg,image/png,image/jpg,application/pdf"
+                />
+                <div class="icon">📎</div>
+                <div class="txt">Click or drop your screenshot here</div>
+                <div class="txt2">JPG, PNG or PDF · up to 5MB</div>
+              </div>
+              <div class="preview" id="filePreview" style="display: none">
+                <img id="previewImg" src="" alt="" />
+                <div class="fname" id="previewName"></div>
+                <button type="button" id="removeFile" aria-label="Remove file">
+                  ✕
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-head">
+            <span class="num">4</span>
+            <div><h2>Confirm &amp; submit</h2></div>
+          </div>
+          <div class="declare">
+            <input type="checkbox" id="declare" required />
+            <label for="declare"
+              >I confirm I have the rights to submit this film, the details
+              above are accurate, entry fees are non-refundable, and submission
+              does not guarantee selection. I've read the
+              <span style="text-decoration: underline"
+                >Rules &amp; Regulations</span
+              >.</label
+            >
+          </div>
+        </div>
+
+        <div class="submit-wrap">
+          <button type="submit" class="btn">Submit film →</button>
+          <div class="error-msg" id="errorMsg">
+            Please fill all required fields, including the payment screenshot.
+          </div>
+        </div>
+      </form>
+    </main>
+
+    <div class="success" id="successScreen">
+      <div class="card">
+        <div class="confetti">✦ ✺ ✦</div>
+        <h2>You're in the frame.</h2>
+        <p style="margin-top: 10px; font-weight: 600">
+          Thank you for submitting to SIFI 2026. We'll verify your payment and
+          confirm by email or WhatsApp.
+        </p>
+        <div class="id" id="subId"></div>
+        <p class="hint">Save this ID for any future communication.</p>
+        <button class="btn secondary" id="another" style="margin-top: 16px">
+          Submit another film
+        </button>
+      </div>
+    </div>
+
+    <footer>
+      SIFI Short Film, Documentary &amp; Reels Festival 2026 · 25–27 Sept 2026 ·
+      Mananthavady, Wayanad, Kerala<br />
+      Enquiries: +91 7994730809 ·
+      <a href="https://www.sifi.me" target="_blank" rel="noopener"
+        >www.sifi.me</a
+      >
+    </footer>
+
+    <script>
+      // ---- category fee logic ----
+      const catGrid = document.getElementById("catGrid");
+      const amountDue = document.getElementById("amountDue");
+      catGrid.querySelectorAll(".cat").forEach((cat) => {
+        cat.addEventListener("click", () => {
+          catGrid
+            .querySelectorAll(".cat")
+            .forEach((c) => c.classList.remove("checked"));
+          cat.classList.add("checked");
+          amountDue.textContent =
+            "₹" + Number(cat.dataset.fee).toLocaleString("en-IN");
+        });
+      });
+
+      // ---- file upload ----
+      const uploadArea = document.getElementById("uploadArea");
+      const fileInput = document.getElementById("fileInput");
+      const filePreview = document.getElementById("filePreview");
+      const previewImg = document.getElementById("previewImg");
+      const previewName = document.getElementById("previewName");
+      let fileData = null; // {name, type, base64}
+
+      uploadArea.addEventListener("click", () => fileInput.click());
+      ["dragover", "dragenter"].forEach((evt) =>
+        uploadArea.addEventListener(evt, (e) => {
+          e.preventDefault();
+          uploadArea.classList.add("drag");
+        })
+      );
+      ["dragleave", "drop"].forEach((evt) =>
+        uploadArea.addEventListener(evt, (e) => {
+          e.preventDefault();
+          uploadArea.classList.remove("drag");
+        })
+      );
+      uploadArea.addEventListener("drop", (e) => {
+        if (e.dataTransfer.files.length) handleFile(e.dataTransfer.files[0]);
+      });
+      fileInput.addEventListener("change", (e) => {
+        if (e.target.files.length) handleFile(e.target.files[0]);
+      });
+      document.getElementById("removeFile").addEventListener("click", () => {
+        fileData = null;
+        fileInput.value = "";
+        filePreview.style.display = "none";
+        uploadArea.style.display = "block";
+      });
+
+      function handleFile(file) {
+        if (file.size > 5 * 1024 * 1024) {
+          alert("File is larger than 5MB — please compress it.");
+          return;
+        }
+        const reader = new FileReader();
+        reader.onload = () => {
+          fileData = {
+            name: file.name,
+            type: file.type,
+            base64: reader.result,
+          };
+          previewName.textContent = file.name;
+          previewImg.src = file.type.startsWith("image/") ? reader.result : "";
+          previewImg.style.display = file.type.startsWith("image/")
+            ? "block"
+            : "none";
+          filePreview.style.display = "flex";
+          uploadArea.style.display = "none";
+        };
+        reader.readAsDataURL(file);
+      }
+
+      // ---- submit ----
+      const formEl = document.getElementById("entryForm");
+      const errorMsg = document.getElementById("errorMsg");
+
+      formEl.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const category = catGrid.querySelector("input[name=category]:checked");
+        const declared = document.getElementById("declare").checked;
+
+        if (!formEl.checkValidity() || !category || !fileData || !declared) {
+          errorMsg.style.display = "block";
+          formEl.reportValidity();
+          return;
+        }
+        errorMsg.style.display = "none";
+
+        const submitBtn = formEl.querySelector("button[type=submit]");
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Submitting...";
+
+        const id = "SIFI-2026-" + Math.floor(100000 + Math.random() * 900000);
+        const record = {
+          id,
+          submittedAt: new Date().toISOString(),
+          category: category.value,
+          amount: category.closest(".cat").dataset.fee,
+          filmTitle: document.getElementById("filmTitle").value,
+          screenerLink: document.getElementById("screenerLink").value,
+          logline: document.getElementById("logline").value,
+          fullName: document.getElementById("fullName").value,
+          email: document.getElementById("email").value,
+          phone: document.getElementById("phone").value,
+          utr: document.getElementById("utr").value,
+          paymentFile: fileData,
+          status: "pending_verification",
+        };
+
+        try {
+          const response = await fetch(
+            "https://q3ygd1z3za.execute-api.ap-south-1.amazonaws.com/prod/submit-film",
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(record),
+            }
+          );
+
+          if (!response.ok) {
+            throw new Error("Server returned an error");
+          }
+
+          const result = await response.json();
+          console.log("Success:", result);
+        } catch (err) {
+          console.error("Could not save submission", err);
+          errorMsg.textContent =
+            "Submission failed. Is the local server running?";
+          errorMsg.style.display = "block";
+          submitBtn.disabled = false;
+          submitBtn.textContent = "Submit film →";
+          return; // Stop execution here on error
+        }
+
+        document.getElementById("subId").textContent = id;
+        document.querySelector(".hero").style.display = "none";
+        document.querySelector(".strip").style.display = "none";
+        document.querySelector("main").style.display = "none";
+        document.getElementById("successScreen").style.display = "block";
+        window.scrollTo(0, 0);
+      });
+
+      document.getElementById("another").addEventListener("click", () => {
+        formEl.reset();
+        catGrid
+          .querySelectorAll(".cat")
+          .forEach((c) => c.classList.remove("checked"));
+        amountDue.textContent = "Select a category";
+        fileData = null;
+        filePreview.style.display = "none";
+        uploadArea.style.display = "block";
+        document.querySelector(".hero").style.display = "block";
+        document.querySelector(".strip").style.display = "flex";
+        document.querySelector("main").style.display = "block";
+        document.getElementById("successScreen").style.display = "none";
+        const submitBtn = formEl.querySelector("button[type=submit]");
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Submit film →";
+        window.scrollTo(0, 0);
+      });
+
+      // ---- lightweight admin view: open with ?admin=1 to review submissions ----
+      async function maybeShowAdmin() {
+        const params = new URLSearchParams(location.search);
+        if (params.get("admin") !== "1" || !window.storage) return;
+        document.body.innerHTML =
+          '<nav class="nav"><div class="word">SIFI <span>2026</span></div><div class="deadline">ADMIN REVIEW</div></nav><div class="admin-wrap" id="adminList"><p class="hint">Loading submissions…</p></div>';
+        const list = document.getElementById("adminList");
+        try {
+          const result = await window.storage.list("submission:", true);
+          if (!result || !result.keys || result.keys.length === 0) {
+            list.innerHTML = "<p>No submissions yet.</p>";
+            return;
+          }
+          let html = "";
+          for (const k of result.keys) {
+            const item = await window.storage.get(k, true);
+            const r = JSON.parse(item.value);
+            html += `<div class="sub-row">
+        ${
+          r.paymentFile &&
+          r.paymentFile.type &&
+          r.paymentFile.type.startsWith("image/")
+            ? `<img src="${r.paymentFile.base64}" alt="payment screenshot">`
+            : ""
+        }
+        <div class="meta">
+          <span class="tag">${
+            r.category
+          }</span><span class="tag" style="background:#7A1B12;">₹${
+              r.amount
+            }</span>
+          <div style="margin-top:6px;"><b>${r.filmTitle}</b></div>
+          <div>${r.fullName} · ${r.email} · ${r.phone}</div>
+          <div class="mono" style="margin-top:4px;">ID: ${r.id} · UTR: ${
+              r.utr
+            }</div>
+          <div><a href="${
+            r.screenerLink
+          }" target="_blank" rel="noopener">Watch screener ↗</a></div>
+        </div>
+      </div>`;
+          }
+          list.innerHTML = html;
+        } catch (err) {
+          list.innerHTML = "<p>Could not load submissions.</p>";
+          console.error(err);
+        }
+      }
+      maybeShowAdmin();
+    </script>
+  </body>
+</html>
