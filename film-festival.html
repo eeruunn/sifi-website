@@ -3,7 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SIFI 2026 — Submit Your Film</title>
+    <title>
+      SIFI Short Film, Documentary and Reels Festival — Submit Your Film
+    </title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link
       href="https://fonts.googleapis.com/css2?family=Anton&family=Manrope:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap"
@@ -281,6 +283,8 @@
       input[type="email"],
       input[type="tel"],
       input[type="url"],
+      input[type="number"],
+      select,
       textarea {
         width: 100%;
         border: 2px solid var(--ink);
@@ -291,12 +295,27 @@
         background: var(--cream);
         color: var(--ink);
       }
+      select {
+        appearance: none;
+        -webkit-appearance: none;
+        background-image: linear-gradient(
+            45deg,
+            transparent 50%,
+            var(--ink) 50%
+          ),
+          linear-gradient(135deg, var(--ink) 50%, transparent 50%);
+        background-position: calc(100% - 20px) calc(1em + 2px),
+          calc(100% - 15px) calc(1em + 2px);
+        background-size: 5px 5px, 5px 5px;
+        background-repeat: no-repeat;
+      }
       textarea {
         resize: vertical;
         min-height: 80px;
       }
       input:focus,
-      textarea:focus {
+      textarea:focus,
+      select:focus {
         outline: 3px solid var(--blue);
         outline-offset: 1px;
       }
@@ -305,6 +324,49 @@
       }
       .field:last-child {
         margin-bottom: 0;
+      }
+
+      /* two/three-up rows for compact fields */
+      .field-row {
+        display: grid;
+        gap: 14px;
+        margin-bottom: 20px;
+      }
+      .field-row.cols-2 {
+        grid-template-columns: 1fr 1fr;
+      }
+      .field-row.cols-3 {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+      @media (max-width: 520px) {
+        .field-row.cols-2,
+        .field-row.cols-3 {
+          grid-template-columns: 1fr;
+        }
+      }
+      .field-row .field {
+        margin-bottom: 0;
+      }
+
+      /* duration input */
+      .duration-row {
+        display: flex;
+        gap: 12px;
+      }
+      .duration-unit {
+        flex: 1;
+        text-align: center;
+      }
+      .duration-unit input {
+        text-align: center;
+      }
+      .duration-unit .unit-label {
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.4px;
+        opacity: 0.55;
+        margin-top: 4px;
       }
 
       /* category pills */
@@ -444,6 +506,9 @@
         opacity: 0.6;
         margin-top: 2px;
       }
+      .upload.compact {
+        padding: 16px;
+      }
       .preview {
         margin-top: 12px;
         display: flex;
@@ -476,6 +541,42 @@
         font-size: 16px;
         color: var(--red);
         font-weight: 800;
+      }
+
+      /* multi-file (stills) grid */
+      .multi-preview {
+        margin-top: 12px;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(84px, 1fr));
+        gap: 10px;
+      }
+      .multi-preview .thumb {
+        position: relative;
+        border: 2px solid var(--ink);
+        border-radius: 10px;
+        overflow: hidden;
+        aspect-ratio: 1;
+        background: #fff;
+      }
+      .multi-preview .thumb img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .multi-preview .thumb button {
+        position: absolute;
+        top: 3px;
+        right: 3px;
+        background: var(--ink);
+        color: var(--cream);
+        border: none;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        font-size: 12px;
+        font-weight: 800;
+        cursor: pointer;
+        line-height: 1;
       }
 
       /* declaration */
@@ -606,11 +707,71 @@
         font-weight: 700;
         margin-right: 6px;
       }
+
+      .qr {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .qr-code-img {
+        width: 100px; /* Adjust this to make the QR bigger or smaller */
+        height: 100px;
+        object-fit: contain; /* Ensures the QR code doesn't stretch or distort */
+        border-radius: 8px; /* Optional: rounds the corners of the image */
+      }
+      .nav-logo {
+        height: 32px; /* Adjust this value to fit your navigation bar perfectly */
+        width: auto; /* Ensures the logo doesn't stretch or squash */
+        display: block;
+      }
+
+      /* Optional: If your .word class was using flexbox for alignment, 
+   this ensures the image sits perfectly centered with the deadline text */
+      .word {
+        display: flex;
+        align-items: center;
+      }
+      /* ---------- MOBILE ADJUSTMENTS ---------- */
+      @media (max-width: 520px) {
+        /* Stack the payment section vertically and center the text */
+        .pay-box .row {
+          flex-direction: column;
+          text-align: center;
+          gap: 24px;
+          padding: 10px 0;
+        }
+
+        /* Make the dashed container larger and center it */
+        .qr {
+          width: 200px;
+          height: 200px;
+          margin: 0 auto;
+        }
+
+        /* Make the QR image fill the new larger container */
+        .qr-code-img {
+          width: 180px;
+          height: 180px;
+        }
+
+        /* Center the UPI ID text box so it aligns with the centered layout */
+        .upi-id {
+          display: block;
+          margin: 10px auto 0;
+          width: fit-content;
+        }
+      }
     </style>
   </head>
   <body>
     <nav class="nav">
-      <div class="word">SIFI <span>2026</span></div>
+      <div class="word">
+        <!-- Replace 'your-logo.png' with the actual file name of your logo -->
+        <a href="/"
+          ><img src="media/logos/logo.png" alt="SIFI 2026" class="nav-logo"
+        /></a>
+      </div>
       <div class="deadline">DEADLINE · 12 SEP 2026</div>
     </nav>
 
@@ -618,17 +779,22 @@
       <div class="hero-inner">
         <div>
           <span class="eyebrow">CALL FOR ENTRIES</span>
-          <h1>Short Film,<br />Documentary<br />&amp; Reels Festival</h1>
+          <h1>
+            Short Film,<br />Documentary<br />&amp; Reels Festival <br />2026
+          </h1>
           <p class="sub">
             A festival for everyone. A platform for new voices. Submit your film
             and join us on screen.
           </p>
           <p class="venue">
-            25–27 September 2026 · Satyajit Ray International Film Institute,
+            2, 3 & 4 October 2026 · Satyajit Ray International Film Institute,
             Mananthavady, Wayanad
           </p>
           <div class="hero-cta">
             <a href="#form" class="btn">Submit your film ↓</a>
+            <a href="film-festival-rules.html" class="btn secondary"
+              >Read the rules first</a
+            >
           </div>
         </div>
         <svg class="mascot" viewBox="0 0 220 220" width="220" height="220">
@@ -738,8 +904,86 @@
                 placeholder="e.g. Kaalam"
               />
             </div>
+
+            <div class="field-row cols-2">
+              <div class="field">
+                <label for="yearOfProduction">Year of production *</label>
+                <input
+                  type="number"
+                  id="yearOfProduction"
+                  required
+                  min="2025"
+                  max="2026"
+                  placeholder="2025"
+                />
+                <p class="hint">
+                  Must have been produced or completed on or after 1 Jan 2025.
+                </p>
+              </div>
+              <div class="field">
+                <label>Duration *</label>
+                <div class="duration-row">
+                  <div class="duration-unit">
+                    <input
+                      type="number"
+                      id="durHours"
+                      min="0"
+                      max="10"
+                      placeholder="0"
+                      required
+                    />
+                    <div class="unit-label">Hrs</div>
+                  </div>
+                  <div class="duration-unit">
+                    <input
+                      type="number"
+                      id="durMinutes"
+                      min="0"
+                      max="59"
+                      placeholder="0"
+                      required
+                    />
+                    <div class="unit-label">Min</div>
+                  </div>
+                  <div class="duration-unit">
+                    <input
+                      type="number"
+                      id="durSeconds"
+                      min="0"
+                      max="59"
+                      placeholder="0"
+                      required
+                    />
+                    <div class="unit-label">Sec</div>
+                  </div>
+                </div>
+                <p class="hint">Must comply with the selected category.</p>
+              </div>
+            </div>
+
+            <div class="field-row cols-2">
+              <div class="field">
+                <label for="country">Country of production *</label>
+                <input
+                  type="text"
+                  id="country"
+                  required
+                  placeholder="e.g. India"
+                />
+              </div>
+              <div class="field">
+                <label for="language">Language *</label>
+                <input
+                  type="text"
+                  id="language"
+                  required
+                  placeholder="e.g. Malayalam"
+                />
+              </div>
+            </div>
+
             <div class="field">
-              <label for="screenerLink">Screener link *</label>
+              <label for="screenerLink">Screener link (Google Drive) *</label>
               <input
                 type="url"
                 id="screenerLink"
@@ -747,8 +991,8 @@
                 placeholder="https://drive.google.com/..."
               />
               <p class="hint">
-                Google Drive, Vimeo, or similar — set access to "Anyone with the
-                link can view".
+                Please share a Google Drive link only, with access set to
+                "Anyone with the link can view".
               </p>
             </div>
             <div class="field">
@@ -770,6 +1014,154 @@
         <div class="section">
           <div class="section-head">
             <span class="num">2</span>
+            <div>
+              <h2>Poster, stills &amp; photos</h2>
+              <p>Used for the catalogue and festival publicity if selected.</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="field">
+              <label>Film poster *</label>
+              <div class="upload compact" id="posterUploadArea">
+                <input
+                  type="file"
+                  id="posterInput"
+                  accept="image/jpeg,image/png,image/jpg"
+                />
+                <div class="icon">🖼️</div>
+                <div class="txt">Click or drop your poster here</div>
+                <div class="txt2">JPG or PNG, high resolution · up to 5MB</div>
+              </div>
+              <div class="preview" id="posterPreview" style="display: none">
+                <img id="posterPreviewImg" src="" alt="" />
+                <div class="fname" id="posterPreviewName"></div>
+                <button
+                  type="button"
+                  id="posterRemove"
+                  aria-label="Remove file"
+                >
+                  ✕
+                </button>
+              </div>
+            </div>
+
+            <div class="field">
+              <label
+                >Film stills
+                <span style="font-weight: 600; opacity: 0.5"
+                  >(optional)</span
+                ></label
+              >
+              <div class="upload compact" id="stillsUploadArea">
+                <input
+                  type="file"
+                  id="stillsInput"
+                  accept="image/jpeg,image/png,image/jpg"
+                  multiple
+                />
+                <div class="icon">🎞️</div>
+                <div class="txt">Click or drop 2–5 stills here</div>
+                <div class="txt2">
+                  High-resolution JPG or PNG · up to 5MB each
+                </div>
+              </div>
+              <div class="multi-preview" id="stillsPreview"></div>
+            </div>
+
+            <div class="field">
+              <label for="directorPhoto"
+                >Director's photograph
+                <span style="font-weight: 600; opacity: 0.5"
+                  >(optional)</span
+                ></label
+              >
+              <div class="upload compact" id="directorUploadArea">
+                <input
+                  type="file"
+                  id="directorInput"
+                  accept="image/jpeg,image/png,image/jpg"
+                />
+                <div class="icon">🎬</div>
+                <div class="txt">Click or drop a photo of the director</div>
+                <div class="txt2">
+                  For festival publicity and screening credits · up to 5MB
+                </div>
+              </div>
+              <div class="preview" id="directorPreview" style="display: none">
+                <img id="directorPreviewImg" src="" alt="" />
+                <div class="fname" id="directorPreviewName"></div>
+                <button
+                  type="button"
+                  id="directorRemove"
+                  aria-label="Remove file"
+                >
+                  ✕
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-head">
+            <span class="num">3</span>
+            <div>
+              <h2>Crew &amp; cast</h2>
+              <p>Names as they should appear in the catalogue and credits.</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="field-row cols-2">
+              <div class="field">
+                <label for="cameraPerson">Camera person's name *</label>
+                <input
+                  type="text"
+                  id="cameraPerson"
+                  required
+                  placeholder="Cinematographer"
+                />
+              </div>
+              <div class="field">
+                <label for="editorName">Editor's name *</label>
+                <input
+                  type="text"
+                  id="editorName"
+                  required
+                  placeholder="Editor"
+                />
+              </div>
+            </div>
+            <div class="field">
+              <label for="actorsNames"
+                >Actors' names
+                <span style="font-weight: 600; opacity: 0.5"
+                  >(comma separated)</span
+                ></label
+              >
+              <input
+                type="text"
+                id="actorsNames"
+                placeholder="e.g. Anjali Menon, Rahul Nair"
+              />
+            </div>
+            <div class="field">
+              <label for="crewMembers"
+                >Other crew members
+                <span style="font-weight: 600; opacity: 0.5"
+                  >(optional)</span
+                ></label
+              >
+              <textarea
+                id="crewMembers"
+                placeholder="List other crew and their roles, e.g. Sound Design — Arjun K., Production Design — Meera S."
+              ></textarea>
+            </div>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-head">
+            <span class="num">4</span>
             <div>
               <h2>About you</h2>
               <p>How the Selection Committee will reach you.</p>
@@ -795,7 +1187,7 @@
               />
             </div>
             <div class="field">
-              <label for="phone">WhatsApp number *</label>
+              <label for="phone">Phone number *</label>
               <input
                 type="tel"
                 id="phone"
@@ -808,7 +1200,7 @@
 
         <div class="section">
           <div class="section-head">
-            <span class="num">3</span>
+            <span class="num">5</span>
             <div>
               <h2>Entry fee &amp; payment</h2>
               <p>
@@ -826,18 +1218,24 @@
                   </div>
                   <div class="amount" id="amountDue">Select a category</div>
                   <div class="upi-id">
-                    sifi@upi
+                    UPI id :
                     <span style="opacity: 0.7; font-weight: 500"
-                      >(replace with real UPI ID)</span
+                      >sifi1600qr@fbl</span
                     >
                   </div>
                 </div>
-                <div class="qr">SIFI PAYMENT QR — add QR image here</div>
+                <div class="qr">
+                  <img
+                    src="qrcode.jpeg"
+                    alt="Scan to pay via UPI"
+                    class="qr-code-img"
+                  />
+                </div>
               </div>
             </div>
 
             <div class="field">
-              <label for="utr">Transaction / UTR number *</label>
+              <label for="utr">Transaction Id / UTR number *</label>
               <input
                 type="text"
                 id="utr"
@@ -870,19 +1268,25 @@
 
         <div class="section">
           <div class="section-head">
-            <span class="num">4</span>
+            <span class="num">6</span>
             <div><h2>Confirm &amp; submit</h2></div>
           </div>
           <div class="declare">
             <input type="checkbox" id="declare" required />
-            <label for="declare"
-              >I confirm I have the rights to submit this film, the details
-              above are accurate, entry fees are non-refundable, and submission
-              does not guarantee selection. I've read the
-              <span style="text-decoration: underline"
-                >Rules &amp; Regulations</span
-              >.</label
-            >
+            <label for="declare">
+              I confirm I have the rights to submit this film, the details above
+              are accurate, entry fees are non-refundable, and submission does
+              not guarantee selection. I've read the
+
+              <a
+                href="film-festival-rules.html"
+                target="_blank"
+                rel="noopener"
+                style="text-decoration: underline; color: inherit"
+              >
+                Rules &amp; Regulations </a
+              >.
+            </label>
           </div>
         </div>
 
@@ -900,8 +1304,8 @@
         <div class="confetti">✦ ✺ ✦</div>
         <h2>You're in the frame.</h2>
         <p style="margin-top: 10px; font-weight: 600">
-          Thank you for submitting to SIFI 2026. We'll verify your payment and
-          confirm by email or WhatsApp.
+          Thank you for submitting. We'll verify your payment and confirm by
+          email or WhatsApp.
         </p>
         <div class="id" id="subId"></div>
         <p class="hint">Save this ID for any future communication.</p>
@@ -911,14 +1315,14 @@
       </div>
     </div>
 
-    <footer>
+    <!-- <footer>
       SIFI Short Film, Documentary &amp; Reels Festival 2026 · 25–27 Sept 2026 ·
       Mananthavady, Wayanad, Kerala<br />
       Enquiries: +91 7994730809 ·
       <a href="https://www.sifi.me" target="_blank" rel="noopener"
         >www.sifi.me</a
       >
-    </footer>
+    </footer> -->
 
     <script>
       // ---- category fee logic ----
@@ -935,61 +1339,257 @@
         });
       });
 
-      // ---- file upload ----
-      const uploadArea = document.getElementById("uploadArea");
-      const fileInput = document.getElementById("fileInput");
-      const filePreview = document.getElementById("filePreview");
-      const previewImg = document.getElementById("previewImg");
-      const previewName = document.getElementById("previewName");
-      let fileData = null; // {name, type, base64}
+      // ---- CLIENT-SIDE COMPRESSION ENGINE ----
+      // Compresses images in the browser before converting to base64
+      function compressAndConvertImage(file, maxWidth = 1600, quality = 0.75) {
+        return new Promise((resolve, reject) => {
+          // Pass PDFs directly without compression
+          if (file.type === "application/pdf") {
+            const reader = new FileReader();
+            reader.onload = () =>
+              resolve({
+                name: file.name,
+                type: file.type,
+                base64: reader.result,
+              });
+            reader.onerror = (error) => reject(error);
+            reader.readAsDataURL(file);
+            return;
+          }
 
-      uploadArea.addEventListener("click", () => fileInput.click());
+          const reader = new FileReader();
+          reader.readAsDataURL(file);
+          reader.onload = (event) => {
+            const img = new Image();
+            img.src = event.target.result;
+            img.onload = () => {
+              const canvas = document.createElement("canvas");
+              let width = img.width;
+              let height = img.height;
+
+              // Downscale images wider than the maximum width limit
+              if (width > maxWidth) {
+                height = Math.round((height * maxWidth) / width);
+                width = maxWidth;
+              }
+
+              canvas.width = width;
+              canvas.height = height;
+
+              const ctx = canvas.getContext("2d");
+              ctx.drawImage(img, 0, 0, width, height);
+
+              // Convert to lightweight JPEG Base64
+              const compressedBase64 = canvas.toDataURL("image/jpeg", quality);
+              resolve({
+                name: file.name,
+                type: "image/jpeg",
+                base64: compressedBase64,
+              });
+            };
+            img.onerror = (error) => reject(error);
+          };
+          reader.onerror = (error) => reject(error);
+        });
+      }
+
+      // ---- generic single-file upload helper ----
+      function wireSingleUpload({
+        uploadAreaId,
+        fileInputId,
+        previewId,
+        previewImgId,
+        previewNameId,
+        removeBtnId,
+        state,
+      }) {
+        const uploadArea = document.getElementById(uploadAreaId);
+        const fileInput = document.getElementById(fileInputId);
+        const preview = document.getElementById(previewId);
+        const previewImg = document.getElementById(previewImgId);
+        const previewName = document.getElementById(previewNameId);
+        const removeBtn = document.getElementById(removeBtnId);
+
+        uploadArea.addEventListener("click", () => fileInput.click());
+        ["dragover", "dragenter"].forEach((evt) =>
+          uploadArea.addEventListener(evt, (e) => {
+            e.preventDefault();
+            uploadArea.classList.add("drag");
+          })
+        );
+        ["dragleave", "drop"].forEach((evt) =>
+          uploadArea.addEventListener(evt, (e) => {
+            e.preventDefault();
+            uploadArea.classList.remove("drag");
+          })
+        );
+        uploadArea.addEventListener("drop", (e) => {
+          if (e.dataTransfer.files.length) handle(e.dataTransfer.files[0]);
+        });
+        fileInput.addEventListener("change", (e) => {
+          if (e.target.files.length) handle(e.target.files[0]);
+        });
+        removeBtn.addEventListener("click", () => {
+          state.value = null;
+          fileInput.value = "";
+          preview.style.display = "none";
+          uploadArea.style.display = "block";
+        });
+
+        async function handle(file) {
+          // Keep a strict limit for PDFs since we can't compress them
+          if (file.type === "application/pdf" && file.size > 5 * 1024 * 1024) {
+            alert(
+              "PDF is larger than 5MB — please compress it or upload an image instead."
+            );
+            return;
+          }
+
+          // Show a temporary processing state
+          uploadArea.querySelector(".txt").textContent = "Processing image...";
+
+          try {
+            // Compress the image!
+            const compressedData = await compressAndConvertImage(
+              file,
+              1600,
+              0.75
+            );
+
+            state.value = compressedData;
+            previewName.textContent = compressedData.name;
+
+            if (compressedData.type.startsWith("image/")) {
+              previewImg.src = compressedData.base64;
+              previewImg.style.display = "block";
+            } else {
+              previewImg.style.display = "none";
+            }
+
+            preview.style.display = "flex";
+            uploadArea.style.display = "none";
+            uploadArea.querySelector(".txt").textContent =
+              "Click or drop your file here"; // reset text
+          } catch (error) {
+            console.error("Image compression failed:", error);
+            alert("Failed to process image. Please try a different file.");
+            uploadArea.querySelector(".txt").textContent =
+              "Click or drop your file here";
+          }
+        }
+
+        return {
+          reset() {
+            state.value = null;
+            fileInput.value = "";
+            preview.style.display = "none";
+            uploadArea.style.display = "block";
+          },
+        };
+      }
+
+      // payment screenshot
+      const fileData = { value: null };
+      const paymentUpload = wireSingleUpload({
+        uploadAreaId: "uploadArea",
+        fileInputId: "fileInput",
+        previewId: "filePreview",
+        previewImgId: "previewImg",
+        previewNameId: "previewName",
+        removeBtnId: "removeFile",
+        state: fileData,
+      });
+
+      // poster
+      const posterData = { value: null };
+      const posterUpload = wireSingleUpload({
+        uploadAreaId: "posterUploadArea",
+        fileInputId: "posterInput",
+        previewId: "posterPreview",
+        previewImgId: "posterPreviewImg",
+        previewNameId: "posterPreviewName",
+        removeBtnId: "posterRemove",
+        state: posterData,
+      });
+
+      // director's photograph
+      const directorData = { value: null };
+      const directorUpload = wireSingleUpload({
+        uploadAreaId: "directorUploadArea",
+        fileInputId: "directorInput",
+        previewId: "directorPreview",
+        previewImgId: "directorPreviewImg",
+        previewNameId: "directorPreviewName",
+        removeBtnId: "directorRemove",
+        state: directorData,
+      });
+
+      // ---- stills: multiple files ----
+      let stillsFiles = []; // [{name, type, base64}]
+      const stillsUploadArea = document.getElementById("stillsUploadArea");
+      const stillsInput = document.getElementById("stillsInput");
+      const stillsPreview = document.getElementById("stillsPreview");
+
+      stillsUploadArea.addEventListener("click", () => stillsInput.click());
       ["dragover", "dragenter"].forEach((evt) =>
-        uploadArea.addEventListener(evt, (e) => {
+        stillsUploadArea.addEventListener(evt, (e) => {
           e.preventDefault();
-          uploadArea.classList.add("drag");
+          stillsUploadArea.classList.add("drag");
         })
       );
       ["dragleave", "drop"].forEach((evt) =>
-        uploadArea.addEventListener(evt, (e) => {
+        stillsUploadArea.addEventListener(evt, (e) => {
           e.preventDefault();
-          uploadArea.classList.remove("drag");
+          stillsUploadArea.classList.remove("drag");
         })
       );
-      uploadArea.addEventListener("drop", (e) => {
-        if (e.dataTransfer.files.length) handleFile(e.dataTransfer.files[0]);
+      stillsUploadArea.addEventListener("drop", (e) => {
+        if (e.dataTransfer.files.length) handleStills(e.dataTransfer.files);
       });
-      fileInput.addEventListener("change", (e) => {
-        if (e.target.files.length) handleFile(e.target.files[0]);
-      });
-      document.getElementById("removeFile").addEventListener("click", () => {
-        fileData = null;
-        fileInput.value = "";
-        filePreview.style.display = "none";
-        uploadArea.style.display = "block";
+      stillsInput.addEventListener("change", (e) => {
+        if (e.target.files.length) handleStills(e.target.files);
       });
 
-      function handleFile(file) {
-        if (file.size > 5 * 1024 * 1024) {
-          alert("File is larger than 5MB — please compress it.");
-          return;
+      async function handleStills(fileList) {
+        stillsUploadArea.querySelector(".txt").textContent =
+          "Processing stills...";
+
+        for (const file of Array.from(fileList)) {
+          try {
+            // Run each selected file through the compressor
+            const compressedData = await compressAndConvertImage(
+              file,
+              1600,
+              0.75
+            );
+            stillsFiles.push(compressedData);
+            renderStills();
+          } catch (error) {
+            console.error("Failed to process still:", file.name, error);
+            alert("Failed to process " + file.name + ". Skipping.");
+          }
         }
-        const reader = new FileReader();
-        reader.onload = () => {
-          fileData = {
-            name: file.name,
-            type: file.type,
-            base64: reader.result,
-          };
-          previewName.textContent = file.name;
-          previewImg.src = file.type.startsWith("image/") ? reader.result : "";
-          previewImg.style.display = file.type.startsWith("image/")
-            ? "block"
-            : "none";
-          filePreview.style.display = "flex";
-          uploadArea.style.display = "none";
-        };
-        reader.readAsDataURL(file);
+
+        stillsInput.value = "";
+        stillsUploadArea.querySelector(".txt").textContent =
+          "Click or drop 2–5 stills here";
+      }
+
+      function renderStills() {
+        stillsPreview.innerHTML = "";
+        stillsFiles.forEach((f, idx) => {
+          const thumb = document.createElement("div");
+          thumb.className = "thumb";
+          thumb.innerHTML =
+            '<img src="' +
+            f.base64 +
+            '" alt=""><button type="button" aria-label="Remove still">✕</button>';
+          thumb.querySelector("button").addEventListener("click", () => {
+            stillsFiles.splice(idx, 1);
+            renderStills();
+          });
+          stillsPreview.appendChild(thumb);
+        });
       }
 
       // ---- submit ----
@@ -1001,7 +1601,15 @@
         const category = catGrid.querySelector("input[name=category]:checked");
         const declared = document.getElementById("declare").checked;
 
-        if (!formEl.checkValidity() || !category || !fileData || !declared) {
+        if (
+          !formEl.checkValidity() ||
+          !category ||
+          !fileData.value ||
+          !posterData.value ||
+          !declared
+        ) {
+          errorMsg.textContent =
+            "Please fill all required fields, including the film poster and payment screenshot.";
           errorMsg.style.display = "block";
           formEl.reportValidity();
           return;
@@ -1013,19 +1621,43 @@
         submitBtn.textContent = "Submitting...";
 
         const id = "SIFI-2026-" + Math.floor(100000 + Math.random() * 900000);
+        const durHours = Number(document.getElementById("durHours").value || 0);
+        const durMinutes = Number(
+          document.getElementById("durMinutes").value || 0
+        );
+        const durSeconds = Number(
+          document.getElementById("durSeconds").value || 0
+        );
+
         const record = {
           id,
           submittedAt: new Date().toISOString(),
           category: category.value,
           amount: category.closest(".cat").dataset.fee,
           filmTitle: document.getElementById("filmTitle").value,
+          yearOfProduction: document.getElementById("yearOfProduction").value,
+          duration: {
+            hours: durHours,
+            minutes: durMinutes,
+            seconds: durSeconds,
+            totalSeconds: durHours * 3600 + durMinutes * 60 + durSeconds,
+          },
+          country: document.getElementById("country").value,
+          language: document.getElementById("language").value,
           screenerLink: document.getElementById("screenerLink").value,
           logline: document.getElementById("logline").value,
+          posterFile: posterData.value,
+          stillsFiles: stillsFiles,
+          directorPhoto: directorData.value,
+          cameraPerson: document.getElementById("cameraPerson").value,
+          editorName: document.getElementById("editorName").value,
+          actorsNames: document.getElementById("actorsNames").value,
+          crewMembers: document.getElementById("crewMembers").value,
           fullName: document.getElementById("fullName").value,
           email: document.getElementById("email").value,
           phone: document.getElementById("phone").value,
           utr: document.getElementById("utr").value,
-          paymentFile: fileData,
+          paymentFile: fileData.value,
           status: "pending_verification",
         };
 
@@ -1049,8 +1681,7 @@
           console.log("Success:", result);
         } catch (err) {
           console.error("Could not save submission", err);
-          errorMsg.textContent =
-            "Submission failed. Is the local server running?";
+          errorMsg.textContent = "Submission failed. Try Again.";
           errorMsg.style.display = "block";
           submitBtn.disabled = false;
           submitBtn.textContent = "Submit film →";
@@ -1071,9 +1702,11 @@
           .querySelectorAll(".cat")
           .forEach((c) => c.classList.remove("checked"));
         amountDue.textContent = "Select a category";
-        fileData = null;
-        filePreview.style.display = "none";
-        uploadArea.style.display = "block";
+        paymentUpload.reset();
+        posterUpload.reset();
+        directorUpload.reset();
+        stillsFiles = [];
+        renderStills();
         document.querySelector(".hero").style.display = "block";
         document.querySelector(".strip").style.display = "flex";
         document.querySelector("main").style.display = "block";
@@ -1101,11 +1734,23 @@
           for (const k of result.keys) {
             const item = await window.storage.get(k, true);
             const r = JSON.parse(item.value);
+            const dur = r.duration
+              ? r.duration.hours +
+                "h " +
+                r.duration.minutes +
+                "m " +
+                r.duration.seconds +
+                "s"
+              : "—";
+            const stillsCount =
+              r.stillsFiles && r.stillsFiles.length ? r.stillsFiles.length : 0;
             html += `<div class="sub-row">
         ${
-          r.paymentFile &&
-          r.paymentFile.type &&
-          r.paymentFile.type.startsWith("image/")
+          r.posterFile && r.posterFile.base64
+            ? `<img src="${r.posterFile.base64}" alt="poster">`
+            : r.paymentFile &&
+              r.paymentFile.type &&
+              r.paymentFile.type.startsWith("image/")
             ? `<img src="${r.paymentFile.base64}" alt="payment screenshot">`
             : ""
         }
@@ -1115,11 +1760,19 @@
           }</span><span class="tag" style="background:#7A1B12;">₹${
               r.amount
             }</span>
-          <div style="margin-top:6px;"><b>${r.filmTitle}</b></div>
+          <div style="margin-top:6px;"><b>${r.filmTitle}</b> (${
+              r.yearOfProduction || "—"
+            })</div>
+          <div>${r.country || "—"} · ${r.language || "—"} · ${dur}</div>
           <div>${r.fullName} · ${r.email} · ${r.phone}</div>
+          <div style="margin-top:4px;">Camera: ${
+            r.cameraPerson || "—"
+          } · Editor: ${r.editorName || "—"}</div>
+          <div>Actors: ${r.actorsNames || "—"}</div>
+          <div>Crew: ${r.crewMembers || "—"}</div>
           <div class="mono" style="margin-top:4px;">ID: ${r.id} · UTR: ${
               r.utr
-            }</div>
+            } · ${stillsCount} still(s)</div>
           <div><a href="${
             r.screenerLink
           }" target="_blank" rel="noopener">Watch screener ↗</a></div>
