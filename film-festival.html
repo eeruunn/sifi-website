@@ -996,16 +996,12 @@
               </p>
             </div>
             <div class="field">
-              <label for="logline"
-                >Logline
-                <span style="font-weight: 600; opacity: 0.5"
-                  >(optional)</span
-                ></label
-              >
+              <label for="logline">Synopsis * </label>
               <textarea
                 id="logline"
                 maxlength="300"
                 placeholder="One or two sentences about your film"
+                required
               ></textarea>
             </div>
           </div>
@@ -1015,7 +1011,7 @@
           <div class="section-head">
             <span class="num">2</span>
             <div>
-              <h2>Poster, stills &amp; photos</h2>
+              <h2>Poster, stills &amp; photos *</h2>
               <p>Used for the catalogue and festival publicity if selected.</p>
             </div>
           </div>
@@ -1027,6 +1023,7 @@
                   type="file"
                   id="posterInput"
                   accept="image/jpeg,image/png,image/jpg"
+                  required
                 />
                 <div class="icon">🖼️</div>
                 <div class="txt">Click or drop your poster here</div>
@@ -1046,12 +1043,7 @@
             </div>
 
             <div class="field">
-              <label
-                >Film stills
-                <span style="font-weight: 600; opacity: 0.5"
-                  >(optional)</span
-                ></label
-              >
+              <label>Film stills </label>
               <div class="upload compact" id="stillsUploadArea">
                 <input
                   type="file"
@@ -1069,17 +1061,13 @@
             </div>
 
             <div class="field">
-              <label for="directorPhoto"
-                >Director's photograph
-                <span style="font-weight: 600; opacity: 0.5"
-                  >(optional)</span
-                ></label
-              >
+              <label for="directorPhoto">Director's photograph * </label>
               <div class="upload compact" id="directorUploadArea">
                 <input
                   type="file"
                   id="directorInput"
                   accept="image/jpeg,image/png,image/jpg"
+                  required
                 />
                 <div class="icon">🎬</div>
                 <div class="txt">Click or drop a photo of the director</div>
@@ -1133,7 +1121,7 @@
             </div>
             <div class="field">
               <label for="actorsNames"
-                >Actors' names
+                >Actors' names *
                 <span style="font-weight: 600; opacity: 0.5"
                   >(comma separated)</span
                 ></label
@@ -1141,6 +1129,7 @@
               <input
                 type="text"
                 id="actorsNames"
+                required
                 placeholder="e.g. Anjali Menon, Rahul Nair"
               />
             </div>
