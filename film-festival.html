@@ -665,49 +665,6 @@
         margin: 14px 0;
       }
 
-      /* ---------- ADMIN ---------- */
-      .admin-wrap {
-        max-width: 900px;
-        margin: 40px auto;
-        padding: 0 20px;
-      }
-      .sub-row {
-        background: #fff;
-        border: 2px solid var(--ink);
-        border-radius: 12px;
-        padding: 14px 16px;
-        margin-bottom: 14px;
-        display: flex;
-        gap: 16px;
-        align-items: flex-start;
-        flex-wrap: wrap;
-      }
-      .sub-row img {
-        width: 90px;
-        height: 90px;
-        object-fit: cover;
-        border-radius: 8px;
-        border: 2px solid var(--ink);
-      }
-      .sub-row .meta {
-        flex: 1;
-        min-width: 220px;
-        font-size: 13px;
-      }
-      .sub-row .meta b {
-        font-size: 15px;
-      }
-      .tag {
-        display: inline-block;
-        background: var(--blue);
-        color: #fff;
-        font-size: 11px;
-        padding: 3px 8px;
-        border-radius: 100px;
-        font-weight: 700;
-        margin-right: 6px;
-      }
-
       .qr {
         display: flex;
         align-items: center;
@@ -760,6 +717,73 @@
           display: block;
           margin: 10px auto 0;
           width: fit-content;
+        }
+      }
+
+      /* ---------- SUBMIT LOADING OVERLAY ---------- */
+      .submit-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(23, 19, 15, 0.8);
+        z-index: 999;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+        padding: 24px;
+      }
+      .submit-overlay.active {
+        display: flex;
+      }
+      .submit-overlay .spinner {
+        width: 60px;
+        height: 60px;
+        border: 6px solid rgba(245, 237, 218, 0.25);
+        border-top-color: var(--yellow);
+        border-radius: 50%;
+        animation: submit-spin 0.85s linear infinite;
+      }
+      @keyframes submit-spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+      .submit-overlay .msg {
+        color: var(--cream);
+        font-family: "Manrope", sans-serif;
+        font-weight: 800;
+        margin-top: 20px;
+        font-size: 16px;
+        max-width: 320px;
+      }
+      .submit-overlay .msg small {
+        display: block;
+        font-weight: 600;
+        opacity: 0.75;
+        margin-top: 8px;
+        font-size: 13px;
+        text-transform: none;
+        letter-spacing: 0;
+      }
+
+      /* ---------- INVALID FIELD HIGHLIGHT ---------- */
+      .field-invalid {
+        outline: 3px solid var(--red) !important;
+        outline-offset: 2px;
+        border-radius: 10px;
+        animation: field-shake 0.4s ease;
+      }
+      @keyframes field-shake {
+        0%,
+        100% {
+          transform: translateX(0);
+        }
+        25% {
+          transform: translateX(-4px);
+        }
+        75% {
+          transform: translateX(4px);
         }
       }
     </style>
@@ -1315,6 +1339,18 @@
       </div>
     </div>
 
+    <!-- ---------- SUBMIT LOADING OVERLAY ---------- -->
+    <div class="submit-overlay" id="submitOverlay">
+      <div class="spinner"></div>
+      <div class="msg">
+        Submitting your film…
+        <small
+          >This may take a few seconds. Please don't press back or close this
+          page.</small
+        >
+      </div>
+    </div>
+
     <!-- <footer>
       SIFI Short Film, Documentary &amp; Reels Festival 2026 · 25–27 Sept 2026 ·
       Mananthavady, Wayanad, Kerala<br />
@@ -1592,26 +1628,125 @@
         });
       }
 
+      // ---- inline field validation + highlight/scroll ----
+      function clearFieldHighlights() {
+        document
+          .querySelectorAll(".field-invalid")
+          .forEach((el) => el.classList.remove("field-invalid"));
+      }
+
+      function buildFieldChecklist() {
+        const list = [];
+
+        // category
+        list.push({
+          valid: () => !!catGrid.querySelector("input[name=category]:checked"),
+          scrollEl: catGrid,
+          highlightEl: catGrid,
+          focusEl: null,
+        });
+
+        const addSimpleInput = (id) => {
+          const el = document.getElementById(id);
+          list.push({
+            valid: () => el.checkValidity(),
+            scrollEl: el,
+            highlightEl: el,
+            focusEl: el,
+          });
+        };
+
+        addSimpleInput("filmTitle");
+        addSimpleInput("yearOfProduction");
+        addSimpleInput("durHours");
+        addSimpleInput("durMinutes");
+        addSimpleInput("durSeconds");
+        addSimpleInput("country");
+        addSimpleInput("language");
+        addSimpleInput("screenerLink");
+        addSimpleInput("logline");
+
+        // poster
+        list.push({
+          valid: () => !!posterData.value,
+          scrollEl: document.getElementById("posterUploadArea"),
+          highlightEl: document.getElementById("posterUploadArea"),
+          focusEl: null,
+        });
+
+        // director's photograph
+        list.push({
+          valid: () => !!directorData.value,
+          scrollEl: document.getElementById("directorUploadArea"),
+          highlightEl: document.getElementById("directorUploadArea"),
+          focusEl: null,
+        });
+
+        addSimpleInput("cameraPerson");
+        addSimpleInput("editorName");
+        addSimpleInput("actorsNames");
+        addSimpleInput("fullName");
+        addSimpleInput("email");
+        addSimpleInput("phone");
+        addSimpleInput("utr");
+
+        // payment screenshot
+        list.push({
+          valid: () => !!fileData.value,
+          scrollEl: document.getElementById("uploadArea"),
+          highlightEl: document.getElementById("uploadArea"),
+          focusEl: null,
+        });
+
+        // declaration checkbox
+        list.push({
+          valid: () => document.getElementById("declare").checked,
+          scrollEl: document.querySelector(".declare"),
+          highlightEl: document.querySelector(".declare"),
+          focusEl: document.getElementById("declare"),
+        });
+
+        return list;
+      }
+
+      function validateAndHighlight() {
+        clearFieldHighlights();
+        const checklist = buildFieldChecklist();
+        for (const item of checklist) {
+          if (!item.valid()) {
+            item.highlightEl.classList.add("field-invalid");
+            item.scrollEl.scrollIntoView({
+              behavior: "smooth",
+              block: "center",
+            });
+            if (item.focusEl) {
+              setTimeout(() => {
+                try {
+                  item.focusEl.focus({ preventScroll: true });
+                } catch (e) {}
+              }, 400);
+            }
+            setTimeout(() => {
+              item.highlightEl.classList.remove("field-invalid");
+            }, 3000);
+            return false;
+          }
+        }
+        return true;
+      }
+
       // ---- submit ----
       const formEl = document.getElementById("entryForm");
       const errorMsg = document.getElementById("errorMsg");
+      const submitOverlay = document.getElementById("submitOverlay");
 
       formEl.addEventListener("submit", async (e) => {
         e.preventDefault();
         const category = catGrid.querySelector("input[name=category]:checked");
-        const declared = document.getElementById("declare").checked;
 
-        if (
-          !formEl.checkValidity() ||
-          !category ||
-          !fileData.value ||
-          !posterData.value ||
-          !declared
-        ) {
-          errorMsg.textContent =
-            "Please fill all required fields, including the film poster and payment screenshot.";
+        if (!validateAndHighlight()) {
+          errorMsg.textContent = "Please fill in the highlighted field above.";
           errorMsg.style.display = "block";
-          formEl.reportValidity();
           return;
         }
         errorMsg.style.display = "none";
@@ -1619,6 +1754,7 @@
         const submitBtn = formEl.querySelector("button[type=submit]");
         submitBtn.disabled = true;
         submitBtn.textContent = "Submitting...";
+        submitOverlay.classList.add("active");
 
         const id = "SIFI-2026-" + Math.floor(100000 + Math.random() * 900000);
         const durHours = Number(document.getElementById("durHours").value || 0);
@@ -1681,6 +1817,7 @@
           console.log("Success:", result);
         } catch (err) {
           console.error("Could not save submission", err);
+          submitOverlay.classList.remove("active");
           errorMsg.textContent = "Submission failed. Try Again.";
           errorMsg.style.display = "block";
           submitBtn.disabled = false;
@@ -1688,6 +1825,7 @@
           return; // Stop execution here on error
         }
 
+        submitOverlay.classList.remove("active");
         document.getElementById("subId").textContent = id;
         document.querySelector(".hero").style.display = "none";
         document.querySelector(".strip").style.display = "none";
@@ -1707,6 +1845,7 @@
         directorUpload.reset();
         stillsFiles = [];
         renderStills();
+        clearFieldHighlights();
         document.querySelector(".hero").style.display = "block";
         document.querySelector(".strip").style.display = "flex";
         document.querySelector("main").style.display = "block";
@@ -1716,76 +1855,6 @@
         submitBtn.textContent = "Submit film →";
         window.scrollTo(0, 0);
       });
-
-      // ---- lightweight admin view: open with ?admin=1 to review submissions ----
-      async function maybeShowAdmin() {
-        const params = new URLSearchParams(location.search);
-        if (params.get("admin") !== "1" || !window.storage) return;
-        document.body.innerHTML =
-          '<nav class="nav"><div class="word">SIFI <span>2026</span></div><div class="deadline">ADMIN REVIEW</div></nav><div class="admin-wrap" id="adminList"><p class="hint">Loading submissions…</p></div>';
-        const list = document.getElementById("adminList");
-        try {
-          const result = await window.storage.list("submission:", true);
-          if (!result || !result.keys || result.keys.length === 0) {
-            list.innerHTML = "<p>No submissions yet.</p>";
-            return;
-          }
-          let html = "";
-          for (const k of result.keys) {
-            const item = await window.storage.get(k, true);
-            const r = JSON.parse(item.value);
-            const dur = r.duration
-              ? r.duration.hours +
-                "h " +
-                r.duration.minutes +
-                "m " +
-                r.duration.seconds +
-                "s"
-              : "—";
-            const stillsCount =
-              r.stillsFiles && r.stillsFiles.length ? r.stillsFiles.length : 0;
-            html += `<div class="sub-row">
-        ${
-          r.posterFile && r.posterFile.base64
-            ? `<img src="${r.posterFile.base64}" alt="poster">`
-            : r.paymentFile &&
-              r.paymentFile.type &&
-              r.paymentFile.type.startsWith("image/")
-            ? `<img src="${r.paymentFile.base64}" alt="payment screenshot">`
-            : ""
-        }
-        <div class="meta">
-          <span class="tag">${
-            r.category
-          }</span><span class="tag" style="background:#7A1B12;">₹${
-              r.amount
-            }</span>
-          <div style="margin-top:6px;"><b>${r.filmTitle}</b> (${
-              r.yearOfProduction || "—"
-            })</div>
-          <div>${r.country || "—"} · ${r.language || "—"} · ${dur}</div>
-          <div>${r.fullName} · ${r.email} · ${r.phone}</div>
-          <div style="margin-top:4px;">Camera: ${
-            r.cameraPerson || "—"
-          } · Editor: ${r.editorName || "—"}</div>
-          <div>Actors: ${r.actorsNames || "—"}</div>
-          <div>Crew: ${r.crewMembers || "—"}</div>
-          <div class="mono" style="margin-top:4px;">ID: ${r.id} · UTR: ${
-              r.utr
-            } · ${stillsCount} still(s)</div>
-          <div><a href="${
-            r.screenerLink
-          }" target="_blank" rel="noopener">Watch screener ↗</a></div>
-        </div>
-      </div>`;
-          }
-          list.innerHTML = html;
-        } catch (err) {
-          list.innerHTML = "<p>Could not load submissions.</p>";
-          console.error(err);
-        }
-      }
-      maybeShowAdmin();
     </script>
   </body>
 </html>
