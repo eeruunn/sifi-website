@@ -1314,6 +1314,25 @@
           </div>
         </div>
 
+        <div>
+          <a
+            style="
+              width: 200px;
+              background-color: #1065b7;
+              text-align: center;
+              font-weight: 800;
+              padding: 11px 0px;
+              color: white;
+              font-size: 12px;
+              display: inline-block;
+              text-decoration: none;
+              border-radius: 3.229px;
+            "
+            href="https://dashboard-staging.payu.in/web/8C197F45D6D3E0355581FC0166205FE4"
+          >
+            Pay Now
+          </a>
+        </div>
         <div class="submit-wrap">
           <button type="submit" class="btn">Submit film →</button>
           <div class="error-msg" id="errorMsg">
@@ -1329,7 +1348,7 @@
         <h2>You're in the frame.</h2>
         <p style="margin-top: 10px; font-weight: 600">
           Thank you for submitting. We'll verify your payment and confirm by
-          email or WhatsApp.
+          email.
         </p>
         <div class="id" id="subId"></div>
         <p class="hint">Save this ID for any future communication.</p>
@@ -1756,7 +1775,9 @@
         submitBtn.textContent = "Submitting...";
         submitOverlay.classList.add("active");
 
+        // Keep this! It acts as your primary database partition key and S3 folder name.
         const id = "SIFI-2026-" + Math.floor(100000 + Math.random() * 900000);
+
         const durHours = Number(document.getElementById("durHours").value || 0);
         const durMinutes = Number(
           document.getElementById("durMinutes").value || 0
@@ -1815,6 +1836,19 @@
 
           const result = await response.json();
           console.log("Success:", result);
+
+          // --- SUCCESS UI LOGIC ---
+          submitOverlay.classList.remove("active");
+
+          // Extract the sequential ID from the backend, fallback to local ID if undefined
+          const finalId = result.submissionId || id;
+          document.getElementById("subId").textContent = finalId;
+
+          document.querySelector(".hero").style.display = "none";
+          document.querySelector(".strip").style.display = "none";
+          document.querySelector("main").style.display = "none";
+          document.getElementById("successScreen").style.display = "block";
+          window.scrollTo(0, 0);
         } catch (err) {
           console.error("Could not save submission", err);
           submitOverlay.classList.remove("active");
@@ -1824,16 +1858,7 @@
           submitBtn.textContent = "Submit film →";
           return; // Stop execution here on error
         }
-
-        submitOverlay.classList.remove("active");
-        document.getElementById("subId").textContent = id;
-        document.querySelector(".hero").style.display = "none";
-        document.querySelector(".strip").style.display = "none";
-        document.querySelector("main").style.display = "none";
-        document.getElementById("successScreen").style.display = "block";
-        window.scrollTo(0, 0);
       });
-
       document.getElementById("another").addEventListener("click", () => {
         formEl.reset();
         catGrid
